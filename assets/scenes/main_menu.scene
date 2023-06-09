@@ -1,0 +1,11 @@
+Scene: main_menu
+Systems:
+  - Canis::ButtonSystem
+  - Canis::SpriteAnimationSystem
+RenderSystems:
+  - Canis::SpriteRenderer2DSystem
+  - Canis::RenderTextSystem
+  - Canis::RenderHUDSystem
+Entities:
+  - 0:
+    Canis::ScriptComponent: MainMenuButtons
