@@ -1,13 +1,21 @@
 cmake_minimum_required(VERSION 3.18)
-project(canis_template)
+project(CanisTemplate)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_SOURCE_DIR}/dist/${CMAKE_SYSTEM_NAME}>)
 set(ASSETS_DIR_NAME assets)
 
 add_definitions(
-    -c
-    -msse2
+    #-c
+    #-msse2
+    #-mavx
+    #-mavx2
+    #-mavx512vl
+    #-mavx512f
+    #-march=skylake-avx512
+    #-O
+    #-ftime-report
+    #-Ofast
 )
 
 add_subdirectory(external/canis)
@@ -19,8 +27,48 @@ add_executable(${PROJECT_NAME} ${SRC_SOURCES} ${SRC_HEADERS})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE canis)
 
-if (DEFINED ASSETS_DIR_NAME)
+target_precompile_headers(${PROJECT_NAME}
+    PRIVATE
+    <Canis/App.hpp>
+    <Canis/Math.hpp>
+    <Canis/Canis.hpp>
+    <Canis/Scene.hpp>
+    <Canis/Entity.hpp>
+    <Canis/ECS/Encode.hpp>
+    <Canis/ECS/Decode.hpp>
+    <Canis/SceneManager.hpp>
+    <Canis/AssetManager.hpp>
+    <Canis/ScriptableEntity.hpp>
+    <Canis/External/entt.hpp>
+    <Canis/ECS/Components/ScriptComponent.hpp>
+    <Canis/ECS/Components/MeshComponent.hpp>
+    <Canis/ECS/Components/SphereColliderComponent.hpp>
+    <Canis/ECS/Components/TransformComponent.hpp>
+    <Canis/ECS/Components/RectTransformComponent.hpp>
+    <Canis/ECS/Components/Camera2DComponent.hpp>
+    <Canis/ECS/Components/TextComponent.hpp>
+    <Canis/ECS/Components/ColorComponent.hpp>
+    <Canis/ECS/Components/Sprite2DComponent.hpp>
+    <Canis/ECS/Systems/RenderHUDSystem.hpp>
+    <Canis/ECS/Systems/RenderTextSystem.hpp>
+    <Canis/ECS/Systems/SpriteRenderer2DSystem.hpp>
+    <Canis/ECS/Systems/SpriteAnimationSystem.hpp>
+    <Canis/ECS/Systems/CollisionSystem2D.hpp>
+    <Canis/ECS/Systems/ButtonSystem.hpp>
+    <Canis/ECS/Systems/RenderMeshWithShadowSystem.hpp>
+    <Canis/GameHelper/StateMachine/StateMachine.hpp>
+)
+
+#create_symlink
+#copy_directory
+if (WIN32)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_SOURCE_DIR}/${ASSETS_DIR_NAME}/
+            ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ASSETS_DIR_NAME})
+else()
     add_custom_command(TARGET ${PROJECT_NAME} PRE_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${CMAKE_SOURCE_DIR}/${ASSETS_DIR_NAME}/ ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ASSETS_DIR_NAME})
+        COMMAND ${CMAKE_COMMAND} -E create_symlink
+            ${CMAKE_SOURCE_DIR}/${ASSETS_DIR_NAME}/
+            ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ASSETS_DIR_NAME})
 endif()

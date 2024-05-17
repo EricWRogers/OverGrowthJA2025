@@ -33,7 +33,7 @@ public:
 
         if (!GetWindow().GetMouseLock())
         {
-            auto player = m_Entity.GetEntityWithTag("Player");
+            auto player = entity.GetEntityWithTag("Player");
             if(player.entityHandle != entt::null)
             {
                 auto& playerTransform = player.GetComponent<Canis::RectTransformComponent>();
@@ -80,7 +80,7 @@ public:
         if (GetInputManager().JustPressedKey(SDLK_F5))
         {
             Canis::Log("Load Scene");
-            ((Canis::SceneManager*)m_Entity.scene->sceneManager)->HotReload();
+            ((Canis::SceneManager*)entity.scene->sceneManager)->HotReload();
         }
     }
 };

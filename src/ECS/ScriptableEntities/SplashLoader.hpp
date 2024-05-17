@@ -11,7 +11,7 @@ public:
 
     void OnCreate()
     {
-
+        Canis::Log("Create");
     }
 
     void OnReady()
@@ -31,7 +31,7 @@ public:
         if (timer >= 3.0f)
         {
             Canis::Log("load main menu");
-            //((Canis::SceneManager*)m_Entity.scene->sceneManager)->Load("main_menu");
+            GetSceneManager().Load("main_menu");
         }
     }
 };
