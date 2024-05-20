@@ -1,21 +1,25 @@
 #pragma once
+#include <Canis/ECS/Systems/ButtonSystem.hpp>
 
+#include <Canis/ECS/Components/IDComponent.hpp>
 #include <Canis/ECS/Components/ColorComponent.hpp>
 #include <Canis/ECS/Components/TextComponent.hpp>
 #include <Canis/ECS/Components/ButtonComponent.hpp>
 
-#include "../../Scripts/TileMap.hpp"
+#include <Canis/AudioManager.hpp>
 
 class MainMenuButtons : public Canis::ScriptableEntity
 {
-    static void OnClickPlay(void *instance)
+    static void OnClickPlay(Canis::Entity _entity, void *_data)
     {
-        ((MainMenuButtons * )instance)->GetAssetManager().Get<Canis::SoundAsset>(((MainMenuButtons * )instance)->GetAssetManager().LoadSound("assets/audio/sounds/click1.wav"))->Play();
-        ((Canis::SceneManager *)((MainMenuButtons * )instance)->m_Entity.scene->sceneManager)->Load("demo");
+        Canis::Log("OnClickPlay");
+        Canis::AudioManager::Play("assets/audio/sounds/click1.wav");
+        ((MainMenuButtons*)_data)->GetSceneManager().Load("demo");
     }
 
-    static void OnClickQuit(void *instance)
+    static void OnClickQuit(Canis::Entity _entity, void *_data)
     {
+        Canis::Log("OnClickQuit");
         exit(1);
     }
 public:
@@ -23,133 +27,15 @@ public:
 
     void OnCreate()
     {
-        
+        Canis::Log("OnCreate");
     }
 
     void OnReady()
     {
-        // load font
-        kennyPixelSquareFontId = GetAssetManager().LoadText("assets/fonts/KenneyFonts/Fonts/KenneyPixelSquare.ttf",48);
-        kennyBlocksFontId = GetAssetManager().LoadText("assets/fonts/KenneyFonts/Fonts/KenneyBlocks.ttf",48);
-        // music
-        GetAssetManager().Get<Canis::MusicAsset>(GetAssetManager().LoadMusic("assets/audio/music/AlexandrZhelanovSongs/improvisation1.mp3"))->Play(-1);
+        Canis::ButtonSystem *buttonSystem = GetScene().GetSystem<Canis::ButtonSystem>();
 
-        { // build version text
-            Canis::Entity text = CreateEntity();
-            text.AddComponent<Canis::RectTransformComponent>(
-                true,                                                   // active
-                Canis::RectAnchor::BOTTOMRIGHT,
-                glm::vec2(-15.0f, 40.0f),  // position
-                glm::vec2(0.0f, 0.0f),                                  // size
-                glm::vec2(0.0f, 0.0f),                                  // originOffset
-                0.0f,                                                   // rotation
-                0.4f,                                                   // scale
-                0.0f                                                    // depth
-            );
-            text.AddComponent<Canis::ColorComponent>(
-                glm::vec4(1.0f, 1.0f, 1.0f, 1.0f) // #26854c
-            );
-            text.AddComponent<Canis::TextComponent>(
-                kennyPixelSquareFontId,
-                new std::string("Prototype Build Version : " + gameConfig.gameVersion), // text
-                1u
-            );
-        }
-
-        { // asset version text
-            Canis::Entity text = CreateEntity();
-            text.AddComponent<Canis::RectTransformComponent>(
-                true,                                                   // active
-                Canis::RectAnchor::BOTTOMRIGHT,
-                glm::vec2(-15.0f, 15.0f),  // position
-                glm::vec2(0.0f, 0.0f),                                  // size
-                glm::vec2(0.0f, 0.0f),                                  // originOffset
-                0.0f,                                                   // rotation
-                0.4f,                                                   // scale
-                0.0f                                                    // depth
-            );
-            text.AddComponent<Canis::ColorComponent>(
-                glm::vec4(1.0f, 1.0f, 1.0f, 1.0f) // #26854c
-            );
-            text.AddComponent<Canis::TextComponent>(
-                kennyPixelSquareFontId,
-                new std::string("Prototype Asset Version : " + gameConfig.assetVersion), // text
-                1u
-            );
-        }
-
-        { // title text
-            Canis::Entity text = CreateEntity();
-            text.AddComponent<Canis::RectTransformComponent>(
-                true,                                                   // active
-                Canis::RectAnchor::TOPCENTER,
-                glm::vec2(-200.0f, -200.0f),  // position
-                glm::vec2(0.0f, 0.0f),                                  // size
-                glm::vec2(0.0f, 0.0f),                                  // originOffset
-                0.0f,                                                   // rotation
-                1.0f,                                                   // scale
-                0.0f                                                    // depth
-            );
-            text.AddComponent<Canis::ColorComponent>(
-                glm::vec4(1.0f, 1.0f, 1.0f, 1.0f) // #26854c
-            );
-            text.AddComponent<Canis::TextComponent>(
-                kennyPixelSquareFontId,
-                new std::string("Stop The Slimes") // text
-            );
-        }
-
-        Canis::Entity playButton = CreateEntity();
-        auto& playRect = playButton.AddComponent<Canis::RectTransformComponent>(
-            true,                                                // active
-            Canis::RectAnchor::CENTERLEFT,
-            glm::vec2(200.0f, 50.0f), // position
-            glm::vec2(150.0f, 40.0f),                               // size
-            glm::vec2(0.0f, 0.0f),                                  // originOffset
-            0.0f,                                                   // rotation
-            1.0f,                                                // scale
-            0.0f 
-        );
-        auto& playColor = playButton.AddComponent<Canis::ColorComponent>(
-            glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)
-        );
-        auto& playText = playButton.AddComponent<Canis::TextComponent>(
-            GetAssetManager().LoadText("assets/fonts/Antonio-Bold.ttf", 48),
-            new std::string("Play"), // text
-            0u
-        );
-        auto& playB = playButton.AddComponent<Canis::ButtonComponent>(
-            OnClickPlay,
-            this,
-            glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-            glm::vec4(0.24f, 0.37f, 0.25f, 1.0f) //Green, #3c5e40
-        );
-
-        Canis::Entity quitButton = CreateEntity();
-        auto& quitRect = quitButton.AddComponent<Canis::RectTransformComponent>(
-            true,                                                // active
-            Canis::RectAnchor::CENTERLEFT,
-            glm::vec2(200.0f, -50.0f), // position
-            glm::vec2(150.0f, 40.0f),                               // size
-            glm::vec2(0.0f, 0.0f),                                  // originOffset
-            0.0f,                                                   // rotation
-            1.0f,                                                // scale
-            0.0f 
-        );
-        auto& quitColor = quitButton.AddComponent<Canis::ColorComponent>(
-            glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)
-        );
-        auto& quitText = quitButton.AddComponent<Canis::TextComponent>(
-            GetAssetManager().LoadText("assets/fonts/Antonio-Bold.ttf", 48),
-            new std::string("Quit"), // text
-            0u
-        );
-        auto& quitB = quitButton.AddComponent<Canis::ButtonComponent>(
-            OnClickQuit,
-            this,
-            glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-            glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)
-        );
+        buttonSystem->AddButtonListener("MainMenuPlay", this, OnClickPlay);
+        buttonSystem->AddButtonListener("MainMenuQuit", this, OnClickQuit);
     }
     
     void OnDestroy()
@@ -159,7 +45,10 @@ public:
 
     void OnUpdate(float _dt)
     {
-        
+        if (GetInputManager().JustPressedKey(SDLK_F5))
+        {
+            GetSceneManager().Save();
+        }
     }
 
 
@@ -174,5 +63,16 @@ bool DecodeMainMenuButtons(const std::string &_name, Canis::Entity &_entity)
         _entity.AddComponent<Canis::ScriptComponent>(scriptComponent);
         return true;
     }
+    return false;
+}
+
+bool EncodeMainMenuButtons(YAML::Emitter &_out, Canis::ScriptableEntity* _scriptableEntity)
+{
+    if ((_scriptableEntity = dynamic_cast<MainMenuButtons*>(_scriptableEntity)) != nullptr)
+    {
+        _out << YAML::Key << "Canis::ScriptComponent" << YAML::Value << "MainMenuButtons";
+        return true;
+    }
+
     return false;
 }

@@ -11,6 +11,7 @@
 
 #include "ECS/ScriptableEntities/DebugCamera2D.hpp"
 #include "ECS/ScriptableEntities/SplashLoader.hpp"
+#include "ECS/ScriptableEntities/MainMenuButtons.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -27,6 +28,7 @@ int main(int argc, char* argv[])
     // decode scriptable entities
     app.AddDecodeScriptableEntity(DecodeDebugCamera2D);
     app.AddDecodeScriptableEntity(DecodeSplashLoader);
+    app.AddDecodeScriptableEntity(DecodeMainMenuButtons);
 
     // decode component
     app.AddDecodeComponent(Canis::DecodeTagComponent);
@@ -34,6 +36,7 @@ int main(int argc, char* argv[])
     app.AddDecodeComponent(Canis::DecodeRectTransformComponent);
     app.AddDecodeComponent(Canis::DecodeColorComponent);
     app.AddDecodeComponent(Canis::DecodeTextComponent);
+    app.AddDecodeComponent(Canis::DecodeButtonComponent);
     app.AddDecodeComponent(Canis::DecodeSprite2DComponent);
     app.AddDecodeComponent(Canis::DecodeUIImageComponent);
     app.AddDecodeComponent(Canis::DecodeUISliderComponent);
@@ -41,15 +44,20 @@ int main(int argc, char* argv[])
 
     // encode component
     app.AddEncodeComponent(Canis::EncodeTransformComponent);
+    app.AddEncodeComponent(Canis::EncodeRectTransformComponent);
+    app.AddEncodeComponent(Canis::EncodeColorComponent);
+    app.AddEncodeComponent(Canis::EncodeTagComponent);
+    app.AddEncodeComponent(Canis::EncodeTextComponent);
+    app.AddEncodeComponent(Canis::EncodeButtonComponent);
 
     // encode scriptable component
-    //app.AddEncodeScriptableEntity(EncodePlacementTool);
+    app.AddEncodeScriptableEntity(EncodeMainMenuButtons);
 
     // add scene
-    app.AddSplashScene(new Canis::Scene("engine_splash", "assets/scenes/engine_splash.scene"));
-    app.AddSplashScene(new Canis::Scene("main_menu", "assets/scenes/main_menu.scene"));
+    //app.AddSplashScene(new Canis::Scene("engine_splash", "assets/scenes/engine_splash.scene"));
+    app.AddSplashScene(new Canis::Scene("main_menu", "main_menu"));
 
-    app.Run("Canis | Stop The Slimes","engine_splash");
+    app.Run("Canis | Stop The Slimes","main_menu");
 
     return 0;
 }
