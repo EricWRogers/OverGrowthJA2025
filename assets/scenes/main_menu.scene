@@ -1,11 +1,124 @@
 Scene: main_menu
+ClearColor: [1, 1, 1, 1]
 Systems:
   - Canis::ButtonSystem
-  - Canis::SpriteAnimationSystem
 RenderSystems:
   - Canis::SpriteRenderer2DSystem
   - Canis::RenderTextSystem
   - Canis::RenderHUDSystem
 Entities:
-  - 0:
+  - Entity: 14561119521224997718
     Canis::ScriptComponent: MainMenuButtons
+  - Entity: 14561119521224997717
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 8
+      position: [-15, 40]
+      size: [217.599731, 17.6000004]
+      originOffset: [-217.599731, 0]
+      rotation: 0
+      scale: 0.400000006
+      depth: 0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: "Prototype Build Version : 0.0.1"
+      alignment: 1
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+  - Entity: 9674272421446172513
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 8
+      position: [-15, 15]
+      size: [219.199951, 17.6000004]
+      originOffset: [-219.199951, 0]
+      rotation: 0
+      scale: 0.400000006
+      depth: 0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: "Prototype Asset Version : 0.0.1"
+      alignment: 1
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+  - Entity: 16516947501218716067
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 1
+      position: [-200, -200]
+      size: [284, 44]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Stop The Slimes
+      alignment: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+  - Entity: 13878440446197466466
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 3
+      position: [200, 50]
+      size: [71, 43]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Play
+      alignment: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+    Canis::ButtonComponent:
+      eventName: MainMenuPlay
+      baseColor: [1, 1, 1, 1]
+      hoverColor: [0.239999995, 0.370000005, 0.25, 1]
+  - Entity: 8903137429878787944
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 3
+      position: [200, -50]
+      size: [70, 49]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Quit
+      alignment: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+    Canis::ButtonComponent:
+      eventName: MainMenuQuit
+      baseColor: [1, 1, 1, 1]
+      hoverColor: [1, 0, 0, 1]
