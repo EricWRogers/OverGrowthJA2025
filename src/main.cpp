@@ -19,7 +19,7 @@
 template <typename ComponentType>
 void DecodeComponent(YAML::Node &_n, Canis::Entity &_entity, Canis::SceneManager *_sceneManager)
 {
-    Canis::Log("Component Name: " + std::string(type_name<ComponentType>()));
+    //Canis::Log("Component Name: " + std::string(type_name<ComponentType>()));
 
     if (auto componentNode = _n[std::string(type_name<ComponentType>())])
     {
@@ -30,7 +30,7 @@ void DecodeComponent(YAML::Node &_n, Canis::Entity &_entity, Canis::SceneManager
         {
             if (componentNode[propertyName])
             {
-                Canis::Log("Component Name: " + std::string(type_name<ComponentType>()) + " Property Name: " + propertyName);
+                //Canis::Log("Component Name: " + std::string(type_name<ComponentType>()) + " Property Name: " + propertyName);
                 YAML::Node propertyNode = componentNode[propertyName];
                 setter(propertyNode, &component, _sceneManager);
             }

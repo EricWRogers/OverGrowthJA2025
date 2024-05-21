@@ -63,9 +63,9 @@ Entities:
     Canis::RectTransformComponent:
       active: true
       anchor: 1
-      position: [-150, -200]
-      size: [284, 44]
-      originOffset: [0, 0]
+      position: [0, -200]
+      size: [717, 75]
+      originOffset: [-358.5, 0]
       rotation: 0
       scale: 1
       depth: 0
@@ -76,10 +76,10 @@ Entities:
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
       text: Stop The Slimes
-      alignment: 0
+      alignment: 2
       TextAsset:
-        path: assets/fonts/Antonio-Bold.ttf
-        size: 48
+        path: assets/fonts/tuffy_bold.ttf
+        size: 100
   - Entity: 9674272421446172513
     Canis::RectTransformComponent:
       active: true
@@ -106,8 +106,8 @@ Entities:
       active: true
       anchor: 8
       position: [-15, 40]
-      size: [217.599731, 17.6000004]
-      originOffset: [-217.599731, 0]
+      size: [255.200073, 20.8000011]
+      originOffset: [-255.200073, 0]
       rotation: 0
       scale: 0.400000006
       depth: 0
@@ -121,6 +121,6 @@ Entities:
       alignment: 1
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
-        size: 48
+        size: 56
   - Entity: 14561119521224997718
     Canis::ScriptComponent: MainMenuButtons
