@@ -16,17 +16,6 @@
 
 //////////////// HELL
 
-// Ensure properties are registered
-namespace
-{
-    bool registeredRectTransformComponent = (Canis::RectTransformComponent::RegisterProperties(), true);
-    bool registeredColorComponent = (Canis::ColorComponent::RegisterProperties(), true);
-    bool registeredButtonComponent = (Canis::ButtonComponent::RegisterProperties(), true);
-    bool refisteredCamera2DComponent = (Canis::Camera2DComponent::RegisterProperties(), true);
-}
-
-
-
 template <typename ComponentType>
 void DecodeComponent(YAML::Node &_n, Canis::Entity &_entity, Canis::SceneManager *_sceneManager)
 {
@@ -47,6 +36,12 @@ void DecodeComponent(YAML::Node &_n, Canis::Entity &_entity, Canis::SceneManager
             }
         }
     }
+}
+
+#define REGISTER_COMPONENT_DECODE(AppInstance, ComponentType)                               \
+{                                                                                           \
+    static bool registered = (ComponentType::RegisterProperties(), true);                   \
+    AppInstance.AddDecodeComponent(DecodeComponent<ComponentType>);                         \
 }
 
 //////////////// EXIT HELL
@@ -122,15 +117,15 @@ int main(int argc, char *argv[])
 
     // decode component
     app.AddDecodeComponent(Canis::DecodeTagComponent);
-    app.AddDecodeComponent(DecodeComponent<Canis::Camera2DComponent>);
-    app.AddDecodeComponent(DecodeComponent<Canis::RectTransformComponent>);
-    app.AddDecodeComponent(DecodeComponent<Canis::ColorComponent>);
+    REGISTER_COMPONENT_DECODE(app, Canis::RectTransformComponent);
+    REGISTER_COMPONENT_DECODE(app, Canis::ColorComponent);
     app.AddDecodeComponent(Canis::DecodeTextComponent);
-    app.AddDecodeComponent(DecodeComponent<Canis::ButtonComponent>);
+    REGISTER_COMPONENT_DECODE(app, Canis::ButtonComponent);
     app.AddDecodeComponent(Canis::DecodeSprite2DComponent);
     app.AddDecodeComponent(Canis::DecodeUIImageComponent);
     app.AddDecodeComponent(Canis::DecodeUISliderComponent);
     app.AddDecodeComponent(Canis::DecodeSpriteAnimationComponent);
+    REGISTER_COMPONENT_DECODE(app, Canis::Camera2DComponent);
 
     // encode component
     app.AddEncodeComponent(Canis::EncodeTransformComponent);
