@@ -9,6 +9,9 @@ RenderSystems:
 Entities:
   - Entity: 14561119521224997718
     Canis::ScriptComponent: MainMenuButtons
+    TestComponent:
+      number: 5
+      name: yo
   - Entity: 14561119521224997717
     Canis::RectTransformComponent:
       active: true
@@ -21,7 +24,7 @@ Entities:
       depth: 0
       scaleWithScreen: 0
     Canis::ColorComponent:
-      color: [1, 1, 1, 1]
+      color: [1.0, 0.0, 0.0, 1.0]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
@@ -42,7 +45,7 @@ Entities:
       depth: 0
       scaleWithScreen: 0
     Canis::ColorComponent:
-      color: [1, 1, 1, 1]
+      color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
@@ -63,7 +66,7 @@ Entities:
       depth: 0
       scaleWithScreen: 0
     Canis::ColorComponent:
-      color: [1, 1, 1, 1]
+      color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
@@ -84,7 +87,7 @@ Entities:
       depth: 0
       scaleWithScreen: 0
     Canis::ColorComponent:
-      color: [1, 1, 1, 1]
+      color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
@@ -95,8 +98,9 @@ Entities:
         size: 48
     Canis::ButtonComponent:
       eventName: MainMenuPlay
-      baseColor: [1, 1, 1, 1]
-      hoverColor: [0.239999995, 0.370000005, 0.25, 1]
+      baseColor: [0, 0, 0, 1]
+      hoverColor: [0.1, 0.1, 0.1, 1]
+      down: 8903137429878787944
   - Entity: 8903137429878787944
     Canis::RectTransformComponent:
       active: true
@@ -109,7 +113,7 @@ Entities:
       depth: 0
       scaleWithScreen: 0
     Canis::ColorComponent:
-      color: [1, 1, 1, 1]
+      color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
@@ -120,5 +124,6 @@ Entities:
         size: 48
     Canis::ButtonComponent:
       eventName: MainMenuQuit
-      baseColor: [1, 1, 1, 1]
-      hoverColor: [1, 0, 0, 1]
+      baseColor: [0, 0, 0, 1]
+      hoverColor: [0.1, 0.1, 0.1, 1]
+      up: 13878440446197466466
