@@ -16,27 +16,16 @@
 
 //////////////// HELL
 
-struct TestComponent
-{
-    int number = 0;
-    std::string name;
-
-    static void RegisterProperties()
-    {
-        REGISTER_PROPERTY(TestComponent, number, int);
-        REGISTER_PROPERTY(TestComponent, name, std::string);
-    }
-};
-
 // Ensure properties are registered
 namespace
 {
-    bool registeredTestComponent = (TestComponent::RegisterProperties(), true);
     bool registeredRectTransformComponent = (Canis::RectTransformComponent::RegisterProperties(), true);
     bool registeredColorComponent = (Canis::ColorComponent::RegisterProperties(), true);
     bool registeredButtonComponent = (Canis::ButtonComponent::RegisterProperties(), true);
     bool refisteredCamera2DComponent = (Canis::Camera2DComponent::RegisterProperties(), true);
 }
+
+
 
 template <typename ComponentType>
 void DecodeComponent(YAML::Node &_n, Canis::Entity &_entity, Canis::SceneManager *_sceneManager)
@@ -142,7 +131,6 @@ int main(int argc, char *argv[])
     app.AddDecodeComponent(Canis::DecodeUIImageComponent);
     app.AddDecodeComponent(Canis::DecodeUISliderComponent);
     app.AddDecodeComponent(Canis::DecodeSpriteAnimationComponent);
-    app.AddDecodeComponent(DecodeComponent<TestComponent>);
 
     // encode component
     app.AddEncodeComponent(Canis::EncodeTransformComponent);
