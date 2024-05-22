@@ -144,7 +144,8 @@ Entities:
       emissionUsingAlbedoIntesity: 0
     Canis::UIImageComponent:
       uv: [0.0, 0.333333, 1.0, 0.333333]
-      texture: assets/textures/ui/bar.png
+      TextureAsset:
+        path: assets/textures/ui/bar.png
     Canis::UISliderComponent:
       maxWidth: 100
       maxUVX: 1
@@ -168,7 +169,8 @@ Entities:
       emissionUsingAlbedoIntesity: 0
     Canis::UIImageComponent:
       uv: [0.0, 0.0, 1.0, 1.0]
-      texture: assets/textures/ui/energy_icon.png
+      TextureAsset:
+        path: assets/textures/ui/energy_icon.png
     Canis::ButtonComponent:
     Canis::UISliderKnobComponent:
       eventName: VolumeSliderChanged
