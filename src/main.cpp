@@ -160,6 +160,8 @@ int main(int argc, char *argv[])
     app.AddEncodeComponent(EncodeComponent<Canis::ButtonComponent>);
     //app.AddEncodeComponent(Canis::EncodeButtonComponent);
     app.AddEncodeComponent(Canis::EncodeUIImageComponent);
+    app.AddEncodeComponent(EncodeComponent<Canis::UISliderComponent>);
+    app.AddEncodeComponent(EncodeComponent<Canis::UISliderKnobComponent>);
 
     // encode scriptable component
     REGISTER_ENCODE_FUNCTION(app, DebugCamera2D);

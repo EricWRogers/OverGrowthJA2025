@@ -22,6 +22,13 @@ class MainMenuButtons : public Canis::ScriptableEntity
         Canis::Log("OnClickQuit");
         exit(1);
     }
+
+    static void OnAudioSliderChanged(Canis::Entity _entity, float _value, void *_data)
+    {
+        Canis::Log("OnAudioSliderChanged");
+    }
+private:
+    Canis::KnobListener knobHandle;
 public:
     int kennyPixelSquareFontId, kennyBlocksFontId = 0;
 
@@ -34,13 +41,17 @@ public:
     {
         Canis::ButtonSystem *buttonSystem = GetScene().GetSystem<Canis::ButtonSystem>();
 
-        buttonSystem->AddButtonListener("MainMenuPlay", this, OnClickPlay);
-        buttonSystem->AddButtonListener("MainMenuQuit", this, OnClickQuit);
+        Canis::ButtonListener bl1 = buttonSystem->AddButtonListener("MainMenuPlay", this, OnClickPlay);
+        Canis::ButtonListener bl2 = buttonSystem->AddButtonListener("MainMenuQuit", this, OnClickQuit);
+
+        Canis::UISliderKnobSystem *knobSystem = GetScene().GetSystem<Canis::UISliderKnobSystem>();
+
+        knobHandle = knobSystem->AddKnobListener("VolumeSliderChanged", this, OnAudioSliderChanged);
     }
     
     void OnDestroy()
     {
-
+        Canis::Log("mmb hi");
     }
 
     void OnUpdate(float _dt)
