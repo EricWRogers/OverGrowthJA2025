@@ -100,7 +100,15 @@ Entities:
       eventName: MainMenuPlay
       baseColor: [0, 0, 0, 1]
       hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 0
       down: 8903137429878787944
+      left: 0
+      right: 0
+      defaultSelected: false
   - Entity: 8903137429878787944
     Canis::RectTransformComponent:
       active: true
@@ -126,55 +134,63 @@ Entities:
       eventName: MainMenuQuit
       baseColor: [0, 0, 0, 1]
       hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
       up: 13878440446197466466
+      down: 0
+      left: 0
+      right: 0
+      defaultSelected: false
   - Entity: 1954185818395815381
     Canis::RectTransformComponent:
       active: true
       anchor: 4
       position: [0, 0]
-      size: [100, 20]
+      size: [50, 20]
       originOffset: [0, 0]
       rotation: 0
       scale: 1
-      depth: 0.1
+      depth: 0.100000001
       scaleWithScreen: 0
     Canis::ColorComponent:
       color: [1, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::UIImageComponent:
-      uv: [0.0, 0.333333, 1.0, 0.333333]
       TextureAsset:
         path: assets/textures/ui/bar.png
-    Canis::UISliderComponent:
-      maxWidth: 100
-      maxUVX: 1
-      minUVX: 0
-      value: 0.5
-      targetValue: 1
+      uv: [0, 0.333332986, 0.5, 0.333332986]
   - Entity: 2954185818395815389
     Canis::RectTransformComponent:
       active: true
       anchor: 4
-      position: [0, 0]
+      position: [25, -15]
       size: [50, 50]
       originOffset: [0, 0]
       rotation: 0
       scale: 1
-      depth: 0.0
+      depth: 0
       scaleWithScreen: 0
     Canis::ColorComponent:
-      color: [1, 1, 1, 1]
+      color: [0.899999976, 0.899999976, 0.899999976, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
+    Canis::ButtonComponent:
+      eventName: ""
+      baseColor: [0.899999976, 0.899999976, 0.899999976, 1]
+      hoverColor: [1, 1, 1, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 0
+      down: 0
+      left: 0
+      right: 0
+      defaultSelected: false
     Canis::UIImageComponent:
-      uv: [0.0, 0.0, 1.0, 1.0]
       TextureAsset:
         path: assets/textures/ui/energy_icon.png
-    Canis::ButtonComponent:
-    Canis::UISliderKnobComponent:
-      eventName: VolumeSliderChanged
-      slider: 1954185818395815381
-      grabbed: false
-      value: 0.5
-      
+      uv: [0, 0, 1, 1]

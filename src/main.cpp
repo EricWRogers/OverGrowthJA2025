@@ -38,10 +38,31 @@ void DecodeComponent(YAML::Node &_n, Canis::Entity &_entity, Canis::SceneManager
     }
 }
 
-#define REGISTER_COMPONENT_DECODE(AppInstance, ComponentType)                               \
+template <typename ComponentType>
+void EncodeComponent(YAML::Emitter &_out, Canis::Entity &_entity)
+{
+    if (_entity.HasComponent<ComponentType>())
+    {
+        ComponentType& component = _entity.GetComponent<ComponentType>();
+
+        _out << YAML::Key << std::string(type_name<ComponentType>());
+        _out << YAML::BeginMap;
+
+        auto &registry = GetPropertyRegistry<ComponentType>();
+        for (const auto &propertyName : registry.propertyOrder)
+        {
+            _out << YAML::Key << propertyName << YAML::Value << registry.getters[propertyName](&component);
+        }
+
+        _out << YAML::EndMap;
+    }
+}
+
+#define REGISTER_COMPONENT(AppInstance, ComponentType)                                      \
 {                                                                                           \
     static bool registered = (ComponentType::RegisterProperties(), true);                   \
     AppInstance.AddDecodeComponent(DecodeComponent<ComponentType>);                         \
+    /*AppInstance.AddEncodeComponent(EncodeComponent<ComponentType>);*/                     \
 }
 
 //////////////// EXIT HELL
@@ -119,24 +140,26 @@ int main(int argc, char *argv[])
 
     // decode component
     app.AddDecodeComponent(Canis::DecodeTagComponent);
-    REGISTER_COMPONENT_DECODE(app, Canis::RectTransformComponent);
-    REGISTER_COMPONENT_DECODE(app, Canis::ColorComponent);
+    REGISTER_COMPONENT(app, Canis::RectTransformComponent);
+    REGISTER_COMPONENT(app, Canis::ColorComponent);
     app.AddDecodeComponent(Canis::DecodeTextComponent);
-    REGISTER_COMPONENT_DECODE(app, Canis::ButtonComponent);
+    REGISTER_COMPONENT(app, Canis::ButtonComponent);
     app.AddDecodeComponent(Canis::DecodeSprite2DComponent);
     app.AddDecodeComponent(Canis::DecodeUIImageComponent);
-    REGISTER_COMPONENT_DECODE(app, Canis::UISliderComponent);
-    REGISTER_COMPONENT_DECODE(app, Canis::UISliderKnobComponent);
+    REGISTER_COMPONENT(app, Canis::UISliderComponent);
+    REGISTER_COMPONENT(app, Canis::UISliderKnobComponent);
     app.AddDecodeComponent(Canis::DecodeSpriteAnimationComponent);
-    REGISTER_COMPONENT_DECODE(app, Canis::Camera2DComponent);
+    REGISTER_COMPONENT(app, Canis::Camera2DComponent);
 
     // encode component
+    app.AddEncodeComponent(Canis::EncodeTagComponent);
     app.AddEncodeComponent(Canis::EncodeTransformComponent);
     app.AddEncodeComponent(Canis::EncodeRectTransformComponent);
     app.AddEncodeComponent(Canis::EncodeColorComponent);
-    app.AddEncodeComponent(Canis::EncodeTagComponent);
     app.AddEncodeComponent(Canis::EncodeTextComponent);
-    app.AddEncodeComponent(Canis::EncodeButtonComponent);
+    app.AddEncodeComponent(EncodeComponent<Canis::ButtonComponent>);
+    //app.AddEncodeComponent(Canis::EncodeButtonComponent);
+    app.AddEncodeComponent(Canis::EncodeUIImageComponent);
 
     // encode scriptable component
     REGISTER_ENCODE_FUNCTION(app, DebugCamera2D);
