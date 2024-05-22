@@ -2,18 +2,65 @@ Scene: main_menu
 ClearColor: [1, 1, 1, 1]
 Systems:
   - Canis::ButtonSystem
+  - Canis::UISliderSystem
+  - Canis::UISliderKnobSystem
 RenderSystems:
   - Canis::SpriteRenderer2DSystem
   - Canis::RenderTextSystem
   - Canis::RenderHUDSystem
 Entities:
-  - Entity: 8903137429878787944
+  - Entity: 14561119521224997718
+    Canis::TagComponent: Script
+    Canis::ScriptComponent: MainMenuButtons
+  - Entity: 14561119521224997717
     Canis::RectTransformComponent:
       active: true
-      anchor: 3
-      position: [200, -50]
-      size: [70, 49]
-      originOffset: [0, 0]
+      anchor: 8
+      position: [-15, 40]
+      size: [255.200073, 20.8000011]
+      originOffset: [-255.200073, 0]
+      rotation: 0
+      scale: 0.400000006
+      depth: 0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [1, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: "Prototype Build Version : 0.0.1"
+      alignment: 1
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 56
+  - Entity: 9674272421446172513
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 8
+      position: [-15, 15]
+      size: [219.199951, 17.6000004]
+      originOffset: [-219.199951, 0]
+      rotation: 0
+      scale: 0.400000006
+      depth: 0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [0, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: "Prototype Asset Version : 0.0.1"
+      alignment: 1
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+  - Entity: 16516947501218716067
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 1
+      position: [0, -200]
+      size: [717, 75]
+      originOffset: [-358.5, 0]
       rotation: 0
       scale: 1
       depth: 0
@@ -23,16 +70,11 @@ Entities:
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
-      text: Quit
-      alignment: 0
+      text: Stop The Slimes
+      alignment: 2
       TextAsset:
-        path: assets/fonts/Antonio-Bold.ttf
-        size: 48
-    Canis::ButtonComponent:
-      eventName: MainMenuQuit
-      baseColor: [0, 0, 0, 1]
-      hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
-      up: 13878440446197466466
+        path: assets/fonts/tuffy_bold.ttf
+        size: 100
   - Entity: 13878440446197466466
     Canis::RectTransformComponent:
       active: true
@@ -59,13 +101,13 @@ Entities:
       baseColor: [0, 0, 0, 1]
       hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
       down: 8903137429878787944
-  - Entity: 16516947501218716067
+  - Entity: 8903137429878787944
     Canis::RectTransformComponent:
       active: true
-      anchor: 1
-      position: [0, -200]
-      size: [717, 75]
-      originOffset: [-358.5, 0]
+      anchor: 3
+      position: [200, -50]
+      size: [70, 49]
+      originOffset: [0, 0]
       rotation: 0
       scale: 1
       depth: 0
@@ -75,52 +117,62 @@ Entities:
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
-      text: Stop The Slimes
-      alignment: 2
-      TextAsset:
-        path: assets/fonts/tuffy_bold.ttf
-        size: 100
-  - Entity: 9674272421446172513
-    Canis::RectTransformComponent:
-      active: true
-      anchor: 8
-      position: [-15, 15]
-      size: [219.199951, 17.6000004]
-      originOffset: [-219.199951, 0]
-      rotation: 0
-      scale: 0.400000006
-      depth: 0
-      scaleWithScreen: 0
-    Canis::ColorComponent:
-      color: [0, 0, 0, 1]
-      emission: [0, 0, 0]
-      emissionUsingAlbedoIntesity: 0
-    Canis::TextComponent:
-      text: "Prototype Asset Version : 0.0.1"
-      alignment: 1
+      text: Quit
+      alignment: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
         size: 48
-  - Entity: 14561119521224997717
+    Canis::ButtonComponent:
+      eventName: MainMenuQuit
+      baseColor: [0, 0, 0, 1]
+      hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
+      up: 13878440446197466466
+  - Entity: 1954185818395815381
     Canis::RectTransformComponent:
       active: true
-      anchor: 8
-      position: [-15, 40]
-      size: [255.200073, 20.8000011]
-      originOffset: [-255.200073, 0]
+      anchor: 4
+      position: [0, 0]
+      size: [100, 20]
+      originOffset: [0, 0]
       rotation: 0
-      scale: 0.400000006
-      depth: 0
+      scale: 1
+      depth: 0.1
       scaleWithScreen: 0
     Canis::ColorComponent:
       color: [1, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
-    Canis::TextComponent:
-      text: "Prototype Build Version : 0.0.1"
-      alignment: 1
-      TextAsset:
-        path: assets/fonts/Antonio-Bold.ttf
-        size: 56
-  - Entity: 14561119521224997718
-    Canis::ScriptComponent: MainMenuButtons
+    Canis::UIImageComponent:
+      uv: [0.0, 0.333333, 1.0, 0.333333]
+      texture: assets/textures/ui/bar.png
+    Canis::UISliderComponent:
+      maxWidth: 100
+      maxUVX: 1
+      minUVX: 0
+      value: 0.5
+      targetValue: 1
+  - Entity: 2954185818395815389
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 4
+      position: [0, 0]
+      size: [50, 50]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 0.0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::UIImageComponent:
+      uv: [0.0, 0.0, 1.0, 1.0]
+      texture: assets/textures/ui/energy_icon.png
+    Canis::ButtonComponent:
+    Canis::UISliderKnobComponent:
+      eventName: VolumeSliderChanged
+      slider: 1954185818395815381
+      grabbed: false
+      value: 0.5
+      

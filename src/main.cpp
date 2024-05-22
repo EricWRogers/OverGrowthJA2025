@@ -7,6 +7,9 @@
 #include <Canis/ECS/Decode.hpp>
 #include <Canis/ECS/Encode.hpp>
 
+#include <Canis/ECS/Components/UISliderComponent.hpp>
+#include <Canis/ECS/Components/UISliderKnobComponent.hpp>
+
 #include <Canis/ECS/Systems/UISliderSystem.hpp>
 #include <Canis/ECS/Systems/UISliderKnobSystem.hpp>
 
@@ -19,8 +22,6 @@
 template <typename ComponentType>
 void DecodeComponent(YAML::Node &_n, Canis::Entity &_entity, Canis::SceneManager *_sceneManager)
 {
-    //Canis::Log("Component Name: " + std::string(type_name<ComponentType>()));
-
     if (auto componentNode = _n[std::string(type_name<ComponentType>())])
     {
         auto &component = _entity.AddComponent<ComponentType>();
@@ -30,7 +31,6 @@ void DecodeComponent(YAML::Node &_n, Canis::Entity &_entity, Canis::SceneManager
         {
             if (componentNode[propertyName])
             {
-                //Canis::Log("Component Name: " + std::string(type_name<ComponentType>()) + " Property Name: " + propertyName);
                 YAML::Node propertyNode = componentNode[propertyName];
                 setter(propertyNode, &component, _sceneManager);
             }
@@ -104,6 +104,8 @@ int main(int argc, char *argv[])
 
     // decode system
     app.AddDecodeSystem(Canis::DecodeButtonSystem);
+    app.AddDecodeSystem(Canis::DecodeUISliderSystem);
+    app.AddDecodeSystem(Canis::DecodeUISliderKnobSystem);
 
     // decode render system
     app.AddDecodeRenderSystem(Canis::DecodeRenderHUDSystem);
@@ -123,7 +125,8 @@ int main(int argc, char *argv[])
     REGISTER_COMPONENT_DECODE(app, Canis::ButtonComponent);
     app.AddDecodeComponent(Canis::DecodeSprite2DComponent);
     app.AddDecodeComponent(Canis::DecodeUIImageComponent);
-    app.AddDecodeComponent(Canis::DecodeUISliderComponent);
+    REGISTER_COMPONENT_DECODE(app, Canis::UISliderComponent);
+    REGISTER_COMPONENT_DECODE(app, Canis::UISliderKnobComponent);
     app.AddDecodeComponent(Canis::DecodeSpriteAnimationComponent);
     REGISTER_COMPONENT_DECODE(app, Canis::Camera2DComponent);
 
