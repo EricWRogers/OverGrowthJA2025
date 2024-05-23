@@ -7,6 +7,7 @@
 #include <Canis/ECS/Decode.hpp>
 #include <Canis/ECS/Encode.hpp>
 
+#include <Canis/ECS/Components/UIImageComponent.hpp>
 #include <Canis/ECS/Components/UISliderComponent.hpp>
 #include <Canis/ECS/Components/UISliderKnobComponent.hpp>
 
@@ -67,12 +68,17 @@ void EncodeComponent(YAML::Emitter &_out, Canis::Entity &_entity)
 
 #define REGISTER_UPDATE_SYSTEM(system)                      \
 {                                                           \
-    GetSystemRegistry().updateSystems.push_back(#system);    \
+    GetSystemRegistry().updateSystems.push_back(#system);   \
 }
 
 #define REGISTER_RENDER_SYSTEM(system)                      \
 {                                                           \
-    GetSystemRegistry().renderSystems.push_back(#system);    \
+    GetSystemRegistry().renderSystems.push_back(#system);   \
+}
+
+#define REGISTER_COMPONENT_NAME(component)                      \
+{                                                               \
+    GetComponent().names.push_back(#component);                 \
 }
 
 //////////////// EXIT HELL
@@ -180,6 +186,16 @@ int main(int argc, char *argv[])
     app.AddEncodeComponent(Canis::EncodeUIImageComponent);
     app.AddEncodeComponent(EncodeComponent<Canis::UISliderComponent>);
     app.AddEncodeComponent(EncodeComponent<Canis::UISliderKnobComponent>);
+
+    REGISTER_COMPONENT_NAME(Canis::TagComponent);
+    REGISTER_COMPONENT_NAME(Canis::TransformComponent);
+    REGISTER_COMPONENT_NAME(Canis::RectTransformComponent);
+    REGISTER_COMPONENT_NAME(Canis::ColorComponent);
+    REGISTER_COMPONENT_NAME(Canis::TextComponent);
+    REGISTER_COMPONENT_NAME(Canis::ButtonComponent);
+    REGISTER_COMPONENT_NAME(Canis::UIImageComponent);
+    REGISTER_COMPONENT_NAME(Canis::UISliderComponent);
+    REGISTER_COMPONENT_NAME(Canis::UISliderKnobComponent);
 
     // encode scriptable component
     REGISTER_ENCODE_FUNCTION(app, DebugCamera2D);
