@@ -65,6 +65,16 @@ void EncodeComponent(YAML::Emitter &_out, Canis::Entity &_entity)
     /*AppInstance.AddEncodeComponent(EncodeComponent<ComponentType>);*/                     \
 }
 
+#define REGISTER_UPDATE_SYSTEM(system)                      \
+{                                                           \
+    GetSystemRegistry().updateSystems.push_back(#system);    \
+}
+
+#define REGISTER_RENDER_SYSTEM(system)                      \
+{                                                           \
+    GetSystemRegistry().renderSystems.push_back(#system);    \
+}
+
 //////////////// EXIT HELL
 
 //////////////// DECODE
@@ -128,10 +138,18 @@ int main(int argc, char *argv[])
     app.AddDecodeSystem(Canis::DecodeUISliderSystem);
     app.AddDecodeSystem(Canis::DecodeUISliderKnobSystem);
 
+    REGISTER_UPDATE_SYSTEM(Canis::ButtonSystem);
+    REGISTER_UPDATE_SYSTEM(Canis::UISliderSystem);
+    REGISTER_UPDATE_SYSTEM(Canis::UISliderKnobSystem);
+
     // decode render system
     app.AddDecodeRenderSystem(Canis::DecodeRenderHUDSystem);
     app.AddDecodeRenderSystem(Canis::DecodeRenderTextSystem);
     app.AddDecodeRenderSystem(Canis::DecodeSpriteRenderer2DSystem);
+
+    REGISTER_RENDER_SYSTEM(Canis::RenderHUDSystem);
+    REGISTER_RENDER_SYSTEM(Canis::RenderTextSystem);
+    REGISTER_RENDER_SYSTEM(Canis::SpriteRenderer2DSystem);
 
     // decode scriptable entities
     REGISTER_DECODE_FUNCTION(app, DebugCamera2D);
