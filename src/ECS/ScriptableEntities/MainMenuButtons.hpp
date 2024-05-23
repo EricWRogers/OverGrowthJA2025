@@ -29,6 +29,8 @@ class MainMenuButtons : public Canis::ScriptableEntity
     }
 private:
     Canis::KnobListener knobHandle;
+    Canis::ButtonListener playButtonListener;
+    Canis::ButtonListener quitButtonListener;
 public:
     int kennyPixelSquareFontId, kennyBlocksFontId = 0;
 
@@ -41,8 +43,8 @@ public:
     {
         Canis::ButtonSystem *buttonSystem = GetScene().GetSystem<Canis::ButtonSystem>();
 
-        Canis::ButtonListener bl1 = buttonSystem->AddButtonListener("MainMenuPlay", this, OnClickPlay);
-        Canis::ButtonListener bl2 = buttonSystem->AddButtonListener("MainMenuQuit", this, OnClickQuit);
+        playButtonListener = buttonSystem->AddButtonListener("MainMenuPlay", this, OnClickPlay);
+        quitButtonListener = buttonSystem->AddButtonListener("MainMenuQuit", this, OnClickQuit);
 
         Canis::UISliderKnobSystem *knobSystem = GetScene().GetSystem<Canis::UISliderKnobSystem>();
 
@@ -51,7 +53,7 @@ public:
     
     void OnDestroy()
     {
-        Canis::Log("mmb hi");
+        
     }
 
     void OnUpdate(float _dt)
