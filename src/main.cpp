@@ -81,6 +81,17 @@ void EncodeComponent(YAML::Emitter &_out, Canis::Entity &_entity)
     GetComponent().names.push_back(#component);                 \
 }
 
+#define REGISTER_COMPONENT_EDITOR(component)                                            \
+{                                                                                       \
+	GetComponent().addComponentFuncs[#component] = [](Canis::Entity &e) { 			    \
+		if (e.HasComponent<component>() == false) { e.AddComponent<component>(); }      \
+	};                                                                                  \
+    GetComponent().removeComponentFuncs[#component] = [](Canis::Entity &e) {            \
+        if (e.HasComponent<component>()) { e.RemoveComponent<component>(); }            \
+    };                                                                                  \
+	GetComponent().names.push_back(#component);  									    \
+}
+
 //////////////// EXIT HELL
 
 //////////////// DECODE
@@ -187,15 +198,15 @@ int main(int argc, char *argv[])
     app.AddEncodeComponent(EncodeComponent<Canis::UISliderComponent>);
     app.AddEncodeComponent(EncodeComponent<Canis::UISliderKnobComponent>);
 
-    REGISTER_COMPONENT_NAME(Canis::TagComponent);
-    REGISTER_COMPONENT_NAME(Canis::TransformComponent);
-    REGISTER_COMPONENT_NAME(Canis::RectTransformComponent);
-    REGISTER_COMPONENT_NAME(Canis::ColorComponent);
-    REGISTER_COMPONENT_NAME(Canis::TextComponent);
-    REGISTER_COMPONENT_NAME(Canis::ButtonComponent);
-    REGISTER_COMPONENT_NAME(Canis::UIImageComponent);
-    REGISTER_COMPONENT_NAME(Canis::UISliderComponent);
-    REGISTER_COMPONENT_NAME(Canis::UISliderKnobComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::TagComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::TransformComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::RectTransformComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::ColorComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::TextComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::ButtonComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::UIImageComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::UISliderComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::UISliderKnobComponent);
 
     // encode scriptable component
     REGISTER_ENCODE_FUNCTION(app, DebugCamera2D);
