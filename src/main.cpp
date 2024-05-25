@@ -59,37 +59,40 @@ void EncodeComponent(YAML::Emitter &_out, Canis::Entity &_entity)
     }
 }
 
-#define REGISTER_COMPONENT(AppInstance, ComponentType)                                      \
-{                                                                                           \
-    static bool registered = (ComponentType::RegisterProperties(), true);                   \
-    AppInstance.AddDecodeComponent(DecodeComponent<ComponentType>);                         \
-    /*AppInstance.AddEncodeComponent(EncodeComponent<ComponentType>);*/                     \
+#define REGISTER_COMPONENT(AppInstance, ComponentType)                      \
+{                                                                           \
+    static bool registered = (ComponentType::RegisterProperties(), true);   \
+    AppInstance.AddDecodeComponent(DecodeComponent<ComponentType>);         \
+    /*AppInstance.AddEncodeComponent(EncodeComponent<ComponentType>);*/     \
 }
 
-#define REGISTER_UPDATE_SYSTEM(system)                      \
-{                                                           \
-    GetSystemRegistry().updateSystems.push_back(#system);   \
+#define REGISTER_UPDATE_SYSTEM(system)                                      \
+{                                                                           \
+    GetSystemRegistry().updateSystems.push_back(#system);                   \
 }
 
-#define REGISTER_RENDER_SYSTEM(system)                      \
-{                                                           \
-    GetSystemRegistry().renderSystems.push_back(#system);   \
+#define REGISTER_RENDER_SYSTEM(system)                                      \
+{                                                                           \
+    GetSystemRegistry().renderSystems.push_back(#system);                   \
 }
 
-#define REGISTER_COMPONENT_NAME(component)                      \
-{                                                               \
-    GetComponent().names.push_back(#component);                 \
+#define REGISTER_COMPONENT_NAME(component)                                  \
+{                                                                           \
+    GetComponent().names.push_back(#component);                             \
 }
 
-#define REGISTER_COMPONENT_EDITOR(component)                                            \
-{                                                                                       \
-	GetComponent().addComponentFuncs[#component] = [](Canis::Entity &e) { 			    \
-		if (e.HasComponent<component>() == false) { e.AddComponent<component>(); }      \
-	};                                                                                  \
-    GetComponent().removeComponentFuncs[#component] = [](Canis::Entity &e) {            \
-        if (e.HasComponent<component>()) { e.RemoveComponent<component>(); }            \
-    };                                                                                  \
-	GetComponent().names.push_back(#component);  									    \
+#define REGISTER_COMPONENT_EDITOR(component)                                                    \
+{                                                                                               \
+	GetComponent().addComponentFuncs[#component] = [](Canis::Entity &_entity) { 			    \
+		if (_entity.HasComponent<component>() == false) { _entity.AddComponent<component>(); }  \
+	};                                                                                          \
+    GetComponent().removeComponentFuncs[#component] = [](Canis::Entity &_entity) {              \
+        if (_entity.HasComponent<component>()) { _entity.RemoveComponent<component>(); }        \
+    };                                                                                          \
+    GetComponent().hasComponentFuncs[#component] = [](Canis::Entity &_entity) -> bool {         \
+        return _entity.HasComponent<component>();                                               \
+    };                                                                                          \
+	GetComponent().names.push_back(#component);  									            \
 }
 
 //////////////// EXIT HELL
@@ -193,7 +196,6 @@ int main(int argc, char *argv[])
     app.AddEncodeComponent(Canis::EncodeColorComponent);
     app.AddEncodeComponent(Canis::EncodeTextComponent);
     app.AddEncodeComponent(EncodeComponent<Canis::ButtonComponent>);
-    //app.AddEncodeComponent(Canis::EncodeButtonComponent);
     app.AddEncodeComponent(Canis::EncodeUIImageComponent);
     app.AddEncodeComponent(EncodeComponent<Canis::UISliderComponent>);
     app.AddEncodeComponent(EncodeComponent<Canis::UISliderKnobComponent>);
