@@ -121,11 +121,6 @@ std::function<bool(const std::string &, Canis::Entity &)> CreateDecodeFunction()
     };
 }
 
-#define REGISTER_DECODE_FUNCTION(AppInstance, ComponentType) \
-    AppInstance.AddDecodeScriptableEntity(CreateDecodeFunction<ComponentType>())
-
-//////////////// ENCODE
-
 template <typename ComponentType>
 bool EncodeScriptComponent(YAML::Emitter &_out, Canis::ScriptableEntity *_scriptableEntity)
 {
@@ -146,8 +141,21 @@ std::function<bool(YAML::Emitter &, Canis::ScriptableEntity *)> CreateEncodeFunc
     };
 }
 
-#define REGISTER_ENCODE_FUNCTION(AppInstance, ComponentType) \
-    AppInstance.AddEncodeScriptableEntity(CreateEncodeFunction<ComponentType>())
+#define REGISTER_SCRIPTABLE_COMPONENT(AppInstance, ComponentType)                                                   \
+{                                                                                                                   \
+    AppInstance.AddEncodeScriptableEntity(CreateEncodeFunction<ComponentType>());                                   \
+    AppInstance.AddDecodeScriptableEntity(CreateDecodeFunction<ComponentType>());                                   \
+    GetScriptableComponentRegistry().addScriptableComponent[#ComponentType] = [](Canis::Entity &_entity) { 		    \
+		if (_entity.HasScript<ComponentType>() == false) { _entity.AddScript<ComponentType>(); }                    \
+	};                                                                                                              \
+    GetScriptableComponentRegistry().removeScriptableComponent[#ComponentType] = [](Canis::Entity &_entity) {       \
+        if (_entity.HasScript<ComponentType>()) { _entity.RemoveScript(); }                                         \
+    };                                                                                                              \
+    GetScriptableComponentRegistry().hasScriptableComponent[#ComponentType] = [](Canis::Entity &_entity) -> bool {  \
+        return _entity.HasScript<ComponentType>();                                                                  \
+    };                                                                                                              \
+    GetScriptableComponentRegistry().names.push_back(#ComponentType);                                               \
+}
 
 int main(int argc, char *argv[])
 {
@@ -170,11 +178,6 @@ int main(int argc, char *argv[])
     REGISTER_RENDER_SYSTEM(Canis::RenderHUDSystem);
     REGISTER_RENDER_SYSTEM(Canis::RenderTextSystem);
     REGISTER_RENDER_SYSTEM(Canis::SpriteRenderer2DSystem);
-
-    // decode scriptable entities
-    REGISTER_DECODE_FUNCTION(app, DebugCamera2D);
-    REGISTER_DECODE_FUNCTION(app, SplashLoader);
-    REGISTER_DECODE_FUNCTION(app, MainMenuButtons);
 
     // decode component
     app.AddDecodeComponent(Canis::DecodeTagComponent);
@@ -210,10 +213,10 @@ int main(int argc, char *argv[])
     REGISTER_COMPONENT_EDITOR(Canis::UISliderComponent);
     REGISTER_COMPONENT_EDITOR(Canis::UISliderKnobComponent);
 
-    // encode scriptable component
-    REGISTER_ENCODE_FUNCTION(app, DebugCamera2D);
-    REGISTER_ENCODE_FUNCTION(app, SplashLoader);
-    REGISTER_ENCODE_FUNCTION(app, MainMenuButtons);
+    // scriptable component
+    REGISTER_SCRIPTABLE_COMPONENT(app, DebugCamera2D);
+    REGISTER_SCRIPTABLE_COMPONENT(app, SplashLoader);
+    REGISTER_SCRIPTABLE_COMPONENT(app, MainMenuButtons);
 
     // add scene
     // app.AddSplashScene(new Canis::Scene("engine_splash", "assets/scenes/engine_splash.scene"));
