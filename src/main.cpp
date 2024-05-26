@@ -219,8 +219,9 @@ int main(int argc, char *argv[])
     REGISTER_SCRIPTABLE_COMPONENT(app, MainMenuButtons);
 
     // add scene
-    // app.AddSplashScene(new Canis::Scene("engine_splash", "assets/scenes/engine_splash.scene"));
-    app.AddSplashScene(new Canis::Scene("main_menu", "assets/scenes/main_menu.scene"));
+    app.AddSplashScene(new Canis::Scene("engine_splash", "assets/scenes/engine_splash.scene"));
+    app.AddScene(new Canis::Scene("main_menu", "assets/scenes/main_menu.scene"));
+    app.AddScene(new Canis::Scene("main_menu_copy", "assets/scenes/main_menu_copy.scene"));
 
     app.Run("Canis | Stop The Slimes", "main_menu");
 

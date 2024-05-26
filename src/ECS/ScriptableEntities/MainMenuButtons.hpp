@@ -58,10 +58,7 @@ public:
 
     void OnUpdate(float _dt)
     {
-        if (GetInputManager().JustPressedKey(SDLK_F5))
-        {
-            GetSceneManager().Save();
-        }
+        
     }
 
 
