@@ -1,4 +1,5 @@
-#version 330 core
+#version 300 es
+precision mediump float;
 
 in vec3 vertexPosition;
 in vec4 vertexColor;
@@ -17,7 +18,7 @@ void main()
     
     fragmentPosition = vertexPosition;
     fragmentColor = vertexColor;
-    fragmentUV = vec2(vertexUV.x, 1 - vertexUV.y);
+    fragmentUV = vec2(vertexUV.x, 1.0 - vertexUV.y);
 }
 
 /*

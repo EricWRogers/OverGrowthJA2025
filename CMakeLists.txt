@@ -18,10 +18,23 @@ add_definitions(
     #-Ofast
 )
 
+# Some build settings required for Javascript build
+if( ${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+    set(CMAKE_EXECUTABLE_SUFFIX ".html")
+    set(USE_FLAGS "-s USE_SDL=2 -s FULL_ES3=1 -s USE_FREETYPE=1 --preload-file ${PROJECT_SOURCE_DIR}/assets@/assets")
+    set(OPENGL_LIBRARIES "-s USE_WEBGL2=1")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${USE_FLAGS}")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${USE_FLAGS}")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${USE_FLAGS}")
+    set(CMAKE_EXECUTABLE_SUFFIX .html)
+endif()
+
 add_subdirectory(external/canis)
 
 file(GLOB_RECURSE SRC_SOURCES src/*.c*)
 file(GLOB_RECURSE SRC_HEADERS src/*.h*)
+
+
 
 add_executable(${PROJECT_NAME} ${SRC_SOURCES} ${SRC_HEADERS})
 

@@ -2,6 +2,12 @@
 #include <windows.h>
 #endif
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
+#include <iostream>
+
 #include <Canis/App.hpp>
 #include <Canis/Yaml.hpp>
 #include <Canis/ECS/Decode.hpp>
@@ -157,10 +163,15 @@ std::function<bool(YAML::Emitter &, Canis::ScriptableEntity *)> CreateEncodeFunc
     GetScriptableComponentRegistry().names.push_back(#ComponentType);                                               \
 }
 
-int main(int argc, char *argv[])
-{
-    Canis::App app("SuperPupStudio", "StopTheSlimesDemo");
+Canis::App app("SuperPupStudio", "StopTheSlimesDemo");
 
+void Loop()
+{
+    app.Loop();
+}
+
+int main()
+{
     // decode system
     app.AddDecodeSystem(Canis::DecodeButtonSystem);
     app.AddDecodeSystem(Canis::DecodeUISliderSystem);
@@ -218,12 +229,24 @@ int main(int argc, char *argv[])
     REGISTER_SCRIPTABLE_COMPONENT(app, SplashLoader);
     REGISTER_SCRIPTABLE_COMPONENT(app, MainMenuButtons);
 
+    std::cout << "ADD SCENE" << std::endl;
+    std::cout << "ADD SCENE" << std::endl;
+
     // add scene
     app.AddSplashScene(new Canis::Scene("engine_splash", "assets/scenes/engine_splash.scene"));
     app.AddScene(new Canis::Scene("main_menu", "assets/scenes/main_menu.scene"));
     app.AddScene(new Canis::Scene("main_menu_copy", "assets/scenes/main_menu_copy.scene"));
 
+    std::cout << "RUN" << std::endl;
+
+    std::cout << "YEP" << std::endl;
+
     app.Run("Canis | Stop The Slimes", "main_menu");
+
+    std::cout << "IFDEF" << std::endl;
+    // 0 fps means to use requestAnimationFrame; non-0 means to use setTimeout.
+    emscripten_set_main_loop(Loop, 0, true);
+    std::cout << "ENDEF" << std::endl;
 
     return 0;
 }
