@@ -18,6 +18,8 @@ add_definitions(
     #-Ofast
 )
 
+add_definitions(-DCANIS_EDITOR)
+
 # Some build settings required for Javascript build
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
     set(CMAKE_EXECUTABLE_SUFFIX ".html")
