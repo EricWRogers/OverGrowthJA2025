@@ -243,10 +243,10 @@ int main()
 
     app.Run("Canis | Stop The Slimes", "main_menu");
 
-    std::cout << "IFDEF" << std::endl;
+    #ifdef __EMSCRIPTEN__
     // 0 fps means to use requestAnimationFrame; non-0 means to use setTimeout.
     emscripten_set_main_loop(Loop, 0, true);
-    std::cout << "ENDEF" << std::endl;
+    #endif
 
     return 0;
 }

@@ -35,7 +35,6 @@ file(GLOB_RECURSE SRC_SOURCES src/*.c*)
 file(GLOB_RECURSE SRC_HEADERS src/*.h*)
 
 
-
 add_executable(${PROJECT_NAME} ${SRC_SOURCES} ${SRC_HEADERS})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE canis)
