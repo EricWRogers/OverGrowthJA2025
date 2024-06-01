@@ -87,7 +87,9 @@ else()
             ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ASSETS_DIR_NAME})
 endif()
 
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    SUFFIX ".html"
-    LINK_FLAGS "--shell-file ${CMAKE_SOURCE_DIR}/custom_shell.html"
-)
+if( ${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        SUFFIX ".html"
+        LINK_FLAGS "--shell-file ${CMAKE_SOURCE_DIR}/web/custom_shell.html"
+    )
+endif()

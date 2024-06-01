@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .iframe-holder {
+            position: relative;
+            width: 1280px;
+            /* Adjust size as needed */
+            height: 720px;
+            /* Adjust size as needed */
+            background-color: #000;
+            /* Placeholder background */
+            margin: auto;
+            /* Center the holder */
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Load Emscripten On Click</title>
+</head>
+
+<body>
+    <div id="iframe-holder" class="iframe-holder">
+        <button id="loadButton" class="play-button">Play</button>
+    </div>
+    <script>
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        document.getElementById('loadButton').addEventListener('click', function () {
+            var holder = document.getElementById('iframe-holder');
+            var iframe = document.createElement('iframe');
+
+            iframe.setAttribute('src', 'CanisTemplate.html'); // replace with your html file
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.frameBorder = "0";
+            iframe.allowFullscreen = true;
+
+            // Clear the placeholder first (removes the button)
+            holder.innerHTML = '';
+            holder.appendChild(iframe);
+        });
+    </script>
+</body>
+
+</html>
