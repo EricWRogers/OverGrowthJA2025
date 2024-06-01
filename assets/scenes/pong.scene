@@ -1,4 +1,4 @@
-Scene: main_menu_copy
+Scene: pong
 ClearColor: [1, 1, 1, 1]
 Systems:
   - Canis::ButtonSystem
