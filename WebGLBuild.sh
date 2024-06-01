@@ -7,9 +7,9 @@ else
 
   git clone https://github.com/emscripten-core/emsdk.git
 
-  ./emsdk/emsdk install latest
+  ./emsdk/emsdk install 1.39.5
 
-  ./emsdk/emsdk activate latest
+  ./emsdk/emsdk activate 1.39.5
 fi
 
 # Activate PATH and other environment variables in the current terminal

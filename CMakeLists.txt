@@ -23,7 +23,7 @@ add_definitions(-DCANIS_EDITOR)
 # Some build settings required for Javascript build
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
     set(CMAKE_EXECUTABLE_SUFFIX ".html")
-    set(USE_FLAGS "-s USE_SDL=2 -s FULL_ES3=1 -s USE_FREETYPE=1 --preload-file ${PROJECT_SOURCE_DIR}/assets@/assets")
+    set(USE_FLAGS "-s USE_SDL=2 -s USE_SDL_MIXER=2 -s USE_OGG=1 -s FULL_ES3=1 -s USE_FREETYPE=1 -s ALLOW_MEMORY_GROWTH=1 -s ASYNCIFY=1 -s EXIT_RUNTIME=1 --preload-file ${PROJECT_SOURCE_DIR}/assets@/assets")
     set(OPENGL_LIBRARIES "-s USE_WEBGL2=1")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${USE_FLAGS}")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${USE_FLAGS}")
@@ -86,3 +86,8 @@ else()
             ${CMAKE_SOURCE_DIR}/${ASSETS_DIR_NAME}/
             ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ASSETS_DIR_NAME})
 endif()
+
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    SUFFIX ".html"
+    LINK_FLAGS "--shell-file ${CMAKE_SOURCE_DIR}/custom_shell.html"
+)

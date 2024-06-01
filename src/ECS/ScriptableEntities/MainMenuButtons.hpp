@@ -7,13 +7,14 @@
 #include <Canis/ECS/Components/ButtonComponent.hpp>
 
 #include <Canis/AudioManager.hpp>
+#include <SDL_mixer.h>
 
 class MainMenuButtons : public Canis::ScriptableEntity
 {
     static void OnClickPlay(Canis::Entity _entity, void *_data)
     {
         Canis::Log("OnClickPlay");
-        Canis::AudioManager::Play("assets/audio/sounds/click1.wav");
+        Canis::AudioManager::Play("assets/audio/sounds/fireball_1.ogg");
         ((MainMenuButtons*)_data)->GetSceneManager().Load("demo");
     }
 
