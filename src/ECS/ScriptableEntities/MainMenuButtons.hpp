@@ -6,7 +6,9 @@
 #include <Canis/ECS/Components/TextComponent.hpp>
 #include <Canis/ECS/Components/ButtonComponent.hpp>
 
+#include <Canis/PlayerPrefs.hpp>
 #include <Canis/AudioManager.hpp>
+
 #include <SDL_mixer.h>
 
 class MainMenuButtons : public Canis::ScriptableEntity
@@ -26,7 +28,9 @@ class MainMenuButtons : public Canis::ScriptableEntity
 
     static void OnAudioSliderChanged(Canis::Entity _entity, float _value, void *_data)
     {
-        Canis::Log("OnAudioSliderChanged");
+        Canis::GetProjectConfig().volume = _value;
+        Canis::AudioManager::UpdateMusicVolume();
+        Canis::PlayerPrefs::SetInt( "master_volume", (int)(_value * 128));
     }
 private:
     Canis::KnobListener knobHandle;
@@ -42,6 +46,10 @@ public:
 
     void OnReady()
     {
+        // music
+        Canis::AudioManager::PlayMusic("assets/audio/music/AlexandrZhelanovSongs/improvisation1.mp3", -1, 0.1f);
+
+
         Canis::ButtonSystem *buttonSystem = GetScene().GetSystem<Canis::ButtonSystem>();
 
         playButtonListener = buttonSystem->AddButtonListener("MainMenuPlay", this, OnClickPlay);

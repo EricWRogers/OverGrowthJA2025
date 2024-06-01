@@ -21,7 +21,7 @@ mkdir build
 
 cd build
 
-emcmake cmake .. -DCMAKE_BUILD_TYPE=Release
+emcmake cmake .. -DCMAKE_BUILD_TYPE=Release -DSDL2MIXER_CMD=OFF
 
 emmake make -j 16
 
