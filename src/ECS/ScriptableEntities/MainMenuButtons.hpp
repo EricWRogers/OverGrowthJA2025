@@ -17,7 +17,7 @@ class MainMenuButtons : public Canis::ScriptableEntity
     {
         Canis::Log("OnClickPlay");
         Canis::AudioManager::Play("assets/audio/sounds/fireball_1.ogg");
-        ((MainMenuButtons*)_data)->GetSceneManager().Load("demo");
+        ((MainMenuButtons*)_data)->GetSceneManager().Load("pong");
     }
 
     static void OnClickQuit(Canis::Entity _entity, void *_data)
