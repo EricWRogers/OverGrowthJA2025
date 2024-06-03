@@ -108,7 +108,7 @@ int main()
     app.AddScene(new Canis::Scene("main_menu", "assets/scenes/main_menu.scene"));
     app.AddScene(new Canis::Scene("pong", "assets/scenes/pong.scene"));
 
-    app.Run("Canis | Stop The Slimes", "pong");
+    app.Run("Canis | Stop The Slimes", "engine_splash");
 
     #ifdef __EMSCRIPTEN__
     // 0 fps means to use requestAnimationFrame; non-0 means to use setTimeout.
