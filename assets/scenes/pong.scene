@@ -109,7 +109,7 @@ Entities:
       active: true
       anchor: 6
       position: [-600, 0]
-      size: [40, 120]
+      size: [10, 150]
       originOffset: [0, 0]
       rotation: 0
       scale: 1
@@ -130,7 +130,7 @@ Entities:
       active: true
       anchor: 6
       position: [600, 0]
-      size: [40, 120]
+      size: [10, 150]
       originOffset: [0, 0]
       rotation: 0
       scale: 1

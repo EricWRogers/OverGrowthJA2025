@@ -7,12 +7,53 @@
 #include <Canis/ECS/Components/Sprite2DComponent.hpp>
 #include <Canis/ECS/Components/TextComponent.hpp>
 
+namespace Canis
+{
+    struct Line
+    {
+        glm::vec2 from;
+        glm::vec2 to;
+    };
+
+    struct Hit2D
+    {
+        glm::vec2 point; // intersection point
+    };
+
+    bool LineIntersection(const Line &_line1, const Line &_line2, Hit2D &_hit)
+    {
+        glm::vec2 s1 = _line1.to - _line1.from;
+        glm::vec2 s2 = _line2.to - _line2.from;
+
+        float s, t;
+        float det = -s2.x * s1.y + s1.x * s2.y;
+
+        if (det == 0)
+            return false; // lines are parallel
+
+        float invDet = 1 / det;
+        glm::vec2 diff = _line1.from - _line2.from;
+
+        s = (-s1.y * diff.x + s1.x * diff.y) * invDet;
+        t = (s2.x * diff.y - s2.y * diff.x) * invDet;
+
+        if (s >= 0 && s <= 1 && t >= 0 && t <= 1)
+        {
+            // collision detected
+            _hit.point = _line1.from + (t * s1);
+            return true;
+        }
+
+        return false; // no collision
+    }
+}
 
 class Ball : public Canis::ScriptableEntity
 {
 private:
     bool m_playing = false;
-    float m_speed = 300.0f;
+    float m_speed = 500.0f;
+    float m_maxSpeed = 1000000.0f;
 
     glm::vec2 m_direction;
 
@@ -20,8 +61,7 @@ private:
         glm::vec2(1.0f, 1.0f),
         glm::vec2(1.0f, -1.0f),
         glm::vec2(-1.0f, -1.0f),
-        glm::vec2(-1.0f, 1.0f)
-    };
+        glm::vec2(-1.0f, 1.0f)};
 
     int m_leftScore = 0;
     int m_rightScore = 0;
@@ -30,9 +70,11 @@ private:
     Canis::Entity m_rightPaddle;
     Canis::Entity m_leftScoreEntity;
     Canis::Entity m_rightScoreEntity;
+
 public:
     void OnCreate()
     {
+        Canis::Log("BALL C");
         if (entity.HasComponent<Canis::RectTransformComponent>() == false)
         {
             Canis::FatalError("Ball does not have Canis::RectTransformComponent");
@@ -53,7 +95,7 @@ public:
         m_playing = false;
 
         // reset position to center of the screen
-        GetComponent<Canis::RectTransformComponent>().position =  glm::vec2(0.0f);
+        GetComponent<Canis::RectTransformComponent>().position = glm::vec2(0.0f);
 
         // reset position of the paddles
         m_leftPaddle.GetComponent<Canis::RectTransformComponent>().position.y = 0.0f;
@@ -74,15 +116,14 @@ public:
 
         ResetBall();
     }
-    
+
     void OnDestroy()
     {
-
     }
 
-    bool LeftWallHit(Canis::RectTransformComponent& _ballRect)
+    bool LeftWallHit(Canis::RectTransformComponent &_ballRect)
     {
-        if (_ballRect.position.x + _ballRect.originOffset.x - (_ballRect.size.x * _ballRect.scale * 0.5f) <= -GetWindow().GetScreenWidth() * 0.5f )
+        if (_ballRect.position.x + _ballRect.originOffset.x - (_ballRect.size.x * _ballRect.scale * 0.5f) <= -GetWindow().GetScreenWidth() * 0.5f)
         {
             return true;
         }
@@ -90,9 +131,9 @@ public:
         return false;
     }
 
-    bool RightWallHit(Canis::RectTransformComponent& _ballRect)
+    bool RightWallHit(Canis::RectTransformComponent &_ballRect)
     {
-        if (_ballRect.position.x + _ballRect.originOffset.x + (_ballRect.size.x * _ballRect.scale * 0.5f) >= GetWindow().GetScreenWidth() * 0.5f )
+        if (_ballRect.position.x + _ballRect.originOffset.x + (_ballRect.size.x * _ballRect.scale * 0.5f) >= GetWindow().GetScreenWidth() * 0.5f)
         {
             return true;
         }
@@ -100,9 +141,9 @@ public:
         return false;
     }
 
-    bool TopWallHit(Canis::RectTransformComponent& _ballRect)
+    bool TopWallHit(Canis::RectTransformComponent &_ballRect)
     {
-        if (_ballRect.position.y + _ballRect.originOffset.y + (_ballRect.size.y * _ballRect.scale * 0.5f) >= GetWindow().GetScreenHeight() * 0.5f )
+        if (_ballRect.position.y + _ballRect.originOffset.y + (_ballRect.size.y * _ballRect.scale * 0.5f) >= GetWindow().GetScreenHeight() * 0.5f)
         {
             return true;
         }
@@ -110,9 +151,9 @@ public:
         return false;
     }
 
-    bool DownWallHit(Canis::RectTransformComponent& _ballRect)
+    bool DownWallHit(Canis::RectTransformComponent &_ballRect)
     {
-        if (_ballRect.position.y + _ballRect.originOffset.y - (_ballRect.size.y * _ballRect.scale * 0.5f) <= -GetWindow().GetScreenHeight() * 0.5f )
+        if (_ballRect.position.y + _ballRect.originOffset.y - (_ballRect.size.y * _ballRect.scale * 0.5f) <= -GetWindow().GetScreenHeight() * 0.5f)
         {
             return true;
         }
@@ -120,17 +161,18 @@ public:
         return false;
     }
 
-    bool HitPaddle(Canis::Entity _paddle, Canis::RectTransformComponent& _ballRect)
+    bool HitPaddle(Canis::Entity _paddle, Canis::RectTransformComponent &_ballRect)
     {
         using namespace glm;
 
         auto paddleRect = _paddle.GetComponent<Canis::RectTransformComponent>();
         vec2 paddlePosition = paddleRect.position + paddleRect.originOffset;
+        vec2 ballPosition = _ballRect.position + _ballRect.originOffset;
 
-        float dist = distance( paddlePosition, _ballRect.position + _ballRect.originOffset);
+        float dist = distance(paddlePosition, ballPosition);
         float radius = _ballRect.size.x * 0.5f;
 
-        vec2 betweenPoint = ( paddlePosition + (_ballRect.position + _ballRect.originOffset) ) * 0.5f;
+        vec2 betweenPoint = (paddlePosition + ballPosition) * 0.5f;
 
         // this math is off please fix
 
@@ -142,11 +184,10 @@ public:
             betweenPoint.x > paddlePosition.x - halfWidth &&
             betweenPoint.y < paddlePosition.y + halfHeight &&
             betweenPoint.y > paddlePosition.y - halfHeight &&
-            radius > distance( betweenPoint, _ballRect.position + _ballRect.originOffset))
+            radius >= distance(betweenPoint, ballPosition))
         {
             return true; // hit
         }
-
 
         return false;
     }
@@ -156,14 +197,23 @@ public:
         Canis::Text::Set(
             m_leftScoreEntity.GetComponent<Canis::TextComponent>(),
             m_leftScoreEntity.GetComponent<Canis::RectTransformComponent>(),
-            "Red: " + std::to_string(m_leftScore)
-        );
+            "Red: " + std::to_string(m_leftScore));
 
         Canis::Text::Set(
             m_rightScoreEntity.GetComponent<Canis::TextComponent>(),
             m_rightScoreEntity.GetComponent<Canis::RectTransformComponent>(),
-            "Blue: " + std::to_string(m_rightScore)
-        );
+            "Blue: " + std::to_string(m_rightScore));
+        
+        if (m_rightScore >= 3 || m_leftScore >= 3)
+        {
+            GetSceneManager().Load("main_menu");
+        }
+    }
+
+    void SpeedBoost(float _multiplier)
+    {
+        m_speed *= _multiplier;
+        m_speed = min(m_speed, m_maxSpeed);
     }
 
     void OnUpdate(float _dt)
@@ -175,7 +225,28 @@ public:
 
         if (m_playing)
         {
-            auto& rect = GetComponent<Canis::RectTransformComponent>();
+            auto &rect = GetComponent<Canis::RectTransformComponent>();
+            auto &leftPaddleRect = m_leftPaddle.GetComponent<Canis::RectTransformComponent>();
+            auto &rightPaddleRect = m_rightPaddle.GetComponent<Canis::RectTransformComponent>();
+
+            float distanceTraveled = 0.0f;
+            float distanceCanTravel = glm::length(m_direction * m_speed * _dt);
+
+            float screenWidth = GetWindow().GetScreenWidth();
+            float screenHeight = GetWindow().GetScreenHeight();
+
+            glm::vec2 topLeft(-screenWidth * 0.5f, screenHeight * 0.5f);
+            glm::vec2 topRight(screenWidth * 0.5f, screenHeight * 0.5f);
+            glm::vec2 bottomLeft(-screenWidth * 0.5f, -screenHeight * 0.5f);
+            glm::vec2 bottomRight(screenWidth * 0.5f, -screenHeight * 0.5f);
+
+            Canis::Line leftPaddleLine{
+                .from = leftPaddleRect.position + leftPaddleRect.originOffset + glm::vec2(leftPaddleRect.size.x * leftPaddleRect.scale * 0.5f, leftPaddleRect.size.y * leftPaddleRect.scale * 0.5f),
+                .to = leftPaddleRect.position + leftPaddleRect.originOffset + glm::vec2(leftPaddleRect.size.x * leftPaddleRect.scale * 0.5f, -leftPaddleRect.size.y * leftPaddleRect.scale * 0.5f)};
+
+            Canis::Line rightPaddleLine{
+                .from = rightPaddleRect.position + rightPaddleRect.originOffset + glm::vec2(-rightPaddleRect.size.x, rightPaddleRect.size.y) * rightPaddleRect.scale * 0.5f,
+                .to = rightPaddleRect.position + rightPaddleRect.originOffset + glm::vec2(-rightPaddleRect.size.x, -rightPaddleRect.size.y) * rightPaddleRect.scale * 0.5f};
 
             if (LeftWallHit(rect))
             {
@@ -183,7 +254,6 @@ public:
                 ResetBall();
                 return;
             }
-
             if (RightWallHit(rect))
             {
                 m_leftScore++;
@@ -191,28 +261,108 @@ public:
                 return;
             }
 
-            if (TopWallHit(rect))
+            bool didHit = false;
+            do
             {
-                m_direction.y = -1.0f;
-            }
+                didHit = false;
+                Canis::Line topLine{.from = topLeft, .to = topRight};
+                glm::vec2 ballPosition = rect.position + rect.originOffset;
+                float ballRadius = rect.size.x * rect.scale * 0.5f;
+                Canis::Line ballLine{.from = ballPosition, .to = ballPosition + (glm::normalize(m_direction) * (distanceCanTravel - distanceTraveled + ballRadius))};
+                Canis::Hit2D hit;
+                if (Canis::LineIntersection(topLine, ballLine, hit))
+                {
+                    float distanceToHit = glm::distance(ballPosition, hit.point) - ballRadius;
 
-            if (DownWallHit(rect))
+                    distanceTraveled += max(distanceToHit, 0.0f);
+
+                    rect.position += glm::normalize(m_direction) * distanceToHit;
+
+                    m_direction.y = -1.0f;
+
+                    SpeedBoost(1.01f);
+
+                    didHit = true;
+                }
+
+                Canis::Line bottomLine{.from = bottomLeft, .to = bottomRight};
+                ballPosition = rect.position + rect.originOffset;
+                ballLine = {.from = ballPosition, .to = ballPosition + (glm::normalize(m_direction) * (distanceCanTravel - distanceTraveled + ballRadius))};
+
+                if (Canis::LineIntersection(bottomLine, ballLine, hit))
+                {
+                    float distanceToHit = glm::distance(ballPosition, hit.point) - ballRadius;
+
+                    distanceTraveled += max(distanceToHit, 0.0f);
+
+                    rect.position += glm::normalize(m_direction) * distanceToHit;
+
+                    m_direction.y = 1.0f;
+
+                    SpeedBoost(1.01f);
+
+                    didHit = true;
+                }
+
+                Canis::Line leftBarLine{.from = bottomLeft, .to = topLeft};
+                ballPosition = rect.position + rect.originOffset;
+                ballLine = {.from = ballPosition, .to = ballPosition + (glm::normalize(m_direction) * (distanceCanTravel - distanceTraveled + ballRadius))};
+
+                if (Canis::LineIntersection(leftPaddleLine, ballLine, hit))
+                {
+                    float distanceToHit = glm::distance(ballPosition, hit.point) - ballRadius;
+
+                    distanceTraveled += max(distanceToHit, 0.0f);
+
+                    rect.position += glm::normalize(m_direction) * distanceToHit;
+
+                    m_direction.x = 1.0f;
+
+                    SpeedBoost(1.01f);
+
+                    didHit = true;
+                }
+
+                Canis::Line rigthBarLine{.from = bottomRight, .to = topRight};
+                ballPosition = rect.position + rect.originOffset;
+                ballLine = {.from = ballPosition, .to = ballPosition + (glm::normalize(m_direction) * (distanceCanTravel - distanceTraveled + ballRadius))};
+
+                if (Canis::LineIntersection(rightPaddleLine, ballLine, hit))
+                {
+                    float distanceToHit = glm::distance(ballPosition, hit.point) - ballRadius;
+
+                    distanceTraveled += max(distanceToHit, 0.0f);
+
+                    rect.position += glm::normalize(m_direction) * distanceToHit;
+
+                    m_direction.x = -1.0f;
+
+                    SpeedBoost(1.01f);
+
+                    didHit = true;
+                }
+            } while (distanceTraveled < distanceCanTravel && didHit);
+
+            // if (HitPaddle(m_leftPaddle, rect))
+            //{
+            //     m_direction.x = 1.0f;
+            // }
+            // if (HitPaddle(m_rightPaddle, rect))
+            //{
+            //     m_direction.x = -1.0f;
+            // }
+
+            if (distanceTraveled >= distanceCanTravel)
+                return;
+
+            if (distanceTraveled == 0.0f)
             {
-                m_direction.y = 1.0f;
+                rect.position += glm::normalize(m_direction) * m_speed * _dt;
             }
-
-            if (HitPaddle(m_leftPaddle, rect))
+            else
             {
-                m_direction.x = 1.0f;
-                m_speed *= 1.2f;
+                rect.position += glm::normalize(m_direction) * (distanceCanTravel - distanceTraveled);
             }
-
-            if (HitPaddle(m_rightPaddle, rect))
-            {
-                m_direction.x = -1.0f;
-            }
-
-            rect.position += m_direction * m_speed * _dt;
         }
     }
 };

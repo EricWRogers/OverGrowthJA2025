@@ -10,7 +10,7 @@
 class Paddle : public Canis::ScriptableEntity
 {
 private:
-    float m_speed = 200.0f;
+    float m_speed = 400.0f;
     
 public:
     bool left = false;
