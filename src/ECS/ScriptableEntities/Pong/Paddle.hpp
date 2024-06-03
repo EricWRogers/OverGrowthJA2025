@@ -17,9 +17,7 @@ public:
     bool right = false;
 
     void OnCreate()
-    {
-        Canis::Log("Paddle OnCreate");
-        
+    {        
         if (entity.HasComponent<Canis::RectTransformComponent>() == false)
         {
             Canis::FatalError("Paddle does not have Canis::RectTransformComponent");
@@ -33,7 +31,7 @@ public:
             Canis::FatalError("Paddle does not have Canis::Sprite2DComponent");
         }
 
-        left = entity.TagEquals("LEFTPADDLE");
+        left = entity.TagEquals("LEFT_PADDLE");
         right = !left;
     }
 

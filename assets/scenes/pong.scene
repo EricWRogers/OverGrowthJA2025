@@ -32,6 +32,7 @@ Entities:
         size: 100
   - Entity: 8903137429878787944
     Name: Red Score
+    Canis::TagComponent: RED_SCORE
     Canis::RectTransformComponent:
       active: true
       anchor: 1
@@ -54,6 +55,7 @@ Entities:
         size: 48
   - Entity: 9674272421446172513
     Name: Blue Score
+    Canis::TagComponent: BLUE_SCORE
     Canis::RectTransformComponent:
       active: true
       anchor: 1
@@ -102,7 +104,7 @@ Entities:
       scale: 1
   - Entity: 16457064345016601131
     Name: Left Paddle
-    Canis::TagComponent: LEFTPADDLE
+    Canis::TagComponent: LEFT_PADDLE
     Canis::RectTransformComponent:
       active: true
       anchor: 6
@@ -123,7 +125,7 @@ Entities:
     Canis::ScriptComponent: Paddle
   - Entity: 16457064345016601456
     Name: Right Paddle
-    Canis::TagComponent: RIGHTPADDLE
+    Canis::TagComponent: RIGHT_PADDLE
     Canis::RectTransformComponent:
       active: true
       anchor: 6
