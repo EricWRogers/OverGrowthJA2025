@@ -106,9 +106,10 @@ int main()
     // add scene
     app.AddSplashScene(new Canis::Scene("engine_splash", "assets/scenes/engine_splash.scene"));
     app.AddScene(new Canis::Scene("main_menu", "assets/scenes/main_menu.scene"));
+    app.AddScene(new Canis::Scene("settings", "assets/scenes/settings.scene"));
     app.AddScene(new Canis::Scene("pong", "assets/scenes/pong.scene"));
 
-    app.Run("Canis | Stop The Slimes", "engine_splash");
+    app.Run("Canis | Stop The Slimes", "settings");
 
     #ifdef __EMSCRIPTEN__
     // 0 fps means to use requestAnimationFrame; non-0 means to use setTimeout.
