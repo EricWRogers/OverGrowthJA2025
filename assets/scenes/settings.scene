@@ -169,6 +169,7 @@ Entities:
       timeToMoveFullBar: 0
   - Entity: 18157705265959231571
     Name: Music Volume Slider Knob
+    Canis::TagComponent: MusicVolumeKnob
     Canis::RectTransformComponent:
       active: true
       anchor: 4
@@ -201,7 +202,7 @@ Entities:
         path: assets/textures/ui/energy_icon.png
       uv: [0, 0, 1, 1]
     Canis::UISliderKnobComponent:
-      eventName: MASTER_VOLUME_CHANGED
+      eventName: MUSIC_VOLUME_SLIDER_CHANGED
       slider: 2344481155143177863
       grabbed: false
       value: 1
@@ -256,6 +257,7 @@ Entities:
       timeToMoveFullBar: 0
   - Entity: 2077586153546402566
     Name: SFX Volume Slider Knob
+    Canis::TagComponent: SFXVolumeKnob
     Canis::RectTransformComponent:
       active: true
       anchor: 4
@@ -288,7 +290,7 @@ Entities:
         path: assets/textures/ui/energy_icon.png
       uv: [0, 0, 1, 1]
     Canis::UISliderKnobComponent:
-      eventName: SFX_VOLUME_CHANGED
+      eventName: SFX_VOLUME_SLIDER_CHANGED
       slider: 17089595310751289827
       grabbed: false
       value: 1

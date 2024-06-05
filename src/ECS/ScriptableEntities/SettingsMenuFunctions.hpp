@@ -28,8 +28,24 @@ class SettingsMenuFunctions : public Canis::ScriptableEntity
         Canis::AudioManager::UpdateMusicVolume();
         Canis::PlayerPrefs::SetInt( "master_volume", (int)(_value * 128));
     }
+
+    static void OnMusicSliderChanged(Canis::Entity _entity, float _value, void *_data)
+    {
+        Canis::GetProjectConfig().musicVolume = _value;
+        Canis::AudioManager::UpdateMusicVolume();
+        Canis::PlayerPrefs::SetInt( "music_volume", (int)(_value * 128));
+    }
+
+    static void OnSFXSliderChanged(Canis::Entity _entity, float _value, void *_data)
+    {
+        Canis::GetProjectConfig().sfxVolume = _value;
+        Canis::AudioManager::UpdateMusicVolume();
+        Canis::PlayerPrefs::SetInt( "sfx_volume", (int)(_value * 128));
+    }
 private:
     Canis::KnobListener knobHandle;
+    Canis::KnobListener musicKnobHandle;
+    Canis::KnobListener sfxKnobHandle;
     Canis::ButtonListener mainMenuButtonListener;
 public:
 
@@ -45,9 +61,17 @@ public:
 
         Canis::UISliderKnobSystem *knobSystem = GetScene().GetSystem<Canis::UISliderKnobSystem>();
         knobHandle = knobSystem->AddKnobListener("MASTER_VOLUME_SLIDER_CHANGED", this, OnAudioSliderChanged);
+        musicKnobHandle = knobSystem->AddKnobListener("MUSIC_VOLUME_SLIDER_CHANGED", this, OnMusicSliderChanged);
+        sfxKnobHandle = knobSystem->AddKnobListener("SFX_VOLUME_SLIDER_CHANGED", this, OnSFXSliderChanged);
 
         Canis::Entity knob = entity.GetEntityWithTag("MasterVolumeKnob");
         knob.GetComponent<Canis::UISliderKnobComponent>().value = Canis::GetProjectConfig().volume;
+
+        Canis::Entity musicKnob = entity.GetEntityWithTag("MusicVolumeKnob");
+        musicKnob.GetComponent<Canis::UISliderKnobComponent>().value = Canis::GetProjectConfig().musicVolume;
+
+        Canis::Entity sfxKnob = entity.GetEntityWithTag("SFXVolumeKnob");
+        sfxKnob.GetComponent<Canis::UISliderKnobComponent>().value = Canis::GetProjectConfig().sfxVolume;
     }
     
     void OnDestroy() {}
