@@ -9,6 +9,7 @@ RenderSystems:
 Entities:
   - Entity: 17066065208811643397
     Name: Title
+    Canis::TagComponent: MasterVolumeKnob
     Canis::RectTransformComponent:
       active: true
       anchor: 1
@@ -80,6 +81,7 @@ Entities:
       timeToMoveFullBar: 0
   - Entity: 12796469468752291547
     Name: Master Volume Slider Knob
+    Canis::TagComponent: MasterVolumeKnob
     Canis::RectTransformComponent:
       active: true
       anchor: 4
@@ -112,7 +114,7 @@ Entities:
         path: assets/textures/ui/energy_icon.png
       uv: [0, 0, 1, 1]
     Canis::UISliderKnobComponent:
-      eventName: MASTER_VOLUME_CHANGED
+      eventName: MASTER_VOLUME_SLIDER_CHANGED
       slider: 17168992724052586822
       grabbed: false
       value: 1
@@ -313,7 +315,7 @@ Entities:
         path: assets/fonts/Antonio-Bold.ttf
         size: 48
     Canis::ButtonComponent:
-      eventName: MAIN_MENU_BUTTON
+      eventName: Main_Menu_Button
       baseColor: [0.899999976, 0.899999976, 0.899999976, 1]
       hoverColor: [1, 1, 1, 1]
       action: 0
@@ -325,3 +327,6 @@ Entities:
       left: 0
       right: 0
       defaultSelected: false
+  - Entity: 11620874555246173275
+    Name: Settings Menu Functions
+    Canis::ScriptComponent: SettingsMenuFunctions

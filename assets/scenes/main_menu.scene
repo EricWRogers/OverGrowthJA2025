@@ -64,12 +64,47 @@ Entities:
       left: 0
       right: 0
       defaultSelected: false
+  - Entity: 17485790014005255960
+    Name: Settings Button
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 3
+      position: [200, -50]
+      size: [151, 44]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [0, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Settings
+      alignment: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+    Canis::ButtonComponent:
+      eventName: MainMenuSettings
+      baseColor: [0, 0, 0, 1]
+      hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 13878440446197466466
+      down: 0
+      left: 0
+      right: 0
+      defaultSelected: false
   - Entity: 8903137429878787944
     Name: Quit Button
     Canis::RectTransformComponent:
       active: true
       anchor: 3
-      position: [200, -50]
+      position: [200, -150]
       size: [70, 49]
       originOffset: [0, 0]
       rotation: 0
@@ -99,71 +134,6 @@ Entities:
       left: 0
       right: 0
       defaultSelected: false
-  - Entity: 1954185818395815381
-    Name: Volumn Slider
-    Canis::RectTransformComponent:
-      active: true
-      anchor: 4
-      position: [0, 0]
-      size: [100, 20]
-      originOffset: [0, 0]
-      rotation: 0
-      scale: 1
-      depth: 0.100000001
-      scaleWithScreen: 0
-    Canis::ColorComponent:
-      color: [1, 0, 0, 1]
-      emission: [0, 0, 0]
-      emissionUsingAlbedoIntesity: 0
-    Canis::UIImageComponent:
-      TextureAsset:
-        path: assets/textures/ui/bar.png
-      uv: [0, 0.333332986, 1, 0.333332986]
-    Canis::UISliderComponent:
-      maxWidth: 100
-      minUVX: 0
-      maxUVX: 1
-      value: 1
-      targetValue: 1
-      timeToMoveFullBar: 0
-  - Entity: 2954185818395815389
-    Name: Volumn Slider Knob
-    Canis::RectTransformComponent:
-      active: true
-      anchor: 4
-      position: [75, -15]
-      size: [50, 50]
-      originOffset: [0, 0]
-      rotation: 0
-      scale: 1
-      depth: 0
-      scaleWithScreen: 0
-    Canis::ColorComponent:
-      color: [0.899999976, 0.899999976, 0.899999976, 1]
-      emission: [0, 0, 0]
-      emissionUsingAlbedoIntesity: 0
-    Canis::ButtonComponent:
-      eventName: ""
-      baseColor: [0.899999976, 0.899999976, 0.899999976, 1]
-      hoverColor: [1, 1, 1, 1]
-      action: 0
-      mouseOver: false
-      scale: 1
-      hoverScale: 1
-      up: 0
-      down: 0
-      left: 0
-      right: 0
-      defaultSelected: false
-    Canis::UIImageComponent:
-      TextureAsset:
-        path: assets/textures/awesomeface.png
-      uv: [0, 0, 1, 1]
-    Canis::UISliderKnobComponent:
-      eventName: VolumeSliderChanged
-      slider: 1954185818395815381
-      grabbed: false
-      value: 1
   - Entity: 14561119521224997717
     Name: Build Version
     Canis::RectTransformComponent:

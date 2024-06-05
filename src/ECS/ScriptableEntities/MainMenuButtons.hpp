@@ -20,29 +20,25 @@ class MainMenuButtons : public Canis::ScriptableEntity
         ((MainMenuButtons*)_data)->GetSceneManager().Load("pong");
     }
 
+    static void OnClickSettings(Canis::Entity _entity, void *_data)
+    {
+        Canis::Log("OnClickPlay");
+        Canis::AudioManager::Play("assets/audio/sounds/fireball_1.ogg");
+        ((MainMenuButtons*)_data)->GetSceneManager().Load("settings");
+    }
+
     static void OnClickQuit(Canis::Entity _entity, void *_data)
     {
         Canis::Log("OnClickQuit");
         exit(1);
     }
-
-    static void OnAudioSliderChanged(Canis::Entity _entity, float _value, void *_data)
-    {
-        Canis::GetProjectConfig().volume = _value;
-        Canis::AudioManager::UpdateMusicVolume();
-        Canis::PlayerPrefs::SetInt( "master_volume", (int)(_value * 128));
-    }
 private:
-    Canis::KnobListener knobHandle;
     Canis::ButtonListener playButtonListener;
+    Canis::ButtonListener settingsButtonListener;
     Canis::ButtonListener quitButtonListener;
 public:
-    int kennyPixelSquareFontId, kennyBlocksFontId = 0;
 
-    void OnCreate()
-    {
-        Canis::Log("OnCreate");
-    }
+    void OnCreate() {}
 
     void OnReady()
     {
@@ -53,45 +49,13 @@ public:
         Canis::ButtonSystem *buttonSystem = GetScene().GetSystem<Canis::ButtonSystem>();
 
         playButtonListener = buttonSystem->AddButtonListener("MainMenuPlay", this, OnClickPlay);
+        settingsButtonListener = buttonSystem->AddButtonListener("MainMenuSettings", this, OnClickSettings);
         quitButtonListener = buttonSystem->AddButtonListener("MainMenuQuit", this, OnClickQuit);
-
-        Canis::UISliderKnobSystem *knobSystem = GetScene().GetSystem<Canis::UISliderKnobSystem>();
-
-        knobHandle = knobSystem->AddKnobListener("VolumeSliderChanged", this, OnAudioSliderChanged);
     }
     
-    void OnDestroy()
-    {
-        
-    }
+    void OnDestroy() {}
 
-    void OnUpdate(float _dt)
-    {
-        
-    }
+    void OnUpdate(float _dt) {}
 
 
 };
-
-bool DecodeMainMenuButtons(const std::string &_name, Canis::Entity &_entity)
-{
-    if (_name == "MainMenuButtons")
-    {
-        Canis::ScriptComponent scriptComponent = {};
-        scriptComponent.Bind<MainMenuButtons>();
-        _entity.AddComponent<Canis::ScriptComponent>(scriptComponent);
-        return true;
-    }
-    return false;
-}
-
-bool EncodeMainMenuButtons(YAML::Emitter &_out, Canis::ScriptableEntity* _scriptableEntity)
-{
-    if ((_scriptableEntity = dynamic_cast<MainMenuButtons*>(_scriptableEntity)) != nullptr)
-    {
-        _out << YAML::Key << "Canis::ScriptComponent" << YAML::Value << "MainMenuButtons";
-        return true;
-    }
-
-    return false;
-}

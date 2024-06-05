@@ -24,11 +24,12 @@
 #include "ECS/ScriptableEntities/DebugCamera2D.hpp"
 #include "ECS/ScriptableEntities/SplashLoader.hpp"
 #include "ECS/ScriptableEntities/MainMenuButtons.hpp"
+#include "ECS/ScriptableEntities/SettingsMenuFunctions.hpp"
 
 #include "ECS/ScriptableEntities/Pong/Ball.hpp"
 #include "ECS/ScriptableEntities/Pong/Paddle.hpp"
 
-Canis::App app("SuperPupStudio", "StopTheSlimesDemo");
+Canis::App app("SuperPupStudio", "CanisTemplate");
 
 #ifdef __EMSCRIPTEN__
 void Loop()
@@ -100,6 +101,7 @@ int main()
     REGISTER_SCRIPTABLE_COMPONENT(app, DebugCamera2D);
     REGISTER_SCRIPTABLE_COMPONENT(app, SplashLoader);
     REGISTER_SCRIPTABLE_COMPONENT(app, MainMenuButtons);
+    REGISTER_SCRIPTABLE_COMPONENT(app, SettingsMenuFunctions);
     REGISTER_SCRIPTABLE_COMPONENT(app, Ball);
     REGISTER_SCRIPTABLE_COMPONENT(app, Paddle);
 
@@ -109,7 +111,7 @@ int main()
     app.AddScene(new Canis::Scene("settings", "assets/scenes/settings.scene"));
     app.AddScene(new Canis::Scene("pong", "assets/scenes/pong.scene"));
 
-    app.Run("Canis | Stop The Slimes", "settings");
+    app.Run("Canis Template", "settings");
 
     #ifdef __EMSCRIPTEN__
     // 0 fps means to use requestAnimationFrame; non-0 means to use setTimeout.
