@@ -56,9 +56,11 @@ public:
         // music
         Canis::AudioManager::PlayMusic("assets/audio/music/AlexandrZhelanovSongs/improvisation1.mp3", -1, 0.1f);
 
+        // connect button listener
         Canis::ButtonSystem *buttonSystem = GetScene().GetSystem<Canis::ButtonSystem>();
         mainMenuButtonListener = buttonSystem->AddButtonListener("Main_Menu_Button", this, OnClickMainMenu);
 
+        // connect knob listeners
         Canis::UISliderKnobSystem *knobSystem = GetScene().GetSystem<Canis::UISliderKnobSystem>();
         knobHandle = knobSystem->AddKnobListener("MASTER_VOLUME_SLIDER_CHANGED", this, OnAudioSliderChanged);
         musicKnobHandle = knobSystem->AddKnobListener("MUSIC_VOLUME_SLIDER_CHANGED", this, OnMusicSliderChanged);
