@@ -8,4 +8,4 @@ seed 0
 volume-can-range-from-0.0-1.5
 volume 1.0
 log true
-editor true
+editor false
