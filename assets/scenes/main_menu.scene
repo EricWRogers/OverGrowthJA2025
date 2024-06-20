@@ -35,19 +35,19 @@ Entities:
       active: true
       anchor: 3
       position: [200, 50]
-      size: [71, 43]
-      originOffset: [0, 0]
+      size: [200, 43]
+      originOffset: [-200, 0]
       rotation: 0
       scale: 1
       depth: 0
       scaleWithScreen: 0
     Canis::ColorComponent:
-      color: [0, 0, 0, 1]
+      color: [1, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
-      text: Play
-      alignment: 0
+      text: Play But NO
+      alignment: 1
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
         size: 48
