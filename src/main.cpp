@@ -21,6 +21,7 @@
 #include <Canis/ECS/Systems/UISliderSystem.hpp>
 #include <Canis/ECS/Systems/UISliderKnobSystem.hpp>
 
+#include "ECS/ScriptableEntities/FlyCam.hpp"
 #include "ECS/ScriptableEntities/DebugCamera2D.hpp"
 #include "ECS/ScriptableEntities/SplashLoader.hpp"
 #include "ECS/ScriptableEntities/MainMenuButtons.hpp"
@@ -107,6 +108,7 @@ int main()
     REGISTER_COMPONENT_EDITOR(Canis::UISliderKnobComponent);
 
     // scriptable component
+    REGISTER_SCRIPTABLE_COMPONENT(app, FlyCam);
     REGISTER_SCRIPTABLE_COMPONENT(app, DebugCamera2D);
     REGISTER_SCRIPTABLE_COMPONENT(app, SplashLoader);
     REGISTER_SCRIPTABLE_COMPONENT(app, MainMenuButtons);
