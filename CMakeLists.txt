@@ -69,7 +69,7 @@ target_precompile_headers(${PROJECT_NAME}
     <Canis/ECS/Systems/SpriteAnimationSystem.hpp>
     <Canis/ECS/Systems/CollisionSystem2D.hpp>
     <Canis/ECS/Systems/ButtonSystem.hpp>
-    <Canis/ECS/Systems/RenderMeshWithShadowSystem.hpp>
+    <Canis/ECS/Systems/RenderMeshSystem.hpp>
     <Canis/GameHelper/StateMachine/StateMachine.hpp>
 )
 

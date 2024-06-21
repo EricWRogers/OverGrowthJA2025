@@ -6,3 +6,6 @@ build/
 dist/
 
 emsdk/
+
+*.bin
+!assets/models/CesiumMan/CesiumMan_data.bin

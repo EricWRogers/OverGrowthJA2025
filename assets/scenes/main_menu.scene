@@ -14,7 +14,7 @@ Entities:
       anchor: 1
       position: [0, -200]
       size: [686, 75]
-      originOffset: [100, 0]
+      originOffset: [-343, 0]
       rotation: 0
       scale: 1
       depth: 0
@@ -25,17 +25,17 @@ Entities:
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
       text: Canis Template
-      alignment: 0
+      alignment: 2
       TextAsset:
         path: assets/fonts/tuffy_bold.ttf
         size: 100
   - Entity: 13878440446197466466
-    Name: Play Button
+    Name: Play 2D Button
     Canis::RectTransformComponent:
       active: true
       anchor: 3
       position: [200, 50]
-      size: [71, 43]
+      size: [128, 43]
       originOffset: [0, 0]
       rotation: 0
       scale: 1
@@ -46,14 +46,49 @@ Entities:
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
-      text: Play
+      text: Play 2D
       alignment: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
         size: 48
     Canis::ButtonComponent:
       eventName: MainMenuPlay
-      baseColor: [0, 0, 0, 1]
+      baseColor: [1, 0, 0, 1]
+      hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 0
+      down: 8903137429878787944
+      left: 0
+      right: 0
+      defaultSelected: false
+  - Entity: 586293319622200709
+    Name: Play 3D Button
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 3
+      position: [200, -50]
+      size: [129, 43]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [1, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Play 3D
+      alignment: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+    Canis::ButtonComponent:
+      eventName: MainMenuPlay3D
+      baseColor: [1, 0, 0, 1]
       hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
       action: 0
       mouseOver: false
@@ -69,7 +104,7 @@ Entities:
     Canis::RectTransformComponent:
       active: true
       anchor: 3
-      position: [200, -50]
+      position: [200, -150]
       size: [151, 44]
       originOffset: [0, 0]
       rotation: 0
@@ -104,7 +139,7 @@ Entities:
     Canis::RectTransformComponent:
       active: true
       anchor: 3
-      position: [200, -150]
+      position: [200, -250]
       size: [70, 49]
       originOffset: [0, 0]
       rotation: 0
@@ -181,3 +216,10 @@ Entities:
   - Entity: 14561119521224997718
     Name: Button Functions
     Canis::ScriptComponent: MainMenuButtons
+  - Entity: 17362799605001397724
+    Name: Model Test
+    Canis::TransformComponent:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, 0, 0, 1]
+      scale: [1, 1, 1]

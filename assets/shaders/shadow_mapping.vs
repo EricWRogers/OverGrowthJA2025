@@ -1,4 +1,9 @@
-#version 330 core
+[OPENGL VERSION]
+
+#ifdef GL_ES
+    precision mediump float;
+#endif
+
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec2 aTexCoords;
@@ -12,16 +17,17 @@ out VS_OUT {
     vec4 FragPosLightSpace;
 } vs_out;
 
-uniform mat4 projection;
-uniform mat4 view;
-uniform mat4 model;
+uniform mat4 PROJECTION;
+uniform mat4 VIEW;
+uniform mat4 MODEL;
+uniform mat4 PVM;
 uniform mat4 lightSpaceMatrix;
 
 void main()
 {
-    vs_out.FragPos = vec3(model * vec4(aPos, 1.0));
-    vs_out.Normal = transpose(inverse(mat3(model))) * aNormal;
+    vs_out.FragPos = vec3(MODEL * vec4(aPos, 1.0));
+    vs_out.Normal = normalize(transpose(inverse(mat3(MODEL))) * aNormal);
     vs_out.TexCoords = aTexCoords;
     vs_out.FragPosLightSpace = lightSpaceMatrix * vec4(vs_out.FragPos, 1.0);
-    gl_Position = projection * view * model * vec4(aPos, 1.0);
+    gl_Position = PVM * vec4(aPos, 1.0);
 }

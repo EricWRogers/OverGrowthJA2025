@@ -1,0 +1,52 @@
+Scene: mesh
+ClearColor: [1, 1, 1, 1]
+Systems:
+  - Canis::ButtonSystem
+RenderSystems:
+  - Canis::RenderHUDSystem
+  - Canis::RenderMeshSystem
+Entities:
+  - Entity: 16516947501218716067
+    Name: Title
+    Canis::RectTransformComponent:
+      active: true
+      anchor: 1
+      position: [0, -80]
+      size: [224, 71]
+      originOffset: [-112, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::ColorComponent:
+      color: [0, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Mesh
+      alignment: 2
+      TextAsset:
+        path: assets/fonts/tuffy_bold.ttf
+        size: 100
+  - Entity: 1028949299009524815
+    Name: Box
+    Canis::TransformComponent:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereColliderComponent:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::MeshComponent:
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
+      castShadow: false
+      useInstance: false
+      castDepth: true
+    Canis::ColorComponent:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0

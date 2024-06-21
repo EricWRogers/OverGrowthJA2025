@@ -20,6 +20,13 @@ class MainMenuButtons : public Canis::ScriptableEntity
         ((MainMenuButtons*)_data)->GetSceneManager().Load("pong");
     }
 
+    static void OnClickPlay3D(Canis::Entity _entity, void *_data)
+    {
+        Canis::Log("OnClickPlay3D");
+        Canis::AudioManager::Play("assets/audio/sounds/fireball_1.ogg");
+        ((MainMenuButtons*)_data)->GetSceneManager().Load("mesh");
+    }
+
     static void OnClickSettings(Canis::Entity _entity, void *_data)
     {
         Canis::Log("OnClickPlay");
@@ -34,6 +41,7 @@ class MainMenuButtons : public Canis::ScriptableEntity
     }
 private:
     Canis::ButtonListener playButtonListener;
+    Canis::ButtonListener play2dButtonListener;
     Canis::ButtonListener settingsButtonListener;
     Canis::ButtonListener quitButtonListener;
 public:
@@ -46,11 +54,13 @@ public:
         Canis::AudioManager::PlayMusic("assets/audio/music/AlexandrZhelanovSongs/improvisation1.mp3", -1, 0.1f);
 
 
-        Canis::ButtonSystem *buttonSystem = GetScene().GetSystem<Canis::ButtonSystem>();
-
-        playButtonListener = buttonSystem->AddButtonListener("MainMenuPlay", this, OnClickPlay);
-        settingsButtonListener = buttonSystem->AddButtonListener("MainMenuSettings", this, OnClickSettings);
-        quitButtonListener = buttonSystem->AddButtonListener("MainMenuQuit", this, OnClickQuit);
+        if (Canis::ButtonSystem *buttonSystem = GetScene().GetSystem<Canis::ButtonSystem>())
+        {
+            playButtonListener = buttonSystem->AddButtonListener("MainMenuPlay", this, OnClickPlay);
+            play2dButtonListener = buttonSystem->AddButtonListener("MainMenuPlay3D", this, OnClickPlay3D);
+            settingsButtonListener = buttonSystem->AddButtonListener("MainMenuSettings", this, OnClickSettings);
+            quitButtonListener = buttonSystem->AddButtonListener("MainMenuQuit", this, OnClickQuit);
+        }
     }
     
     void OnDestroy() {}

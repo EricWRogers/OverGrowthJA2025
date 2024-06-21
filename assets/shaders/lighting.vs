@@ -1,4 +1,9 @@
-#version 330 core
+[OPENGL VERSION]
+
+#ifdef GL_ES
+    precision mediump float;
+#endif
+
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec2 aTexCoords;

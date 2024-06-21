@@ -1,4 +1,9 @@
-#version 330 core
+[OPENGL VERSION]
+
+#ifdef GL_ES
+    precision mediump float;
+#endif
+
 out vec4 FragColor;
 
 struct Material {

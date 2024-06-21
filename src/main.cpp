@@ -53,16 +53,21 @@ int main()
     app.AddDecodeRenderSystem(Canis::DecodeRenderHUDSystem);
     app.AddDecodeRenderSystem(Canis::DecodeRenderTextSystem);
     app.AddDecodeRenderSystem(Canis::DecodeSpriteRenderer2DSystem);
+    app.AddDecodeRenderSystem(Canis::DecodeRenderMeshSystem);
 
     REGISTER_RENDER_SYSTEM(Canis::RenderHUDSystem);
     REGISTER_RENDER_SYSTEM(Canis::RenderTextSystem);
     REGISTER_RENDER_SYSTEM(Canis::SpriteRenderer2DSystem);
+    REGISTER_RENDER_SYSTEM(Canis::RenderMeshSystem);
 
     // decode component
     app.AddDecodeComponent(Canis::DecodeTagComponent);
+    app.AddDecodeComponent(Canis::DecodeTransformComponent);
+    REGISTER_COMPONENT(app, Canis::SphereColliderComponent);
     REGISTER_COMPONENT(app, Canis::RectTransformComponent);
     REGISTER_COMPONENT(app, Canis::ColorComponent);
     app.AddDecodeComponent(Canis::DecodeTextComponent);
+    app.AddDecodeComponent(Canis::DecodeMeshComponent);
     REGISTER_COMPONENT(app, Canis::ButtonComponent);
     REGISTER_COMPONENT(app, Canis::Sprite2DComponent);
     //app.AddDecodeComponent(Canis::DecodeSprite2DComponent);
@@ -75,6 +80,8 @@ int main()
     // encode component
     app.AddEncodeComponent(Canis::EncodeTagComponent);
     app.AddEncodeComponent(Canis::EncodeTransformComponent);
+    app.AddEncodeComponent(EncodeComponent<Canis::SphereColliderComponent>);
+    app.AddEncodeComponent(Canis::EncodeMeshComponent);
     app.AddEncodeComponent(Canis::EncodeRectTransformComponent);
     app.AddEncodeComponent(Canis::EncodeColorComponent);
     app.AddEncodeComponent(Canis::EncodeTextComponent);
@@ -87,6 +94,8 @@ int main()
 
     REGISTER_COMPONENT_EDITOR(Canis::TagComponent);
     REGISTER_COMPONENT_EDITOR(Canis::TransformComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::MeshComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::SphereColliderComponent);
     REGISTER_COMPONENT_EDITOR(Canis::RectTransformComponent);
     REGISTER_COMPONENT_EDITOR(Canis::Camera2DComponent);
     REGISTER_COMPONENT_EDITOR(Canis::ColorComponent);
@@ -110,8 +119,9 @@ int main()
     app.AddScene(new Canis::Scene("main_menu", "assets/scenes/main_menu.scene"));
     app.AddScene(new Canis::Scene("settings", "assets/scenes/settings.scene"));
     app.AddScene(new Canis::Scene("pong", "assets/scenes/pong.scene"));
+    app.AddScene(new Canis::Scene("mesh", "assets/scenes/mesh.scene"));
 
-    app.Run("Canis Template", "main_menu");
+    app.Run("Canis Template", "mesh");
 
     #ifdef __EMSCRIPTEN__
     // 0 fps means to use requestAnimationFrame; non-0 means to use setTimeout.
