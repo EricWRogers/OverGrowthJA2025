@@ -14,7 +14,7 @@ Entities:
       anchor: 1
       position: [0, -200]
       size: [686, 75]
-      originOffset: [-343, 0]
+      originOffset: [100, 0]
       rotation: 0
       scale: 1
       depth: 0
@@ -25,7 +25,7 @@ Entities:
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
       text: Canis Template
-      alignment: 2
+      alignment: 0
       TextAsset:
         path: assets/fonts/tuffy_bold.ttf
         size: 100
@@ -35,8 +35,8 @@ Entities:
       active: true
       anchor: 3
       position: [200, 50]
-      size: [200, 43]
-      originOffset: [-200, 0]
+      size: [71, 43]
+      originOffset: [0, 0]
       rotation: 0
       scale: 1
       depth: 0
@@ -46,8 +46,8 @@ Entities:
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
-      text: Play But NO
-      alignment: 1
+      text: Play
+      alignment: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
         size: 48

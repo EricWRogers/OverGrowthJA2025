@@ -213,7 +213,7 @@ public:
     void SpeedBoost(float _multiplier)
     {
         m_speed *= _multiplier;
-        m_speed = min(m_speed, m_maxSpeed);
+        m_speed = glm::min(m_speed, m_maxSpeed);
     }
 
     void OnUpdate(float _dt)
@@ -274,7 +274,7 @@ public:
                 {
                     float distanceToHit = glm::distance(ballPosition, hit.point) - ballRadius;
 
-                    distanceTraveled += max(distanceToHit, 0.0f);
+                    distanceTraveled += glm::max(distanceToHit, 0.0f);
 
                     rect.position += glm::normalize(m_direction) * distanceToHit;
 
@@ -293,7 +293,7 @@ public:
                 {
                     float distanceToHit = glm::distance(ballPosition, hit.point) - ballRadius;
 
-                    distanceTraveled += max(distanceToHit, 0.0f);
+                    distanceTraveled += glm::max(distanceToHit, 0.0f);
 
                     rect.position += glm::normalize(m_direction) * distanceToHit;
 
@@ -312,7 +312,7 @@ public:
                 {
                     float distanceToHit = glm::distance(ballPosition, hit.point) - ballRadius;
 
-                    distanceTraveled += max(distanceToHit, 0.0f);
+                    distanceTraveled += glm::max(distanceToHit, 0.0f);
 
                     rect.position += glm::normalize(m_direction) * distanceToHit;
 
@@ -331,7 +331,7 @@ public:
                 {
                     float distanceToHit = glm::distance(ballPosition, hit.point) - ballRadius;
 
-                    distanceTraveled += max(distanceToHit, 0.0f);
+                    distanceTraveled += glm::max(distanceToHit, 0.0f);
 
                     rect.position += glm::normalize(m_direction) * distanceToHit;
 
