@@ -6,10 +6,7 @@
 #include <emscripten.h>
 #endif
 
-#include <iostream>
-
 #include <Canis/App.hpp>
-#include <Canis/Yaml.hpp>
 
 #include "RegisterCanis.hpp"
 #include "ECS/ScriptableEntities/UI/RegisterUI.hpp"

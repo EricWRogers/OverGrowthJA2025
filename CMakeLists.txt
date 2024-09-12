@@ -62,29 +62,13 @@ target_precompile_headers(${PROJECT_NAME}
     <Canis/Canis.hpp>
     <Canis/Scene.hpp>
     <Canis/Entity.hpp>
-    <Canis/ECS/Encode.hpp>
-    <Canis/ECS/Decode.hpp>
     <Canis/SceneManager.hpp>
     <Canis/AssetManager.hpp>
     <Canis/ScriptableEntity.hpp>
     <Canis/External/entt.hpp>
     <Canis/ECS/Components/ScriptComponent.hpp>
-    <Canis/ECS/Components/MeshComponent.hpp>
-    <Canis/ECS/Components/SphereColliderComponent.hpp>
     <Canis/ECS/Components/TransformComponent.hpp>
     <Canis/ECS/Components/RectTransformComponent.hpp>
-    <Canis/ECS/Components/Camera2DComponent.hpp>
-    <Canis/ECS/Components/TextComponent.hpp>
-    <Canis/ECS/Components/ColorComponent.hpp>
-    <Canis/ECS/Components/Sprite2DComponent.hpp>
-    <Canis/ECS/Systems/RenderHUDSystem.hpp>
-    <Canis/ECS/Systems/RenderTextSystem.hpp>
-    <Canis/ECS/Systems/SpriteRenderer2DSystem.hpp>
-    <Canis/ECS/Systems/SpriteAnimationSystem.hpp>
-    <Canis/ECS/Systems/CollisionSystem2D.hpp>
-    <Canis/ECS/Systems/ButtonSystem.hpp>
-    <Canis/ECS/Systems/RenderMeshSystem.hpp>
-    <Canis/GameHelper/StateMachine/StateMachine.hpp>
 )
 
 #create_symlink
