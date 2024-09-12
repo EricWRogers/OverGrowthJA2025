@@ -60,13 +60,10 @@ target_precompile_headers(${PROJECT_NAME}
     <Canis/App.hpp>
     <Canis/Math.hpp>
     <Canis/Canis.hpp>
-    <Canis/Scene.hpp>
     <Canis/Entity.hpp>
     <Canis/SceneManager.hpp>
     <Canis/AssetManager.hpp>
     <Canis/ScriptableEntity.hpp>
-    <Canis/External/entt.hpp>
-    <Canis/ECS/Components/ScriptComponent.hpp>
     <Canis/ECS/Components/TransformComponent.hpp>
     <Canis/ECS/Components/RectTransformComponent.hpp>
 )
