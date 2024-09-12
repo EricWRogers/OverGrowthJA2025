@@ -18,7 +18,19 @@ add_definitions(
     #-Ofast
 )
 
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    set(MACOSX TRUE)
+endif()
+
 add_definitions(-DCANIS_EDITOR)
+
+find_program(CCACHE_PROGRAM ccache)
+if (CCACHE_PROGRAM)
+    message(STATUS "Found ccache at ${CCACHE_PROGRAM}")
+    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
+else()
+    message(STATUS "ccache not found")
+endif()
 
 # Some build settings required for Javascript build
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
@@ -43,6 +55,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE canis)
 
 target_precompile_headers(${PROJECT_NAME}
     PRIVATE
+    <string>
+
     <Canis/App.hpp>
     <Canis/Math.hpp>
     <Canis/Canis.hpp>

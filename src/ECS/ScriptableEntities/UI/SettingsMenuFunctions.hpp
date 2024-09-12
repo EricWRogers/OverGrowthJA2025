@@ -1,5 +1,7 @@
 #pragma once
 #include <Canis/ECS/Systems/ButtonSystem.hpp>
+#include <Canis/ECS/Systems/UISliderSystem.hpp>
+#include <Canis/ECS/Systems/UISliderKnobSystem.hpp>
 
 #include <Canis/ECS/Components/IDComponent.hpp>
 #include <Canis/ECS/Components/ColorComponent.hpp>
