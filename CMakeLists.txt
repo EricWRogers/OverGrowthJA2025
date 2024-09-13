@@ -55,8 +55,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE canis)
 
 target_precompile_headers(${PROJECT_NAME}
     PRIVATE
-    <string>
-
     <Canis/App.hpp>
     <Canis/Math.hpp>
     <Canis/Canis.hpp>
@@ -64,8 +62,6 @@ target_precompile_headers(${PROJECT_NAME}
     <Canis/SceneManager.hpp>
     <Canis/AssetManager.hpp>
     <Canis/ScriptableEntity.hpp>
-    <Canis/ECS/Components/TransformComponent.hpp>
-    <Canis/ECS/Components/RectTransformComponent.hpp>
 )
 
 #create_symlink

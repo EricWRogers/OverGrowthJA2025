@@ -7,6 +7,7 @@
 
 #include <Canis/ECS/Components/TransformComponent.hpp>
 #include <Canis/ECS/Components/MeshComponent.hpp>
+#include <Canis/ECS/Components/DirectionalLightComponent.hpp>
 #include <Canis/ECS/Components/TextComponent.hpp>
 #include <Canis/ECS/Components/SphereColliderComponent.hpp>
 #include <Canis/ECS/Components/RectTransformComponent.hpp>
@@ -48,6 +49,7 @@ void RegisterCanis(void* _app)
     // decode component
     app.AddDecodeComponent(Canis::DecodeTagComponent);
     app.AddDecodeComponent(Canis::DecodeTransformComponent);
+    REGISTER_COMPONENT(app, Canis::DirectionalLightComponent);
     REGISTER_COMPONENT(app, Canis::SphereColliderComponent);
     REGISTER_COMPONENT(app, Canis::RectTransformComponent);
     REGISTER_COMPONENT(app, Canis::ColorComponent);
@@ -61,9 +63,26 @@ void RegisterCanis(void* _app)
     app.AddDecodeComponent(Canis::DecodeSpriteAnimationComponent);
     REGISTER_COMPONENT(app, Canis::Camera2DComponent);
 
+    // encode component
+    app.AddEncodeComponent(Canis::EncodeTagComponent);
+    app.AddEncodeComponent(Canis::EncodeTransformComponent);
+    app.AddEncodeComponent(EncodeComponent<Canis::DirectionalLightComponent>);
+    app.AddEncodeComponent(EncodeComponent<Canis::SphereColliderComponent>);
+    app.AddEncodeComponent(Canis::EncodeMeshComponent);
+    app.AddEncodeComponent(Canis::EncodeRectTransformComponent);
+    app.AddEncodeComponent(Canis::EncodeColorComponent);
+    app.AddEncodeComponent(Canis::EncodeTextComponent);
+    app.AddEncodeComponent(EncodeComponent<Canis::ButtonComponent>);
+    app.AddEncodeComponent(EncodeComponent<Canis::Sprite2DComponent>);
+    app.AddEncodeComponent(Canis::EncodeUIImageComponent);
+    app.AddEncodeComponent(EncodeComponent<Canis::UISliderComponent>);
+    app.AddEncodeComponent(EncodeComponent<Canis::UISliderKnobComponent>);
+    app.AddEncodeComponent(EncodeComponent<Canis::Camera2DComponent>);
+
     REGISTER_COMPONENT_EDITOR(Canis::TagComponent);
     REGISTER_COMPONENT_EDITOR(Canis::TransformComponent);
     REGISTER_COMPONENT_EDITOR(Canis::MeshComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::DirectionalLightComponent);
     REGISTER_COMPONENT_EDITOR(Canis::SphereColliderComponent);
     REGISTER_COMPONENT_EDITOR(Canis::RectTransformComponent);
     REGISTER_COMPONENT_EDITOR(Canis::Camera2DComponent);
@@ -74,6 +93,4 @@ void RegisterCanis(void* _app)
     REGISTER_COMPONENT_EDITOR(Canis::UIImageComponent);
     REGISTER_COMPONENT_EDITOR(Canis::UISliderComponent);
     REGISTER_COMPONENT_EDITOR(Canis::UISliderKnobComponent);
-
-
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Canis/ScriptableEntity.hpp>
+#include <Canis/ECS/Components/RectTransformComponent.hpp>
 
 
 class Ball : public Canis::ScriptableEntity

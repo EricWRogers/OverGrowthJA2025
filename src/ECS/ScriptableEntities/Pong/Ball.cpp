@@ -1,9 +1,7 @@
 #include "Ball.hpp"
 
-#include <SDL_keyboard.h>
 #include <Canis/InputManager.hpp>
 
-#include <Canis/ECS/Components/RectTransformComponent.hpp>
 #include <Canis/ECS/Components/ColorComponent.hpp>
 #include <Canis/ECS/Components/Sprite2DComponent.hpp>
 #include <Canis/ECS/Components/TextComponent.hpp>

@@ -53,3 +53,11 @@ Entities:
   - Entity: 13816120350514588185
     Name: FlyCam
     Canis::ScriptComponent: FlyCam
+  - Entity: 17448164740515076868
+    Name: Light
+    Canis::TagComponent: ""
+    Canis::DirectionalLightComponent:
+      direction: [0, 0, 0]
+      ambient: [0.0500000007, 0.0500000007, 0.0500000007]
+      diffuse: [0.800000012, 0.800000012, 0.800000012]
+      specular: [0.5, 0.5, 0.5]
