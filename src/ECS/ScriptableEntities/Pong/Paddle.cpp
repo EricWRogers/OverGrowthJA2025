@@ -30,7 +30,7 @@ void Paddle::OnUpdate(float _dt)
 {
     using namespace glm;
 
-    vec2 dir;
+    vec2 dir(0.0f);
 
     if (left)
     {
@@ -45,5 +45,6 @@ void Paddle::OnUpdate(float _dt)
     }
 
     auto& rect = GetComponent<Canis::RectTransformComponent>();
+    //if (dir.y != 0.0)
     rect.position.y += dir.y * m_speed * _dt;
 }
