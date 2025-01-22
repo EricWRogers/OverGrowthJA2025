@@ -13,6 +13,7 @@ out vec4 fragmentColor;
 out vec2 fragmentUV;
 
 uniform mat4 P;
+uniform float TIME;
 
 void main()
 {
@@ -21,7 +22,7 @@ void main()
     
     fragmentPosition = vertexPosition;
     fragmentColor = vertexColor;
-    fragmentUV = vec2(vertexUV.x, 1.0 - vertexUV.y);
+    fragmentUV = vec2(vertexUV.x, 1 - vertexUV.y);
 }
 
 /*

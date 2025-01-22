@@ -3,19 +3,19 @@
 #include <SDL_keyboard.h>
 #include <Canis/InputManager.hpp>
 #include <Canis/ECS/Components/TagComponent.hpp>
-#include <Canis/ECS/Components/RectTransformComponent.hpp>
-#include <Canis/ECS/Components/ColorComponent.hpp>
+#include <Canis/ECS/Components/RectTransform.hpp>
+#include <Canis/ECS/Components/Color.hpp>
 #include <Canis/ECS/Components/Sprite2DComponent.hpp>
 
 void Paddle::OnCreate()
 {        
-    if (entity.HasComponent<Canis::RectTransformComponent>() == false)
+    if (entity.HasComponent<Canis::RectTransform>() == false)
     {
-        Canis::FatalError("Paddle does not have Canis::RectTransformComponent");
+        Canis::FatalError("Paddle does not have Canis::RectTransform");
     }
-    if (entity.HasComponent<Canis::ColorComponent>() == false)
+    if (entity.HasComponent<Canis::Color>() == false)
     {
-        Canis::FatalError("Paddle does not have Canis::ColorComponent");
+        Canis::FatalError("Paddle does not have Canis::Color");
     }
     if (entity.HasComponent<Canis::Sprite2DComponent>() == false)
     {
@@ -44,6 +44,6 @@ void Paddle::OnUpdate(float _dt)
         dir.y += GetInputManager().GetKey(SDL_SCANCODE_DOWN) * -1;
     }
 
-    auto& rect = GetComponent<Canis::RectTransformComponent>();
+    auto& rect = GetComponent<Canis::RectTransform>();
     rect.position.y += dir.y * m_speed * _dt;
 }

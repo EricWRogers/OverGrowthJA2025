@@ -1,14 +1,19 @@
 fullscreen false
+--borderless--will--override--resizeable
+borderless false
+resizeable true
 width 1280
-heigth 720
-use_frame_limit false
-frame_limit 60
+heigth 800
+use_frame_limit true
+frame_limit 120
 override_seed false
 seed 0
 volume-can-range-from-0.0-1.5
 volume 1.0
 log true
-editor true
+logToFile false
+editor false
+vsync false
 
 splash_scene assets/scenes/engine_splash.scene
 scene assets/scenes/main_menu.scene

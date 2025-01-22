@@ -4,7 +4,7 @@
 #include <Canis/ECS/Systems/UISliderKnobSystem.hpp>
 
 #include <Canis/ECS/Components/IDComponent.hpp>
-#include <Canis/ECS/Components/ColorComponent.hpp>
+#include <Canis/ECS/Components/Color.hpp>
 #include <Canis/ECS/Components/TextComponent.hpp>
 #include <Canis/ECS/Components/ButtonComponent.hpp>
 #include <Canis/ECS/Components/UISliderKnobComponent.hpp>

@@ -10,7 +10,7 @@ Entities:
   - Entity: 17066065208811643397
     Name: Title
     Canis::TagComponent: MasterVolumeKnob
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 1
       position: [0, -100]
@@ -20,7 +20,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -32,7 +32,7 @@ Entities:
         size: 48
   - Entity: 4106830962677677653
     Name: Master Volume Label
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 4
       position: [-400, 150]
@@ -42,7 +42,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -54,7 +54,7 @@ Entities:
         size: 36
   - Entity: 17168992724052586822
     Name: Master Volume Slider
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 4
       position: [200, 150]
@@ -64,7 +64,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -82,7 +82,7 @@ Entities:
   - Entity: 12796469468752291547
     Name: Master Volume Slider Knob
     Canis::TagComponent: MasterVolumeKnob
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 4
       position: [325, 140]
@@ -92,7 +92,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -120,7 +120,7 @@ Entities:
       value: 1
   - Entity: 8654966523642379780
     Name: Music Volume Label
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 4
       position: [-400, 100]
@@ -130,7 +130,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -142,7 +142,7 @@ Entities:
         size: 36
   - Entity: 2344481155143177863
     Name: Music Volume Slider
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 4
       position: [200, 100]
@@ -152,7 +152,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -170,7 +170,7 @@ Entities:
   - Entity: 18157705265959231571
     Name: Music Volume Slider Knob
     Canis::TagComponent: MusicVolumeKnob
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 4
       position: [325, 90]
@@ -180,7 +180,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -208,7 +208,7 @@ Entities:
       value: 1
   - Entity: 14593809605141225925
     Name: SFX Volume Label
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 4
       position: [-400, 50]
@@ -218,7 +218,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -230,7 +230,7 @@ Entities:
         size: 36
   - Entity: 17089595310751289827
     Name: SFX Volume Slider
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 4
       position: [200, 50]
@@ -240,7 +240,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -258,7 +258,7 @@ Entities:
   - Entity: 2077586153546402566
     Name: SFX Volume Slider Knob
     Canis::TagComponent: SFXVolumeKnob
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 4
       position: [325, 40]
@@ -268,7 +268,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -296,7 +296,7 @@ Entities:
       value: 1
   - Entity: 10964180172997595822
     Name: Main Menu Button
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 7
       position: [0, 100]
@@ -306,7 +306,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0

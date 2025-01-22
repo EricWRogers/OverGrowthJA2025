@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Canis/ScriptableEntity.hpp>
-#include <Canis/ECS/Components/RectTransformComponent.hpp>
+#include <Canis/ECS/Components/RectTransform.hpp>
 
 
 class Ball : public Canis::ScriptableEntity
@@ -36,15 +36,15 @@ public:
 
     void OnDestroy() {}
 
-    bool LeftWallHit(Canis::RectTransformComponent &_ballRect);
+    bool LeftWallHit(Canis::RectTransform &_ballRect);
 
-    bool RightWallHit(Canis::RectTransformComponent &_ballRect);
+    bool RightWallHit(Canis::RectTransform &_ballRect);
 
-    bool TopWallHit(Canis::RectTransformComponent &_ballRect);
+    bool TopWallHit(Canis::RectTransform &_ballRect);
 
-    bool DownWallHit(Canis::RectTransformComponent &_ballRect);
+    bool DownWallHit(Canis::RectTransform &_ballRect);
 
-    bool HitPaddle(Canis::Entity _paddle, Canis::RectTransformComponent &_ballRect);
+    bool HitPaddle(Canis::Entity _paddle, Canis::RectTransform &_ballRect);
 
     void UpdateScoreText();
 

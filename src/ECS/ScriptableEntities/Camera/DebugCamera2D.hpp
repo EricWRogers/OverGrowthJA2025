@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL_keyboard.h>
 
-#include <Canis/ECS/Components/RectTransformComponent.hpp>
+#include <Canis/ECS/Components/RectTransform.hpp>
 #include <Canis/ECS/Components/Camera2DComponent.hpp>
 
 class DebugCamera2D : public Canis::ScriptableEntity
@@ -36,7 +36,7 @@ public:
             auto player = entity.GetEntityWithTag("Player");
             if(player.entityHandle != entt::null)
             {
-                auto& playerTransform = player.GetComponent<Canis::RectTransformComponent>();
+                auto& playerTransform = player.GetComponent<Canis::RectTransform>();
                 camera2D.position = playerTransform.position;
             }
         }

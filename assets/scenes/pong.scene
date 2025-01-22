@@ -10,7 +10,7 @@ RenderSystems:
 Entities:
   - Entity: 16516947501218716067
     Name: Title
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 1
       position: [0, -80]
@@ -20,7 +20,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -33,7 +33,7 @@ Entities:
   - Entity: 8903137429878787944
     Name: Red Score
     Canis::TagComponent: RED_SCORE
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 1
       position: [-400, -50]
@@ -43,7 +43,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -56,7 +56,7 @@ Entities:
   - Entity: 9674272421446172513
     Name: Blue Score
     Canis::TagComponent: BLUE_SCORE
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 1
       position: [400, -50]
@@ -66,7 +66,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [0, 0, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -79,7 +79,7 @@ Entities:
   - Entity: 6054945195693058131
     Name: Ball
     Canis::TagComponent: BALL
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 6
       position: [0, 0]
@@ -89,7 +89,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -105,7 +105,7 @@ Entities:
   - Entity: 16457064345016601131
     Name: Left Paddle
     Canis::TagComponent: LEFT_PADDLE
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 6
       position: [-600, 0]
@@ -115,7 +115,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -126,7 +126,7 @@ Entities:
   - Entity: 16457064345016601456
     Name: Right Paddle
     Canis::TagComponent: RIGHT_PADDLE
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 6
       position: [600, 0]
@@ -136,7 +136,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [0, 0, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0

@@ -9,7 +9,7 @@ RenderSystems:
 Entities:
   - Entity: 16516947501218716067
     Name: Title
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 1
       position: [0, -200]
@@ -19,7 +19,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -31,7 +31,7 @@ Entities:
         size: 100
   - Entity: 13878440446197466466
     Name: Play 2D Button
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 3
       position: [200, 50]
@@ -41,7 +41,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -66,7 +66,7 @@ Entities:
       defaultSelected: false
   - Entity: 586293319622200709
     Name: Play 3D Button
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 3
       position: [200, -50]
@@ -76,7 +76,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -101,7 +101,7 @@ Entities:
       defaultSelected: false
   - Entity: 17485790014005255960
     Name: Settings Button
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 3
       position: [200, -150]
@@ -111,7 +111,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -136,7 +136,7 @@ Entities:
       defaultSelected: false
   - Entity: 8903137429878787944
     Name: Quit Button
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 3
       position: [200, -250]
@@ -146,7 +146,7 @@ Entities:
       scale: 1
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -171,7 +171,7 @@ Entities:
       defaultSelected: false
   - Entity: 14561119521224997717
     Name: Build Version
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 8
       position: [-15, 40]
@@ -181,7 +181,7 @@ Entities:
       scale: 0.400000006
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -193,7 +193,7 @@ Entities:
         size: 56
   - Entity: 9674272421446172513
     Name: Asset Version
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 8
       position: [-15, 15]
@@ -203,7 +203,7 @@ Entities:
       scale: 0.400000006
       depth: 0
       scaleWithScreen: 0
-    Canis::ColorComponent:
+    Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
@@ -218,7 +218,7 @@ Entities:
     Canis::ScriptComponent: MainMenuButtons
   - Entity: 17362799605001397724
     Name: Model Test
-    Canis::TransformComponent:
+    Canis::Transform:
       active: true
       position: [0, 0, 0]
       rotation: [0, 0, 0, 1]
