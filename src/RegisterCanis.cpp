@@ -7,7 +7,7 @@
 
 #include <Canis/ECS/Components/Transform.hpp>
 #include <Canis/ECS/Components/Mesh.hpp>
-#include <Canis/ECS/Components/DirectionalLightComponent.hpp>
+#include <Canis/ECS/Components/DirectionalLight.hpp>
 #include <Canis/ECS/Components/TextComponent.hpp>
 #include <Canis/ECS/Components/SphereCollider.hpp>
 #include <Canis/ECS/Components/RectTransform.hpp>
@@ -49,7 +49,7 @@ void RegisterCanis(void* _app)
     // decode component
     app.AddDecodeComponent(Canis::DecodeTagComponent);
     app.AddDecodeComponent(Canis::DecodeTransform);
-    REGISTER_COMPONENT(app, Canis::DirectionalLightComponent);
+    REGISTER_COMPONENT(app, Canis::DirectionalLight);
     REGISTER_COMPONENT(app, Canis::SphereCollider);
     REGISTER_COMPONENT(app, Canis::RectTransform);
     REGISTER_COMPONENT(app, Canis::Color);
@@ -66,7 +66,7 @@ void RegisterCanis(void* _app)
     // encode component
     app.AddEncodeComponent(Canis::EncodeTagComponent);
     app.AddEncodeComponent(Canis::EncodeTransform);
-    app.AddEncodeComponent(EncodeComponent<Canis::DirectionalLightComponent>);
+    app.AddEncodeComponent(EncodeComponent<Canis::DirectionalLight>);
     app.AddEncodeComponent(EncodeComponent<Canis::SphereCollider>);
     app.AddEncodeComponent(Canis::EncodeMesh);
     app.AddEncodeComponent(Canis::EncodeRectTransform);
@@ -82,7 +82,7 @@ void RegisterCanis(void* _app)
     REGISTER_COMPONENT_EDITOR(Canis::TagComponent);
     REGISTER_COMPONENT_EDITOR(Canis::Transform);
     REGISTER_COMPONENT_EDITOR(Canis::Mesh);
-    REGISTER_COMPONENT_EDITOR(Canis::DirectionalLightComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::DirectionalLight);
     REGISTER_COMPONENT_EDITOR(Canis::SphereCollider);
     REGISTER_COMPONENT_EDITOR(Canis::RectTransform);
     REGISTER_COMPONENT_EDITOR(Canis::Camera2DComponent);
