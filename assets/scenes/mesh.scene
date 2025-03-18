@@ -56,8 +56,13 @@ Entities:
   - Entity: 17448164740515076868
     Name: Light
     Canis::TagComponent: ""
-    Canis::DirectionalLightComponent:
-      direction: [0, 0, 0]
+    Canis::Transform:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::DirectionalLight:
+      direction: [1, 1, 1]
       ambient: [0.0500000007, 0.0500000007, 0.0500000007]
       diffuse: [0.800000012, 0.800000012, 0.800000012]
       specular: [0.5, 0.5, 0.5]

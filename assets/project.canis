@@ -12,7 +12,7 @@ volume-can-range-from-0.0-1.5
 volume 1.0
 log true
 logToFile false
-editor false
+editor true
 vsync false
 
 splash_scene assets/scenes/engine_splash.scene
