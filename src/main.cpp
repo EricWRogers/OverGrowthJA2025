@@ -23,7 +23,12 @@ void Loop()
 }
 #endif
 
-int main()
+#ifdef _WIN32
+#define main SDL_main
+extern "C" int main(int argc, char* argv[])
+#else
+int main(int argc, char* argv[])
+#endif
 {
     RegisterCanis((void*)&app);
     RegisterPong((void*)&app);

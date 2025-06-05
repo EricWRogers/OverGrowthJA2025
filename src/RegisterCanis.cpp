@@ -5,13 +5,13 @@
 #include <Canis/ECS/Decode.hpp>
 #include <Canis/ECS/Encode.hpp>
 
-#include <Canis/ECS/Components/TransformComponent.hpp>
-#include <Canis/ECS/Components/MeshComponent.hpp>
-#include <Canis/ECS/Components/DirectionalLightComponent.hpp>
+#include <Canis/ECS/Components/Transform.hpp>
+#include <Canis/ECS/Components/Mesh.hpp>
+#include <Canis/ECS/Components/DirectionalLight.hpp>
 #include <Canis/ECS/Components/TextComponent.hpp>
-#include <Canis/ECS/Components/SphereColliderComponent.hpp>
-#include <Canis/ECS/Components/RectTransformComponent.hpp>
-#include <Canis/ECS/Components/ColorComponent.hpp>
+#include <Canis/ECS/Components/SphereCollider.hpp>
+#include <Canis/ECS/Components/RectTransform.hpp>
+#include <Canis/ECS/Components/Color.hpp>
 #include <Canis/ECS/Components/Camera2DComponent.hpp>
 #include <Canis/ECS/Components/ButtonComponent.hpp>
 #include <Canis/ECS/Components/Sprite2DComponent.hpp>
@@ -48,13 +48,13 @@ void RegisterCanis(void* _app)
 
     // decode component
     app.AddDecodeComponent(Canis::DecodeTagComponent);
-    app.AddDecodeComponent(Canis::DecodeTransformComponent);
-    REGISTER_COMPONENT(app, Canis::DirectionalLightComponent);
-    REGISTER_COMPONENT(app, Canis::SphereColliderComponent);
-    REGISTER_COMPONENT(app, Canis::RectTransformComponent);
-    REGISTER_COMPONENT(app, Canis::ColorComponent);
+    app.AddDecodeComponent(Canis::DecodeTransform);
+    REGISTER_COMPONENT(app, Canis::DirectionalLight);
+    REGISTER_COMPONENT(app, Canis::SphereCollider);
+    REGISTER_COMPONENT(app, Canis::RectTransform);
+    REGISTER_COMPONENT(app, Canis::Color);
     app.AddDecodeComponent(Canis::DecodeTextComponent);
-    app.AddDecodeComponent(Canis::DecodeMeshComponent);
+    app.AddDecodeComponent(Canis::DecodeMesh);
     REGISTER_COMPONENT(app, Canis::ButtonComponent);
     REGISTER_COMPONENT(app, Canis::Sprite2DComponent);
     app.AddDecodeComponent(Canis::DecodeUIImageComponent);
@@ -65,12 +65,12 @@ void RegisterCanis(void* _app)
 
     // encode component
     app.AddEncodeComponent(Canis::EncodeTagComponent);
-    app.AddEncodeComponent(Canis::EncodeTransformComponent);
-    app.AddEncodeComponent(EncodeComponent<Canis::DirectionalLightComponent>);
-    app.AddEncodeComponent(EncodeComponent<Canis::SphereColliderComponent>);
-    app.AddEncodeComponent(Canis::EncodeMeshComponent);
-    app.AddEncodeComponent(Canis::EncodeRectTransformComponent);
-    app.AddEncodeComponent(Canis::EncodeColorComponent);
+    app.AddEncodeComponent(Canis::EncodeTransform);
+    app.AddEncodeComponent(EncodeComponent<Canis::DirectionalLight>);
+    app.AddEncodeComponent(EncodeComponent<Canis::SphereCollider>);
+    app.AddEncodeComponent(Canis::EncodeMesh);
+    app.AddEncodeComponent(Canis::EncodeRectTransform);
+    app.AddEncodeComponent(Canis::EncodeColor);
     app.AddEncodeComponent(Canis::EncodeTextComponent);
     app.AddEncodeComponent(EncodeComponent<Canis::ButtonComponent>);
     app.AddEncodeComponent(EncodeComponent<Canis::Sprite2DComponent>);
@@ -80,13 +80,13 @@ void RegisterCanis(void* _app)
     app.AddEncodeComponent(EncodeComponent<Canis::Camera2DComponent>);
 
     REGISTER_COMPONENT_EDITOR(Canis::TagComponent);
-    REGISTER_COMPONENT_EDITOR(Canis::TransformComponent);
-    REGISTER_COMPONENT_EDITOR(Canis::MeshComponent);
-    REGISTER_COMPONENT_EDITOR(Canis::DirectionalLightComponent);
-    REGISTER_COMPONENT_EDITOR(Canis::SphereColliderComponent);
-    REGISTER_COMPONENT_EDITOR(Canis::RectTransformComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::Transform);
+    REGISTER_COMPONENT_EDITOR(Canis::Mesh);
+    REGISTER_COMPONENT_EDITOR(Canis::DirectionalLight);
+    REGISTER_COMPONENT_EDITOR(Canis::SphereCollider);
+    REGISTER_COMPONENT_EDITOR(Canis::RectTransform);
     REGISTER_COMPONENT_EDITOR(Canis::Camera2DComponent);
-    REGISTER_COMPONENT_EDITOR(Canis::ColorComponent);
+    REGISTER_COMPONENT_EDITOR(Canis::Color);
     REGISTER_COMPONENT_EDITOR(Canis::TextComponent);
     REGISTER_COMPONENT_EDITOR(Canis::ButtonComponent);
     REGISTER_COMPONENT_EDITOR(Canis::Sprite2DComponent);

@@ -2,7 +2,7 @@
 
 #include <Canis/InputManager.hpp>
 
-#include <Canis/ECS/Components/ColorComponent.hpp>
+#include <Canis/ECS/Components/Color.hpp>
 #include <Canis/ECS/Components/Sprite2DComponent.hpp>
 #include <Canis/ECS/Components/TextComponent.hpp>
 
@@ -50,13 +50,13 @@ namespace Canis
 void Ball::OnCreate()
 {
     Canis::Log("BALL C");
-    if (entity.HasComponent<Canis::RectTransformComponent>() == false)
+    if (entity.HasComponent<Canis::RectTransform>() == false)
     {
-        Canis::FatalError("Ball does not have Canis::RectTransformComponent");
+        Canis::FatalError("Ball does not have Canis::RectTransform");
     }
-    if (entity.HasComponent<Canis::ColorComponent>() == false)
+    if (entity.HasComponent<Canis::Color>() == false)
     {
-        Canis::FatalError("Ball does not have Canis::ColorComponent");
+        Canis::FatalError("Ball does not have Canis::Color");
     }
     if (entity.HasComponent<Canis::Sprite2DComponent>() == false)
     {
@@ -70,11 +70,11 @@ void Ball::ResetBall()
     m_playing = false;
 
     // reset position to center of the screen
-    GetComponent<Canis::RectTransformComponent>().position = glm::vec2(0.0f);
+    GetComponent<Canis::RectTransform>().position = glm::vec2(0.0f);
 
     // reset position of the paddles
-    m_leftPaddle.GetComponent<Canis::RectTransformComponent>().position.y = 0.0f;
-    m_rightPaddle.GetComponent<Canis::RectTransformComponent>().position.y = 0.0f;
+    m_leftPaddle.GetComponent<Canis::RectTransform>().position.y = 0.0f;
+    m_rightPaddle.GetComponent<Canis::RectTransform>().position.y = 0.0f;
 
     // pick random direction
     m_direction = m_startDirections[rand() % 4];
@@ -92,7 +92,7 @@ void Ball::OnReady()
     ResetBall();
 }
 
-bool Ball::LeftWallHit(Canis::RectTransformComponent &_ballRect)
+bool Ball::LeftWallHit(Canis::RectTransform &_ballRect)
 {
     if (_ballRect.position.x + _ballRect.originOffset.x - (_ballRect.size.x * _ballRect.scale * 0.5f) <= -GetWindow().GetScreenWidth() * 0.5f)
     {
@@ -102,7 +102,7 @@ bool Ball::LeftWallHit(Canis::RectTransformComponent &_ballRect)
     return false;
 }
 
-bool Ball::RightWallHit(Canis::RectTransformComponent &_ballRect)
+bool Ball::RightWallHit(Canis::RectTransform &_ballRect)
 {
     if (_ballRect.position.x + _ballRect.originOffset.x + (_ballRect.size.x * _ballRect.scale * 0.5f) >= GetWindow().GetScreenWidth() * 0.5f)
     {
@@ -112,7 +112,7 @@ bool Ball::RightWallHit(Canis::RectTransformComponent &_ballRect)
     return false;
 }
 
-bool Ball::TopWallHit(Canis::RectTransformComponent &_ballRect)
+bool Ball::TopWallHit(Canis::RectTransform &_ballRect)
 {
     if (_ballRect.position.y + _ballRect.originOffset.y + (_ballRect.size.y * _ballRect.scale * 0.5f) >= GetWindow().GetScreenHeight() * 0.5f)
     {
@@ -122,7 +122,7 @@ bool Ball::TopWallHit(Canis::RectTransformComponent &_ballRect)
     return false;
 }
 
-bool Ball::DownWallHit(Canis::RectTransformComponent &_ballRect)
+bool Ball::DownWallHit(Canis::RectTransform &_ballRect)
 {
     if (_ballRect.position.y + _ballRect.originOffset.y - (_ballRect.size.y * _ballRect.scale * 0.5f) <= -GetWindow().GetScreenHeight() * 0.5f)
     {
@@ -132,11 +132,11 @@ bool Ball::DownWallHit(Canis::RectTransformComponent &_ballRect)
     return false;
 }
 
-bool Ball::HitPaddle(Canis::Entity _paddle, Canis::RectTransformComponent &_ballRect)
+bool Ball::HitPaddle(Canis::Entity _paddle, Canis::RectTransform &_ballRect)
 {
     using namespace glm;
 
-    auto paddleRect = _paddle.GetComponent<Canis::RectTransformComponent>();
+    auto paddleRect = _paddle.GetComponent<Canis::RectTransform>();
     vec2 paddlePosition = paddleRect.position + paddleRect.originOffset;
     vec2 ballPosition = _ballRect.position + _ballRect.originOffset;
 
@@ -167,12 +167,12 @@ void Ball::UpdateScoreText()
 {
     Canis::Text::Set(
         m_leftScoreEntity.GetComponent<Canis::TextComponent>(),
-        m_leftScoreEntity.GetComponent<Canis::RectTransformComponent>(),
+        m_leftScoreEntity.GetComponent<Canis::RectTransform>(),
         "Red: " + std::to_string(m_leftScore));
 
     Canis::Text::Set(
         m_rightScoreEntity.GetComponent<Canis::TextComponent>(),
-        m_rightScoreEntity.GetComponent<Canis::RectTransformComponent>(),
+        m_rightScoreEntity.GetComponent<Canis::RectTransform>(),
         "Blue: " + std::to_string(m_rightScore));
 
     if (m_rightScore >= 3 || m_leftScore >= 3)
@@ -196,9 +196,9 @@ void Ball::OnUpdate(float _dt)
 
     if (m_playing)
     {
-        auto &rect = GetComponent<Canis::RectTransformComponent>();
-        auto &leftPaddleRect = m_leftPaddle.GetComponent<Canis::RectTransformComponent>();
-        auto &rightPaddleRect = m_rightPaddle.GetComponent<Canis::RectTransformComponent>();
+        auto &rect = GetComponent<Canis::RectTransform>();
+        auto &leftPaddleRect = m_leftPaddle.GetComponent<Canis::RectTransform>();
+        auto &rightPaddleRect = m_rightPaddle.GetComponent<Canis::RectTransform>();
 
         float distanceTraveled = 0.0f;
         float distanceCanTravel = glm::length(m_direction * m_speed * _dt);

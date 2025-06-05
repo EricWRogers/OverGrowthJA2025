@@ -13,7 +13,7 @@ Entities:
       scale: 1
   - Entity: 26457064345016604456
     Name: Engine Logo
-    Canis::RectTransformComponent:
+    Canis::RectTransform:
       active: true
       anchor: 6
       position: [0, 0]
@@ -23,7 +23,7 @@ Entities:
       scale: 1
       depth: 1
       scaleWithScreen: 1
-    Canis::ColorComponent:
+    Canis::Color:
       color: [1.0, 1.0, 1.0, 1.0]
     Canis::UIImageComponent:
       uv: [0.0, 0.0, 1.0, 1.0]

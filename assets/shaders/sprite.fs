@@ -4,8 +4,6 @@
     precision mediump float;
 #endif
 
-//The fragment shader operates on each pixel in a given polygon
-
 in vec3 fragmentPosition;
 in vec4 fragmentColor;
 in vec2 fragmentUV;
@@ -16,11 +14,11 @@ in vec2 fragmentUV;
 out vec4 color;
 
 uniform sampler2D mySampler;
+uniform float TIME;
 
 void main() {
-	vec4 textureColor = texture(mySampler, fragmentUV);
-
-	//color = textureColor * fragmentColor;
+	vec2 movedUV = fragmentUV;
+	vec4 textureColor = texture(mySampler, movedUV);
 
 	color = fragmentColor * textureColor;
 }
