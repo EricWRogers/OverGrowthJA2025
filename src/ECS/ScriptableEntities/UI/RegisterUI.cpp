@@ -6,6 +6,7 @@
 #include "MainMenuButtons.hpp"
 #include "SettingsMenuFunctions.hpp"
 #include "BuildMenu.hpp"
+#include "LoseMenuButtons.hpp"
 
 void RegisterUI(void* _app)
 {
@@ -15,4 +16,5 @@ void RegisterUI(void* _app)
     REGISTER_SCRIPTABLE_COMPONENT(app, MainMenuButtons);
     REGISTER_SCRIPTABLE_COMPONENT(app, SettingsMenuFunctions);
     REGISTER_SCRIPTABLE_COMPONENT(app, BuildMenu);
+    REGISTER_SCRIPTABLE_COMPONENT(app, LoseMenuButtons);
 }
