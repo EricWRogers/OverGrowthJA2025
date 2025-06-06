@@ -20,5 +20,6 @@ scene assets/scenes/main_menu.scene
 scene assets/scenes/mesh.scene
 scene assets/scenes/pong.scene
 scene assets/scenes/settings.scene
+scene assets/scenes/aiden_test.scene
 
 run_scene main_menu
