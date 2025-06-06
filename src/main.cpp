@@ -9,6 +9,11 @@
 #include <Canis/App.hpp>
 
 #include "RegisterCanis.hpp"
+#include "Registers/RegisterAiden.hpp"
+#include "Registers/RegisterKaylie.hpp"
+#include "Registers/RegisterLogan.hpp"
+#include "Registers/RegisterWalyn.hpp"
+#include "Registers/RegisterXander.hpp"
 #include "ECS/ScriptableEntities/UI/RegisterUI.hpp"
 #include "ECS/ScriptableEntities/Pong/RegisterPong.hpp"
 #include "ECS/ScriptableEntities/Camera/RegisterCamera.hpp"
@@ -34,6 +39,11 @@ int main(int argc, char* argv[])
     RegisterPong((void*)&app);
     RegisterUI((void*)&app);
     RegisterCamera((void*)&app);
+    RegisterAiden((void*)&app);
+    RegisterKaylie((void*)&app);
+    RegisterLogan((void*)&app);
+    RegisterWalyn((void*)&app);
+    RegisterXander((void*)&app);
 
     app.Run("Canis Template");
 
