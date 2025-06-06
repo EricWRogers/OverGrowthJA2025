@@ -1,0 +1,217 @@
+Scene: logan_test
+ClearColor: [1, 1, 1, 1]
+Systems:
+  - Canis::ButtonSystem
+RenderSystems:
+  - Canis::SpriteRenderer2DSystem
+  - Canis::RenderHUDSystem
+  - Canis::RenderMeshSystem
+  - Canis::RenderTextSystem
+Entities:
+  - Entity: 16516947501218716067
+    Name: Title
+    Canis::RectTransform:
+      active: true
+      anchor: 1
+      position: [0, -80]
+      size: [224, 71]
+      originOffset: [-112, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [0, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: ""
+      alignment: 2
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets/fonts/tuffy_bold.ttf
+        size: 100
+  - Entity: 1028949299009524815
+    Name: Box
+    Canis::Transform:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
+      castShadow: false
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::ButtonComponent:
+      eventName: BuildHut
+      baseColor: [0.9, 0.9, 0.9, 1]
+      hoverColor: [1, 1, 1, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 0
+      down: 0
+      left: 0
+      right: 0
+      defaultSelected: false
+  - Entity: 13816120350514588185
+    Name: FlyCam
+    Canis::ScriptComponent: FlyCam
+  - Entity: 17448164740515076868
+    Name: Light
+    Canis::TagComponent: ""
+    Canis::Transform:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::DirectionalLight:
+      direction: [1, 1, 1]
+      ambient: [0.05, 0.05, 0.05]
+      diffuse: [0.8, 0.8, 0.8]
+      specular: [0.5, 0.5, 0.5]
+  - Entity: 12862883774095951707
+    Name: BuildMenu
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [300, 100]
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+  - Entity: 7955483382949068951
+    Name: Canvas
+    Canis::TagComponent: ""
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [300, 100]
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+  - Entity: 9464192654072085816
+    Name: Panel
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [300, 100]
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+    Canis::UIImageComponent:
+      TextureAsset:
+        path: assets\textures\container.png
+      uv: [0, 0, 0, 0]
+  - Entity: 12888454411201497566
+    Name: Hut
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [168, 46]
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Build Hut
+      alignment: 0
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets\fonts\Antonio-Bold.ttf
+        size: 50
+    Canis::ButtonComponent:
+      eventName: BuildHut
+      baseColor: [0.9, 0.9, 0.9, 1]
+      hoverColor: [1, 1, 1, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 0
+      down: 0
+      left: 0
+      right: 0
+      defaultSelected: false
+    Canis::ScriptComponent: BuildMenu
+  - Entity: 17844123306982186289
+    Name: HutButtonBackground
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [100, 100]
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+    Canis::UIImageComponent:
+      TextureAsset:
+        path: assets\textures\awesomeface.png
+      uv: [0, 0, 0, 1]
+  - Entity: 4293093139902813639
+    Name: HuttIcon
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [50, 50]
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::UIImageComponent:
+      TextureAsset:
+        path: assets\textures\circle.png
+      uv: [0, 0, 0, 0]
+  - Entity: 12553651681146004894
+    Name: HutCost
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [20, 20]
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+    Canis::TextComponent:
+      text: "Cost: 1 Wood + 1 food"
+      alignment: 0
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets\fonts\Antonio-Bold.ttf
+        size: 24
