@@ -13,11 +13,16 @@ Entities:
       anchor: 1
       position: [0, -80]
       size: [224, 71]
+      inheritWidth: false
+      inheritHeight: false
       originOffset: [-112, 0]
       rotation: 0
       scale: 1
       depth: 0
       scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 0
+      children: ~
     Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
@@ -90,6 +95,7 @@ Entities:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
+    Canis::ScriptComponent: TownHall
   - Entity: 1731831886671147645
     Name: NPC
     Canis::TagComponent: Civilian
