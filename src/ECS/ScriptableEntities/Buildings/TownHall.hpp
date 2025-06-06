@@ -7,16 +7,16 @@
 class TownHall : public Canis::ScriptableEntity
 {
 private:
-    Canis::Entity m_entity;
-    HealthComponent m_healthComponent;
+    bool m_isAlive = false;
 public:
-    Canis::Entity civilian;
 
     void OnCreate();
     
     void OnReady();
 
     void OnDestroy();
+
+    void OnUpdate(float _dt);
 
     void SpawnUnit();
 };

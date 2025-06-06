@@ -6,6 +6,12 @@ struct HealthComponent
 {
     float currentHealth = 0.0f;
     float maxHealth = 10.0f;
+
+    static void RegisterProperties()
+	{
+		REGISTER_PROPERTY(HealthComponent, currentHealth, float);
+		REGISTER_PROPERTY(HealthComponent, maxHealth, float);
+	}
 };
 
 namespace Health
