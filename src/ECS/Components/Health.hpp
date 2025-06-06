@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include <Canis/Entity.hpp>
 
 struct HealthComponent
 {
@@ -10,13 +10,13 @@ struct HealthComponent
 
 namespace Health
 {
-    void ResetHealth(Canis::Entity _target)
+    inline void ResetHealth(Canis::Entity _target)
     {
         HealthComponent& healthComponent = _target.GetComponent<HealthComponent>();
         healthComponent.currentHealth = healthComponent.maxHealth;
     }
 
-    void AddHealth(Canis::Entity _target, float _amount)
+    inline void AddHealth(Canis::Entity _target, float _amount)
     {
         HealthComponent& healthComponent = _target.GetComponent<HealthComponent>();
         healthComponent.currentHealth += _amount;
@@ -27,7 +27,7 @@ namespace Health
         }
     }
 
-    void Damage(Canis::Entity _target, float _amount) {
+    inline void Damage(Canis::Entity _target, float _amount) {
         HealthComponent& healthComponent = _target.GetComponent<HealthComponent>();
         healthComponent.currentHealth -= _amount;
 
@@ -37,10 +37,10 @@ namespace Health
         }
     }
 
-    void Annihilation(Canis::Entity _target)
+    inline void Annihilation(Canis::Entity _target)
     {
         HealthComponent& healthComponent = _target.GetComponent<HealthComponent>();
-        healthComponent.currentHealth = 0;
+        healthComponent.currentHealth = 0.0f;
 
         _target.Destroy();
     }

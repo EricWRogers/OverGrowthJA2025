@@ -1,0 +1,233 @@
+Scene: main_menu
+ClearColor: [1, 1, 1, 1]
+Systems:
+  - Canis::ButtonSystem
+  - Canis::UISliderSystem
+  - Canis::UISliderKnobSystem
+RenderSystems:
+  - Canis::RenderHUDSystem
+Entities:
+  - Entity: 16516947501218716067
+    Name: Title
+    Canis::RectTransform:
+      active: true
+      anchor: 1
+      position: [137.00113, -243.00006]
+      size: [686, 75]
+      originOffset: [-343, 0]
+      rotation: 1.0500755
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [0, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Canis Template
+      alignment: 2
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets/fonts/tuffy_bold.ttf
+        size: 100
+    Canis::ScriptComponent: TimerTimer2D
+  - Entity: 13878440446197466466
+    Name: Play 2D Button
+    Canis::RectTransform:
+      active: true
+      anchor: 3
+      position: [200, 50]
+      size: [128, 43]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [1, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Play 2D
+      alignment: 0
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+    Canis::ButtonComponent:
+      eventName: MainMenuPlay
+      baseColor: [1, 0, 0, 1]
+      hoverColor: [0.1, 0.1, 0.1, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 0
+      down: 8903137429878787944
+      left: 0
+      right: 0
+      defaultSelected: false
+  - Entity: 586293319622200709
+    Name: Play 3D Button
+    Canis::RectTransform:
+      active: true
+      anchor: 3
+      position: [200, -50]
+      size: [129, 43]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [1, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Play 3D
+      alignment: 0
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+    Canis::ButtonComponent:
+      eventName: MainMenuPlay3D
+      baseColor: [1, 0, 0, 1]
+      hoverColor: [0.1, 0.1, 0.1, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 0
+      down: 8903137429878787944
+      left: 0
+      right: 0
+      defaultSelected: false
+  - Entity: 17485790014005255960
+    Name: Settings Button
+    Canis::RectTransform:
+      active: true
+      anchor: 3
+      position: [200, -150]
+      size: [151, 44]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [0, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Settings
+      alignment: 0
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+    Canis::ButtonComponent:
+      eventName: MainMenuSettings
+      baseColor: [0, 0, 0, 1]
+      hoverColor: [0.1, 0.1, 0.1, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 13878440446197466466
+      down: 0
+      left: 0
+      right: 0
+      defaultSelected: false
+  - Entity: 8903137429878787944
+    Name: Quit Button
+    Canis::RectTransform:
+      active: true
+      anchor: 3
+      position: [200, -250]
+      size: [70, 49]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [0, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Quit
+      alignment: 0
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+    Canis::ButtonComponent:
+      eventName: MainMenuQuit
+      baseColor: [0, 0, 0, 1]
+      hoverColor: [0.1, 0.1, 0.1, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 13878440446197466466
+      down: 0
+      left: 0
+      right: 0
+      defaultSelected: false
+  - Entity: 14561119521224997717
+    Name: Build Version
+    Canis::RectTransform:
+      active: true
+      anchor: 8
+      position: [-15, 40]
+      size: [255.20007, 20.800001]
+      originOffset: [-255.20007, 0]
+      rotation: 0
+      scale: 0.4
+      depth: 0
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [1, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: "Prototype Build Version : 0.0.1"
+      alignment: 1
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 56
+  - Entity: 9674272421446172513
+    Name: Asset Version
+    Canis::RectTransform:
+      active: true
+      anchor: 8
+      position: [-15, 15]
+      size: [219.19995, 17.6]
+      originOffset: [-219.19995, 0]
+      rotation: 0
+      scale: 0.4
+      depth: 0
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [0, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: "Prototype Asset Version : 0.0.1"
+      alignment: 1
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+  - Entity: 14561119521224997718
+    Name: Button Functions
+    Canis::ScriptComponent: MainMenuButtons
+  - Entity: 17362799605001397724
+    Name: Model Test
+    Canis::Transform:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
