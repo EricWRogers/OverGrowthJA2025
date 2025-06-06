@@ -16,6 +16,7 @@
 #include "Registers/RegisterXander.hpp"
 #include "ECS/ScriptableEntities/UI/RegisterUI.hpp"
 #include "ECS/ScriptableEntities/Pong/RegisterPong.hpp"
+#include "ECS/ScriptableEntities/Player/RegisterPlayer.hpp"
 #include "ECS/ScriptableEntities/Camera/RegisterCamera.hpp"
 
 Canis::App* appPointer = new Canis::App("SuperPupStudio", "CanisTemplate");
@@ -44,6 +45,7 @@ int main(int argc, char* argv[])
     RegisterLogan((void*)&app);
     RegisterWalyn((void*)&app);
     RegisterXander((void*)&app);
+    RegisterPlayer((void*)&app);
 
     app.Run("Canis Template");
 
