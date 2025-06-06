@@ -1,0 +1,68 @@
+Scene: logan_test
+ClearColor: [1, 1, 1, 1]
+Systems:
+  - Canis::ButtonSystem
+RenderSystems:
+  - Canis::RenderHUDSystem
+  - Canis::RenderMeshSystem
+Entities:
+  - Entity: 16516947501218716067
+    Name: Title
+    Canis::RectTransform:
+      active: true
+      anchor: 1
+      position: [0, -80]
+      size: [224, 71]
+      originOffset: [-112, 0]
+      rotation: 0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [0, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Mesh
+      alignment: 2
+      TextAsset:
+        path: assets/fonts/tuffy_bold.ttf
+        size: 100
+  - Entity: 1028949299009524815
+    Name: Box
+    Canis::Transform:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
+      castShadow: false
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+  - Entity: 13816120350514588185
+    Name: FlyCam
+    Canis::ScriptComponent: FlyCam
+  - Entity: 17448164740515076868
+    Name: Light
+    Canis::TagComponent: ""
+    Canis::Transform:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::DirectionalLight:
+      direction: [1, 1, 1]
+      ambient: [0.0500000007, 0.0500000007, 0.0500000007]
+      diffuse: [0.800000012, 0.800000012, 0.800000012]
+      specular: [0.5, 0.5, 0.5]
