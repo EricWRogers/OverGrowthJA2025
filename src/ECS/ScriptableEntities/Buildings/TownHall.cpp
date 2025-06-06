@@ -16,6 +16,8 @@ void TownHall::OnReady()
 void TownHall::OnDestroy()
 {
     //Lose Game Screen
+    Canis::Log("You Lose");
+    entity.GetSceneManager().Load("lose_menu");
 }
 
 void TownHall::SpawnUnit()

@@ -1,4 +1,4 @@
-Scene: main_menu
+Scene: lose_menu
 ClearColor: [1, 1, 1, 1]
 Systems:
   - Canis::ButtonSystem
@@ -12,10 +12,10 @@ Entities:
     Canis::RectTransform:
       active: true
       anchor: 1
-      position: [137.00113, -243.00006]
-      size: [686, 75]
-      originOffset: [-343, 0]
-      rotation: 1.0500755
+      position: [-27.999817, -160]
+      size: [391, 72]
+      originOffset: [-195.5, 0]
+      rotation: -0
       scale: 1
       depth: 0
       scaleWithScreen: 0
@@ -24,7 +24,7 @@ Entities:
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
-      text: Canis Template
+      text: You Lost
       alignment: 2
       horizontalBoundary: 0
       TextAsset:
@@ -32,23 +32,23 @@ Entities:
         size: 100
     Canis::ScriptComponent: TimerTimer2D
   - Entity: 13878440446197466466
-    Name: Play 2D Button
+    Name: Retry Button
     Canis::RectTransform:
       active: true
       anchor: 3
-      position: [200, 50]
-      size: [128, 43]
+      position: [552.0012, 114.00006]
+      size: [90, 43]
       originOffset: [0, 0]
-      rotation: 0
+      rotation: -0
       scale: 1
       depth: 0
       scaleWithScreen: 0
     Canis::Color:
-      color: [1, 0, 0, 1]
+      color: [0, 0, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
-      text: Play 2D
+      text: Retry
       alignment: 0
       horizontalBoundary: 0
       TextAsset:
@@ -67,51 +67,15 @@ Entities:
       left: 0
       right: 0
       defaultSelected: false
-  - Entity: 586293319622200709
-    Name: Play 3D Button
-    Canis::RectTransform:
-      active: true
-      anchor: 3
-      position: [200, -50]
-      size: [129, 43]
-      originOffset: [0, 0]
-      rotation: 0
-      scale: 1
-      depth: 0
-      scaleWithScreen: 0
-    Canis::Color:
-      color: [1, 0, 0, 1]
-      emission: [0, 0, 0]
-      emissionUsingAlbedoIntesity: 0
-    Canis::TextComponent:
-      text: Play 3D
-      alignment: 0
-      horizontalBoundary: 0
-      TextAsset:
-        path: assets/fonts/Antonio-Bold.ttf
-        size: 48
-    Canis::ButtonComponent:
-      eventName: MainMenuPlay3D
-      baseColor: [1, 0, 0, 1]
-      hoverColor: [0.1, 0.1, 0.1, 1]
-      action: 0
-      mouseOver: false
-      scale: 1
-      hoverScale: 1
-      up: 0
-      down: 8903137429878787944
-      left: 0
-      right: 0
-      defaultSelected: false
   - Entity: 17485790014005255960
     Name: Settings Button
     Canis::RectTransform:
       active: true
       anchor: 3
-      position: [200, -150]
+      position: [532.00085, -15.9999695]
       size: [151, 44]
       originOffset: [0, 0]
-      rotation: 0
+      rotation: -0
       scale: 1
       depth: 0
       scaleWithScreen: 0
@@ -144,10 +108,10 @@ Entities:
     Canis::RectTransform:
       active: true
       anchor: 3
-      position: [200, -250]
+      position: [564.0008, -131.99997]
       size: [70, 49]
       originOffset: [0, 0]
-      rotation: 0
+      rotation: -0
       scale: 1
       depth: 0
       scaleWithScreen: 0
@@ -175,55 +139,9 @@ Entities:
       left: 0
       right: 0
       defaultSelected: false
-  - Entity: 14561119521224997717
-    Name: Build Version
-    Canis::RectTransform:
-      active: true
-      anchor: 8
-      position: [-15, 40]
-      size: [255.20007, 20.800001]
-      originOffset: [-255.20007, 0]
-      rotation: 0
-      scale: 0.4
-      depth: 0
-      scaleWithScreen: 0
-    Canis::Color:
-      color: [1, 0, 0, 1]
-      emission: [0, 0, 0]
-      emissionUsingAlbedoIntesity: 0
-    Canis::TextComponent:
-      text: "Prototype Build Version : 0.0.1"
-      alignment: 1
-      horizontalBoundary: 0
-      TextAsset:
-        path: assets/fonts/Antonio-Bold.ttf
-        size: 56
-  - Entity: 9674272421446172513
-    Name: Asset Version
-    Canis::RectTransform:
-      active: true
-      anchor: 8
-      position: [-15, 15]
-      size: [219.19995, 17.6]
-      originOffset: [-219.19995, 0]
-      rotation: 0
-      scale: 0.4
-      depth: 0
-      scaleWithScreen: 0
-    Canis::Color:
-      color: [0, 0, 0, 1]
-      emission: [0, 0, 0]
-      emissionUsingAlbedoIntesity: 0
-    Canis::TextComponent:
-      text: "Prototype Asset Version : 0.0.1"
-      alignment: 1
-      horizontalBoundary: 0
-      TextAsset:
-        path: assets/fonts/Antonio-Bold.ttf
-        size: 48
   - Entity: 14561119521224997718
     Name: Button Functions
-    Canis::ScriptComponent: MainMenuButtons
+    Canis::ScriptComponent: LoseMenuButtons
   - Entity: 17362799605001397724
     Name: Model Test
     Canis::Transform:
