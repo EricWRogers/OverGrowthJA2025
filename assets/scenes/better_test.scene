@@ -1,0 +1,50 @@
+Scene: better_test
+ClearColor: [1, 1, 1, 1]
+Systems:
+  - Canis::ButtonSystem
+RenderSystems:
+  - Canis::SpriteRenderer2DSystem
+  - Canis::RenderMeshSystem
+  - Canis::RenderTextSystem
+  - Canis::RenderHUDSystem
+Entities:
+  - Entity: 3482696862068551421
+    Name: Parent
+    Canis::RectTransform:
+      active: true
+      anchor: 6
+      position: [0, 0]
+      size: [1, 1]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+  - Entity: 6827875645551425188
+    Name: Eric
+    Canis::RectTransform:
+      active: true
+      anchor: 6
+      position: [0, 0]
+      size: [1, 1]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+  - Entity: 16564800727443182688
+    Name: Child
+    Canis::RectTransform:
+      active: true
+      anchor: 6
+      position: [0, 0]
+      size: [1, 1]
+      originOffset: [0, 0]
+      rotation: 0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+  - Entity: 13808485735177507850
+    Name: Empty
+  - Entity: 16924023063858325653
+    Name: Eric2
