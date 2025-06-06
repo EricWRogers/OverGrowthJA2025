@@ -12,10 +12,10 @@ Entities:
     Canis::RectTransform:
       active: true
       anchor: 1
-      position: [0, -200]
+      position: [137.00113, -243.00006]
       size: [686, 75]
       originOffset: [-343, 0]
-      rotation: 0
+      rotation: 1.0500755
       scale: 1
       depth: 0
       scaleWithScreen: 0
@@ -26,9 +26,11 @@ Entities:
     Canis::TextComponent:
       text: Canis Template
       alignment: 2
+      horizontalBoundary: 0
       TextAsset:
         path: assets/fonts/tuffy_bold.ttf
         size: 100
+    Canis::ScriptComponent: TimerTimer2D
   - Entity: 13878440446197466466
     Name: Play 2D Button
     Canis::RectTransform:
@@ -48,13 +50,14 @@ Entities:
     Canis::TextComponent:
       text: Play 2D
       alignment: 0
+      horizontalBoundary: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
         size: 48
     Canis::ButtonComponent:
       eventName: MainMenuPlay
       baseColor: [1, 0, 0, 1]
-      hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
+      hoverColor: [0.1, 0.1, 0.1, 1]
       action: 0
       mouseOver: false
       scale: 1
@@ -83,13 +86,14 @@ Entities:
     Canis::TextComponent:
       text: Play 3D
       alignment: 0
+      horizontalBoundary: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
         size: 48
     Canis::ButtonComponent:
       eventName: MainMenuPlay3D
       baseColor: [1, 0, 0, 1]
-      hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
+      hoverColor: [0.1, 0.1, 0.1, 1]
       action: 0
       mouseOver: false
       scale: 1
@@ -118,13 +122,14 @@ Entities:
     Canis::TextComponent:
       text: Settings
       alignment: 0
+      horizontalBoundary: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
         size: 48
     Canis::ButtonComponent:
       eventName: MainMenuSettings
       baseColor: [0, 0, 0, 1]
-      hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
+      hoverColor: [0.1, 0.1, 0.1, 1]
       action: 0
       mouseOver: false
       scale: 1
@@ -153,13 +158,14 @@ Entities:
     Canis::TextComponent:
       text: Quit
       alignment: 0
+      horizontalBoundary: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
         size: 48
     Canis::ButtonComponent:
       eventName: MainMenuQuit
       baseColor: [0, 0, 0, 1]
-      hoverColor: [0.100000001, 0.100000001, 0.100000001, 1]
+      hoverColor: [0.1, 0.1, 0.1, 1]
       action: 0
       mouseOver: false
       scale: 1
@@ -175,10 +181,10 @@ Entities:
       active: true
       anchor: 8
       position: [-15, 40]
-      size: [255.200073, 20.8000011]
-      originOffset: [-255.200073, 0]
+      size: [255.20007, 20.800001]
+      originOffset: [-255.20007, 0]
       rotation: 0
-      scale: 0.400000006
+      scale: 0.4
       depth: 0
       scaleWithScreen: 0
     Canis::Color:
@@ -188,6 +194,7 @@ Entities:
     Canis::TextComponent:
       text: "Prototype Build Version : 0.0.1"
       alignment: 1
+      horizontalBoundary: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
         size: 56
@@ -197,10 +204,10 @@ Entities:
       active: true
       anchor: 8
       position: [-15, 15]
-      size: [219.199951, 17.6000004]
-      originOffset: [-219.199951, 0]
+      size: [219.19995, 17.6]
+      originOffset: [-219.19995, 0]
       rotation: 0
-      scale: 0.400000006
+      scale: 0.4
       depth: 0
       scaleWithScreen: 0
     Canis::Color:
@@ -210,6 +217,7 @@ Entities:
     Canis::TextComponent:
       text: "Prototype Asset Version : 0.0.1"
       alignment: 1
+      horizontalBoundary: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
         size: 48
@@ -221,5 +229,5 @@ Entities:
     Canis::Transform:
       active: true
       position: [0, 0, 0]
-      rotation: [0, 0, 0, 1]
+      rotation: [0, -0, 0]
       scale: [1, 1, 1]

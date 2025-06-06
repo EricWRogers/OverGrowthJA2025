@@ -42,8 +42,6 @@ int main(int argc, char* argv[])
     emscripten_set_main_loop(Loop, 0, true);
     #endif
 
-    // might turn off asset manager or delete it manually
     delete appPointer;
-
     return 0;
 }
