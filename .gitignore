@@ -7,5 +7,7 @@ dist/
 
 emsdk/
 
+.cache/
+
 *.bin
 !assets/models/CesiumMan/CesiumMan_data.bin

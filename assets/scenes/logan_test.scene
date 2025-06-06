@@ -4,9 +4,9 @@ Systems:
   - Canis::ButtonSystem
 RenderSystems:
   - Canis::SpriteRenderer2DSystem
-  - Canis::RenderHUDSystem
   - Canis::RenderMeshSystem
   - Canis::RenderTextSystem
+  - Canis::RenderHUDSystem
 Entities:
   - Entity: 16516947501218716067
     Name: Title
@@ -113,12 +113,16 @@ Entities:
       active: true
       anchor: 7
       position: [0, 0]
-      size: [300, 100]
-      originOffset: [0, 0]
+      size: [1080, 100]
+      originOffset: [-540, 0]
       rotation: -0
       scale: 1
       depth: 1
-      scaleWithScreen: 0
+      scaleWithScreen: 3
+    Canis::Color:
+      color: [0, 0, 0, 0.3]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
     Canis::UIImageComponent:
       TextureAsset:
         path: assets\textures\container.png
@@ -128,7 +132,7 @@ Entities:
     Canis::RectTransform:
       active: true
       anchor: 7
-      position: [0, 0]
+      position: [-52, 101.999985]
       size: [168, 46]
       originOffset: [0, 0]
       rotation: -0
@@ -165,24 +169,8 @@ Entities:
     Canis::RectTransform:
       active: true
       anchor: 7
-      position: [0, 0]
+      position: [-319.00003, -4]
       size: [100, 100]
-      originOffset: [0, 0]
-      rotation: -0
-      scale: 1
-      depth: 1
-      scaleWithScreen: 0
-    Canis::UIImageComponent:
-      TextureAsset:
-        path: assets\textures\awesomeface.png
-      uv: [0, 0, 0, 1]
-  - Entity: 4293093139902813639
-    Name: HuttIcon
-    Canis::RectTransform:
-      active: true
-      anchor: 7
-      position: [0, 0]
-      size: [50, 50]
       originOffset: [0, 0]
       rotation: -0
       scale: 1
@@ -194,24 +182,48 @@ Entities:
       emissionUsingAlbedoIntesity: 0
     Canis::UIImageComponent:
       TextureAsset:
-        path: assets\textures\circle.png
-      uv: [0, 0, 0, 0]
+        path: assets\textures\container.png
+      uv: [0, 0, 0, 1]
+  - Entity: 4293093139902813639
+    Name: HuttIcon
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [-295.99982, 43.99997]
+      size: [50, 50]
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+    Canis::Color:
+      color: [2, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::UIImageComponent:
+      TextureAsset:
+        path: assets\textures\container.png
+      uv: [0, 0, 0, 1]
   - Entity: 12553651681146004894
     Name: HutCost
     Canis::RectTransform:
       active: true
       anchor: 7
-      position: [0, 0]
-      size: [20, 20]
+      position: [-316.99976, 20.000027]
+      size: [97, 13]
       originOffset: [0, 0]
       rotation: -0
       scale: 1
       depth: 1
       scaleWithScreen: 0
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
       text: "Cost: 1 Wood + 1 food"
       alignment: 0
       horizontalBoundary: 0
       TextAsset:
         path: assets\fonts\Antonio-Bold.ttf
-        size: 24
+        size: 13

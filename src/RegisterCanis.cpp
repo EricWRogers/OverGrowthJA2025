@@ -69,7 +69,7 @@ void RegisterCanis(void* _app)
     app.AddEncodeComponent(EncodeComponent<Canis::DirectionalLight>);
     app.AddEncodeComponent(EncodeComponent<Canis::SphereCollider>);
     app.AddEncodeComponent(Canis::EncodeMesh);
-    app.AddEncodeComponent(Canis::EncodeRectTransform);
+    app.AddEncodeComponent(EncodeComponent<Canis::RectTransform>);
     app.AddEncodeComponent(Canis::EncodeColor);
     app.AddEncodeComponent(Canis::EncodeTextComponent);
     app.AddEncodeComponent(EncodeComponent<Canis::ButtonComponent>);

@@ -14,11 +14,16 @@ Entities:
       anchor: 1
       position: [137.00113, -243.00006]
       size: [686, 75]
+      inheritWidth: false
+      inheritHeight: false
       originOffset: [-343, 0]
       rotation: 1.0500755
       scale: 1
       depth: 0
       scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 0
+      children: ~
     Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
@@ -38,11 +43,16 @@ Entities:
       anchor: 3
       position: [200, 50]
       size: [128, 43]
+      inheritWidth: false
+      inheritHeight: false
       originOffset: [0, 0]
       rotation: 0
       scale: 1
       depth: 0
       scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 0
+      children: [586293319622200709]
     Canis::Color:
       color: [1, 0, 0, 1]
       emission: [0, 0, 0]
@@ -74,11 +84,16 @@ Entities:
       anchor: 3
       position: [200, -50]
       size: [129, 43]
+      inheritWidth: false
+      inheritHeight: false
       originOffset: [0, 0]
       rotation: 0
       scale: 1
       depth: 0
       scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 13878440446197466466
+      children: ~
     Canis::Color:
       color: [1, 0, 0, 1]
       emission: [0, 0, 0]
@@ -110,11 +125,16 @@ Entities:
       anchor: 3
       position: [200, -150]
       size: [151, 44]
+      inheritWidth: false
+      inheritHeight: false
       originOffset: [0, 0]
       rotation: 0
       scale: 1
       depth: 0
       scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 0
+      children: ~
     Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
@@ -146,11 +166,16 @@ Entities:
       anchor: 3
       position: [200, -250]
       size: [70, 49]
+      inheritWidth: false
+      inheritHeight: false
       originOffset: [0, 0]
       rotation: 0
       scale: 1
       depth: 0
       scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 0
+      children: ~
     Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
@@ -182,11 +207,16 @@ Entities:
       anchor: 8
       position: [-15, 40]
       size: [255.20007, 20.800001]
+      inheritWidth: false
+      inheritHeight: false
       originOffset: [-255.20007, 0]
       rotation: 0
       scale: 0.4
       depth: 0
       scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 0
+      children: ~
     Canis::Color:
       color: [1, 0, 0, 1]
       emission: [0, 0, 0]
@@ -205,11 +235,16 @@ Entities:
       anchor: 8
       position: [-15, 15]
       size: [219.19995, 17.6]
+      inheritWidth: false
+      inheritHeight: false
       originOffset: [-219.19995, 0]
       rotation: 0
       scale: 0.4
       depth: 0
       scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 0
+      children: ~
     Canis::Color:
       color: [0, 0, 0, 1]
       emission: [0, 0, 0]
