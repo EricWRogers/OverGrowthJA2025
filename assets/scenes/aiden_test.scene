@@ -48,7 +48,7 @@ Entities:
       useInstance: false
       castDepth: true
     Canis::Color:
-      color: [0, 1, 1, 1]
+      color: [0, 1, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
   - Entity: 13816120350514588185
@@ -72,7 +72,30 @@ Entities:
     Canis::TagComponent: TownHall
     Canis::Transform:
       active: true
-      position: [0, 0, 0]
+      position: [-5, -2, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets\models\white_block.obj
+      materialPath: assets\materials\default.material
+      castShadow: true
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+  - Entity: 1731831886671147645
+    Name: NPC
+    Canis::TagComponent: Civilian
+    Canis::Transform:
+      active: true
+      position: [0, -2, 0]
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
     Canis::SphereCollider:
