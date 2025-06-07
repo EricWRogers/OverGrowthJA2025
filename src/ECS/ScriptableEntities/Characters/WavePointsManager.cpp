@@ -11,9 +11,9 @@ void WavePointsManager::OnCreate() {
     Transform& transform = entity.GetComponent<Transform>();
 
     // place wave points
-    for (int x = 0; x < m_width; x++)
+    for (int x = -m_width*0.5f; x < m_width*0.5f; x++)
     {
-        for (int z = 0; z < m_depth; z++)
+        for (int z = -m_depth*0.5f; z < m_depth*0.5f; z++)
         {
             Entity wavePoint = CreateEntity();
 
@@ -36,9 +36,9 @@ void WavePointsManager::OnCreate() {
     }
 
     // connect wave points
-    for (int x = 0; x < m_width; x++)
+    for (int x = -m_width*0.5f; x < m_width*0.5f; x++)
     {
-        for (int z = 0; z < m_depth; z++)
+        for (int z = -m_depth*0.5f; z < m_depth*0.5f; z++)
         {
             if (aStar.ValidPoint(vec3(x, transform.position.y + m_defaultHeight, z)))
             {
