@@ -299,3 +299,12 @@ Entities:
   - Entity: 1849080529224727768
     Name: Player Build Input
     Canis::ScriptComponent: PlayerBuildInput
+  - Entity: 5177723143793427384
+    Name: Wave Points Manager
+    Canis::TagComponent: GRIDLAYOUT
+    Canis::Transform:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::ScriptComponent: WavePointsManager
