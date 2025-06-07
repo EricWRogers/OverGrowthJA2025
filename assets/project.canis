@@ -24,5 +24,6 @@ scene assets/scenes/aiden_test.scene
 scene assets/scenes/logan_test.scene
 scene assets/scenes/kaylie_test.scene
 scene assets/scenes/lose_menu.scene
+scene assets/scenes/walyn_test.scene
 
 run_scene mesh
