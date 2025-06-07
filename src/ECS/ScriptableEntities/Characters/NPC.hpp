@@ -6,8 +6,7 @@
 class NPC : public Canis::ScriptableEntity
 {
 private:
-    Canis::Entity m_entity;
-    HealthComponent m_healthComponent;
+    bool m_isAlive = false;
 public:
     std::string characterClass = "Civilian";
 
@@ -20,4 +19,6 @@ public:
     void ChangeCharacterClass(std::string _characterClass);
 
     void GetJob();
+
+    void GoToJob();
 };

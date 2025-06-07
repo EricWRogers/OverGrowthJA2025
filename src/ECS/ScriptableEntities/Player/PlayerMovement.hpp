@@ -12,6 +12,7 @@
 #include <Canis/SceneManager.hpp>
 
 #include <Canis/ECS/Components/Mesh.hpp>
+#include <Canis/ECS/Systems/RenderMeshSystem.hpp>
 
 class PlayerMovement : public Canis::ScriptableEntity
 {
@@ -33,7 +34,14 @@ public:
     Canis::Entity shadowCamera;
     vec3 shadowCameraOffset = vec3(0.0f); 
 
-    void OnCreate() {}
+    void OnCreate() {
+        if (auto *renderer = GetSystem<Canis::RenderMeshSystem>())
+        {
+            renderer->sortBy = Canis::RenderMeshSystem::SortBy::HEIGHT;
+        }
+
+        std::vector<Canis::Entity> water = GetScene().Instantiate("assets/prefabs/water.prefab");
+    }
 
     void OnReady()
     {
