@@ -41,6 +41,7 @@ void NPC::OnUpdate(float _dt)
 void NPC::ChangeCharacterClass(std::string _characterClass)
 {
     characterClass = _characterClass;
+    entity.SetTag(characterClass);
 }
 
 void NPC::GoToArea(float _time)
@@ -74,13 +75,35 @@ void NPC::GoToArea(float _time)
 
         if (characterClass == "Worker")
         {
-            Canis::Entity farm = entity.GetEntityWithTag("FARM");
-            idTo = wavePointsManager->aStar.GetClosestPoint(farm.GetGlobalPosition());
+            std::vector<Canis::Entity> farms = entity.GetEntitiesWithTag("FARM");
+            float closestDistance = std::numeric_limits<float>::max();
+            glm::vec3 npcPos = entity.GetGlobalPosition();
+
+            for (Canis::Entity &farm : farms)
+            {
+                float dist = glm::distance(farm.GetGlobalPosition(), npcPos);
+                if (dist < closestDistance)
+                {
+                    closestDistance = dist;
+                    idTo = wavePointsManager->aStar.GetClosestPoint(farm.GetGlobalPosition());
+                }
+            }
         }
         else if (characterClass == "Civilian")
         {
-            Canis::Entity town = entity.GetEntityWithTag("TOWN");
-            idTo = wavePointsManager->aStar.GetClosestPoint(town.GetGlobalPosition());
+            std::vector<Canis::Entity> towns = entity.GetEntitiesWithTag("TOWN");
+            float closestDistance = std::numeric_limits<float>::max();
+            glm::vec3 npcPos = entity.GetGlobalPosition();
+
+            for (Canis::Entity &town : towns)
+            {
+                float dist = glm::distance(town.GetGlobalPosition(), npcPos);
+                if (dist < closestDistance)
+                {
+                    closestDistance = dist;
+                    idTo = wavePointsManager->aStar.GetClosestPoint(town.GetGlobalPosition());
+                }
+            }
         }
 
         m_path = wavePointsManager->aStar.GetPath(idFrom, idTo);

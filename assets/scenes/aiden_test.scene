@@ -213,3 +213,26 @@ Entities:
       currentHealth: 25
       maxHealth: 25
     Canis::ScriptComponent: NPC
+  - Entity: 2275089760962810837
+    Name: FarmHut Copy
+    Canis::TagComponent: FARM
+    Canis::Transform:
+      active: true
+      position: [-10, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
+      castShadow: true
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [0.1, 0, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
