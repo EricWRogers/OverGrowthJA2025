@@ -1,4 +1,4 @@
-Scene: mesh
+Scene: kaylie_test
 ClearColor: [1, 1, 1, 1]
 Systems:
   - Canis::ButtonSystem
@@ -11,12 +11,12 @@ Entities:
     Canis::RectTransform:
       active: true
       anchor: 1
-      position: [0, -66.99994]
-      size: [207, 66]
+      position: [0, -80]
+      size: [224, 71]
       inheritWidth: false
       inheritHeight: false
-      originOffset: [-103.5, 0]
-      rotation: -0
+      originOffset: [-112, 0]
+      rotation: 0
       scale: 1
       depth: 0
       scaleWithScreen: 0
@@ -33,14 +33,14 @@ Entities:
       horizontalBoundary: 0
       TextAsset:
         path: assets/fonts/tuffy_bold.ttf
-        size: 92
+        size: 100
   - Entity: 1028949299009524815
     Name: Ground
     Canis::Transform:
       active: true
-      position: [0, -1, 0]
+      position: [0, -15, 0]
       rotation: [0, -0, 0]
-      scale: [20, 1, 20]
+      scale: [25, 25, 25]
     Canis::SphereCollider:
       center: [0, 0, 0]
       radius: 1
@@ -53,9 +53,11 @@ Entities:
       useInstance: false
       castDepth: true
     Canis::Color:
-      color: [1, 1, 1, 1]
+      color: [0, 1, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
+  - Entity: 13816120350514588185
+    Name: FlyCam
   - Entity: 17448164740515076868
     Name: Light
     Canis::TagComponent: ""
@@ -69,12 +71,12 @@ Entities:
       ambient: [0.05, 0.05, 0.05]
       diffuse: [0.8, 0.8, 0.8]
       specular: [0.5, 0.5, 0.5]
-  - Entity: 17546718401247596793
-    Name: Player
-    Canis::TagComponent: PLAYER
+  - Entity: 10861719856543010780
+    Name: TownHall
+    Canis::TagComponent: TownHall
     Canis::Transform:
       active: true
-      position: [11.5, 0, 14]
+      position: [-5, -2, 0]
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
     Canis::SphereCollider:
@@ -83,37 +85,58 @@ Entities:
       layer: 0
       mask: 0
     Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
+      modelPath: assets\models\white_block.obj
+      materialPath: assets\materials\default.material
       castShadow: true
       useInstance: false
       castDepth: true
     Canis::Color:
-      color: [0, 1, 0, 1]
+      color: [1, 1, 1, 1]
       emission: [0, 0, 0]
-      emissionUsingAlbedoIntesity: 1
-    Canis::ScriptComponent: PlayerMovement
-  - Entity: 4421583731841397260
-    Name: Camera Pivot
-    Canis::TagComponent: CAMERAPIVOT
+      emissionUsingAlbedoIntesity: 0
+  - Entity: 1731831886671147645
+    Name: NPC
+    Canis::TagComponent: Civilian
     Canis::Transform:
       active: true
-      position: [11.5, 0, 14]
+      position: [0, -2, 0]
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
-  - Entity: 9556025869991436986
-    Name: Camera
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets\models\white_block.obj
+      materialPath: assets\materials\default.material
+      castShadow: true
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [0, 0, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+  - Entity: 15419802611438834526
+    Name: Sapling
     Canis::Transform:
       active: true
-      position: [-12, 15, 4]
+      position: [0, 0, 5]
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
-    Canis::ScriptComponent: PlayerCamera
-  - Entity: 5177723143793427384
-    Name: Wave Points Manager
-    Canis::Transform:
-      active: true
-      position: [0, 0, 0]
-      rotation: [0, -0, 0]
-      scale: [1, 1, 1]
-    Canis::ScriptComponent: WavePointsManager
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets\models\white_block.obj
+      materialPath: assets\materials\default.material
+      castShadow: true
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::ScriptComponent: Sapling
