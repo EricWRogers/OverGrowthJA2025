@@ -30,17 +30,39 @@ class PlayerBuildInput : public Canis::ScriptableEntity
 {
     private:
         std::vector<Coords> buildingsPlaced;
+        Transform visTransform;
+        Entity visEntity;
     public:
+        void OnCreate(){
+            Canis::Log("Create");
+            //create visual object
+            visEntity = CreateEntity();
+            visTransform = visEntity.AddComponent<Transform>();
+            visEntity.SetPosition(vec3(0,0,0));
+            visEntity.SetScale(vec3(.9f, .1f, .9f));
+            visEntity.AddComponent<SphereCollider>();
+            visEntity.AddComponent<Color>();
+            Mesh& mesh = visEntity.AddComponent<Mesh>();
+            mesh.modelHandle.id = AssetManager::LoadModel("assets/models/white_block.obj");
+            mesh.material = AssetManager::LoadMaterial("assets/materials/default.material");
+            visTransform.active = false;
+        };
+
         void OnUpdate(float _dt)
         {
             if (GetScene().timeScale == 0.0f) return;
             vec2 v = GetInputManager().mouse;
             Canis::Camera c = GetCamera();
             Canis::Ray ray = Canis::RayFromScreen(c, GetWindow(), v);
-            if (ray.direction.y == 0) return; //avoid div by zero, ray is parallel to the ground
+            if (ray.direction.y == 0) { //avoid div by zero, ray is parallel to the ground
+                visTransform.active = false;
+                return;
+            } 
             float t = -(ray.origin.y/ray.direction.y); //supposed to be doing some dot products but they're all up (0,1,0) so just use y
             vec3 point = ray.origin + t * ray.direction;
             point = vec3(point.x - fmod(point.x, 1), 0, point.z - fmod(point.z, 1));
+            visTransform.active = true;
+            visEntity.SetPosition(point);
             //Canis::Log(std::to_string(point.x)+","+std::to_string(point.y)+","+std::to_string(point.z));
             if (GetInputManager().JustLeftClicked()) {
                 Canis::Log("Trying to place building");
