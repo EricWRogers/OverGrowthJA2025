@@ -1,5 +1,5 @@
 Scene: main_menu
-ClearColor: [1, 1, 1, 1]
+ClearColor: [0.604, 0.89, 0.612, 1]
 Systems:
   - Canis::ButtonSystem
   - Canis::UISliderSystem
@@ -12,12 +12,12 @@ Entities:
     Canis::RectTransform:
       active: true
       anchor: 1
-      position: [137.00113, -243.00006]
-      size: [686, 75]
+      position: [242.97137, -162.17896]
+      size: [582, 119]
       inheritWidth: false
       inheritHeight: false
-      originOffset: [-343, 0]
-      rotation: 1.0500755
+      originOffset: [-291, 0]
+      rotation: 0.21143259
       scale: 1
       depth: 0
       scaleWithScreen: 0
@@ -25,90 +25,48 @@ Entities:
       parent: 0
       children: ~
     Canis::Color:
-      color: [0, 0, 0, 1]
+      color: [0.2, 0.6, 0.1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
-      text: Canis Template
+      text: Overgrowth
       alignment: 2
       horizontalBoundary: 0
       TextAsset:
-        path: assets/fonts/tuffy_bold.ttf
-        size: 100
-    Canis::ScriptComponent: TimerTimer2D
+        path: assets\fonts\Antonio-Bold.ttf
+        size: 134
   - Entity: 13878440446197466466
     Name: Play 2D Button
     Canis::RectTransform:
       active: true
       anchor: 3
-      position: [200, 50]
-      size: [128, 43]
+      position: [189.00006, 125.00006]
+      size: [149, 87]
       inheritWidth: false
       inheritHeight: false
       originOffset: [0, 0]
-      rotation: 0
+      rotation: -0
       scale: 1
       depth: 0
       scaleWithScreen: 0
       rotationOriginOffset: [0, 0]
       parent: 0
-      children: [586293319622200709]
-    Canis::Color:
-      color: [1, 0, 0, 1]
-      emission: [0, 0, 0]
-      emissionUsingAlbedoIntesity: 0
-    Canis::TextComponent:
-      text: Play 2D
-      alignment: 0
-      horizontalBoundary: 0
-      TextAsset:
-        path: assets/fonts/Antonio-Bold.ttf
-        size: 48
-    Canis::ButtonComponent:
-      eventName: MainMenuPlay
-      baseColor: [1, 0, 0, 1]
-      hoverColor: [0.1, 0.1, 0.1, 1]
-      action: 0
-      mouseOver: false
-      scale: 1
-      hoverScale: 1
-      up: 0
-      down: 8903137429878787944
-      left: 0
-      right: 0
-      defaultSelected: false
-  - Entity: 586293319622200709
-    Name: Play 3D Button
-    Canis::RectTransform:
-      active: true
-      anchor: 3
-      position: [200, -50]
-      size: [129, 43]
-      inheritWidth: false
-      inheritHeight: false
-      originOffset: [0, 0]
-      rotation: 0
-      scale: 1
-      depth: 0
-      scaleWithScreen: 0
-      rotationOriginOffset: [0, 0]
-      parent: 13878440446197466466
       children: ~
     Canis::Color:
-      color: [1, 0, 0, 1]
+      color: [0.1, 0.4, 0.3, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
-      text: Play 3D
+      text: Play
       alignment: 0
       horizontalBoundary: 0
       TextAsset:
-        path: assets/fonts/Antonio-Bold.ttf
-        size: 48
+        path: assets\fonts\Antonio-Bold.ttf
+        size: 100
     Canis::ButtonComponent:
-      eventName: MainMenuPlay3D
-      baseColor: [1, 0, 0, 1]
-      hoverColor: [0.1, 0.1, 0.1, 1]
+      eventName: MainMenuPlay
+      baseColor: [0.1, 0.4, 0.3, 1]
+      hoverColor: [0.1, 0.2, 0.3, 1]
       action: 0
       mouseOver: false
       scale: 1
@@ -123,12 +81,12 @@ Entities:
     Canis::RectTransform:
       active: true
       anchor: 3
-      position: [200, -150]
-      size: [151, 44]
+      position: [191.00003, 49.99991]
+      size: [188, 55]
       inheritWidth: false
       inheritHeight: false
       originOffset: [0, 0]
-      rotation: 0
+      rotation: -0
       scale: 1
       depth: 0
       scaleWithScreen: 0
@@ -136,7 +94,7 @@ Entities:
       parent: 0
       children: ~
     Canis::Color:
-      color: [0, 0, 0, 1]
+      color: [0.1, 0.4, 0.3, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
@@ -145,11 +103,11 @@ Entities:
       horizontalBoundary: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
-        size: 48
+        size: 60
     Canis::ButtonComponent:
       eventName: MainMenuSettings
-      baseColor: [0, 0, 0, 1]
-      hoverColor: [0.1, 0.1, 0.1, 1]
+      baseColor: [0.1, 0.4, 0.3, 1]
+      hoverColor: [0.1, 0.2, 0.3, 1]
       action: 0
       mouseOver: false
       scale: 1
@@ -164,12 +122,12 @@ Entities:
     Canis::RectTransform:
       active: true
       anchor: 3
-      position: [200, -250]
-      size: [70, 49]
+      position: [191.99997, -24.000061]
+      size: [87, 62]
       inheritWidth: false
       inheritHeight: false
       originOffset: [0, 0]
-      rotation: 0
+      rotation: -0
       scale: 1
       depth: 0
       scaleWithScreen: 0
@@ -177,7 +135,7 @@ Entities:
       parent: 0
       children: ~
     Canis::Color:
-      color: [0, 0, 0, 1]
+      color: [0.1, 0.4, 0.3, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     Canis::TextComponent:
@@ -186,17 +144,58 @@ Entities:
       horizontalBoundary: 0
       TextAsset:
         path: assets/fonts/Antonio-Bold.ttf
-        size: 48
+        size: 60
     Canis::ButtonComponent:
       eventName: MainMenuQuit
-      baseColor: [0, 0, 0, 1]
-      hoverColor: [0.1, 0.1, 0.1, 1]
+      baseColor: [0.1, 0.4, 0.3, 1]
+      hoverColor: [0.1, 0.2, 0.3, 1]
       action: 0
       mouseOver: false
       scale: 1
       hoverScale: 1
       up: 13878440446197466466
       down: 0
+      left: 0
+      right: 0
+      defaultSelected: false
+  - Entity: 586293319622200709
+    Name: Play 3D Button
+    Canis::RectTransform:
+      active: true
+      anchor: 3
+      position: [974.9999, -132]
+      size: [129, 43]
+      inheritWidth: false
+      inheritHeight: false
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 0
+      children: ~
+    Canis::Color:
+      color: [1, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: Play 3D
+      alignment: 0
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 48
+    Canis::ButtonComponent:
+      eventName: MainMenuPlay3D
+      baseColor: [0, 0, 0, 0]
+      hoverColor: [0.1, 0.1, 0.1, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 0
+      down: 8903137429878787944
       left: 0
       right: 0
       defaultSelected: false
