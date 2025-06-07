@@ -1,9 +1,11 @@
 #include "DummyNPC.hpp"
 #include "../../Components/NPCBoid.hpp"
+#include "../../Components/Billboard.hpp"
 
 void DummyNPC::OnReady()
 {
     entity.AddComponent<NPCBoid>();
+    entity.AddComponent<Billboard>();
 
     Canis::Entity manager = entity.GetEntityWithTag("GRIDLAYOUT");
     m_wavePointsManager = &manager.GetScript<WavePointsManager>();

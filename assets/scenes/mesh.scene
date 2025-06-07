@@ -3,6 +3,7 @@ ClearColor: [1, 1, 1, 1]
 Systems:
   - Canis::ButtonSystem
   - NPCBoidSystem
+  - BillboardSystem
 RenderSystems:
   - Canis::RenderMeshSystem
   - Canis::RenderHUDSystem
@@ -104,6 +105,7 @@ Entities:
       scale: [1, 1, 1]
   - Entity: 9556025869991436986
     Name: Camera
+    Canis::TagComponent: MAINCAMERA
     Canis::Transform:
       active: true
       position: [-12, 15, 4]
