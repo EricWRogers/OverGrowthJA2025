@@ -35,4 +35,52 @@ void Ent::MoveToAttack()
 void Ent::Roam()
 {
     Canis::Log("Nothing going on here");
+    if (m_path.empty())
+    {
+        m_index = 0;
+
+        glm::vec3 currentPos = entity.GetGlobalPosition();
+        int idFrom = wavePointsManager->aStar.GetClosestPoint(currentPos);
+
+        
+        std::vector<int> nearbyNodeIDs;
+        float roamRadius = 5.0f;
+
+        for (int i = 0; i < wavePointsManager->aStar.points.size(); i++)
+        {
+            if (i == idFrom)
+                continue;
+
+            const glm::vec3& point = wavePointsManager->aStar.points[i];
+            if (glm::distance(currentPos, point) <= roamRadius)
+            {
+                nearbyNodeIDs.push_back(i);
+            }
+        }
+
+        if (nearbyNodeIDs.empty())
+        {
+            return;
+        }
+
+        int idTo = nearbyNodeIDs[rand() % nearbyNodeIDs.size()];
+        m_path = wavePointsManager->aStar.GetPath(idFrom, idTo);
+
+        if (m_path.empty())
+        {
+            return;
+        }
+    }
+
+    if (m_index >= m_path.size())
+    {
+        return;
+    }
+
+    entity.GetComponent<NPCBoid>().target = m_path[m_index];
+
+    if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
+    {
+        m_index++;
+    }
 }

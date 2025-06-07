@@ -9,7 +9,7 @@ class Ent : public Canis::ScriptableEntity
 private:
     WavePointsManager* m_wavePointsManager;
     std::vector<glm::vec3> m_path = {};
-    std::vector<std::strings> m_tags = {};
+    std::vector<std::string> m_tags = {};
     float m_counter = 0.0f;
     float m_waitTime = 2.0f;
     int m_index = 0;
