@@ -9,6 +9,7 @@
 #include <Canis/App.hpp>
 
 #include "RegisterCanis.hpp"
+#include "Registers/RegisterEric.hpp"
 #include "Registers/RegisterAiden.hpp"
 #include "Registers/RegisterKaylie.hpp"
 #include "Registers/RegisterLogan.hpp"
@@ -40,6 +41,7 @@ int main(int argc, char* argv[])
     RegisterPong((void*)&app);
     RegisterUI((void*)&app);
     RegisterCamera((void*)&app);
+    RegisterEric((void*)&app);
     RegisterAiden((void*)&app);
     RegisterKaylie((void*)&app);
     RegisterLogan((void*)&app);
