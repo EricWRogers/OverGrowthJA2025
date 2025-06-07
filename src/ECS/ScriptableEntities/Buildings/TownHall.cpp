@@ -28,7 +28,7 @@ void TownHall::OnDestroy()
 {
     //Lose Game Screen
     Canis::Log("No Dont destroy");
-    //entity.GetSceneManager().Load("lose_menu");
+    entity.GetSceneManager().Load("lose_menu");
 }
 
 void TownHall::OnUpdate(float _dt)
