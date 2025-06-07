@@ -7,10 +7,11 @@
 class NPC : public Canis::ScriptableEntity
 {
 private:
-    bool m_isAlive = false;
-    std::vector<glm::vec3> m_path;
-    int m_currentPathIndex = 0;
-    float m_moveSpeed = 2.0f;
+    std::vector<glm::vec3> m_path = {};
+    float m_counter = 0.0f;
+    float m_waitTime = 2.0f;
+    int m_index = 0;
+    bool m_isWaiting = false;
 public:
     std::string characterClass = "Civilian";
     WavePointsManager* wavePointsManager;
@@ -25,7 +26,5 @@ public:
 
     void ChangeCharacterClass(std::string _characterClass);
 
-    void GoToJob();
-
-    void MoveNPC(float time);
+    void GoToJob(float _time);
 };

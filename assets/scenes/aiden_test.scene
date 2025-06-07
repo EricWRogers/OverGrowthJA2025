@@ -2,6 +2,7 @@ Scene: aiden_test
 ClearColor: [1, 1, 1, 1]
 Systems:
   - Canis::ButtonSystem
+  - NPCBoidSystem
 RenderSystems:
   - Canis::RenderMeshSystem
   - Canis::RenderHUDSystem
@@ -74,10 +75,10 @@ Entities:
       specular: [0.5, 0.5, 0.5]
   - Entity: 10861719856543010780
     Name: TownHall
-    Canis::TagComponent: TownHall
+    Canis::TagComponent: TOWN
     Canis::Transform:
       active: true
-      position: [10, 0, 10]
+      position: [20, 0, 10]
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
     Canis::SphereCollider:
@@ -135,3 +136,80 @@ Entities:
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
     Canis::ScriptComponent: WavePointsManager
+  - Entity: 14438888731558658339
+    Name: FarmHut
+    Canis::TagComponent: FARM
+    Canis::Transform:
+      active: true
+      position: [0, 0, 10]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
+      castShadow: true
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [0.1, 0, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+  - Entity: 2546522168379420156
+    Name: NPC Copy
+    Canis::TagComponent: Civilian
+    Canis::Transform:
+      active: true
+      position: [0, 0, 5]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
+      castShadow: true
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [0, 0, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
+    Canis::ScriptComponent: NPC
+  - Entity: 17501234222403433960
+    Name: NPC Copy Copy
+    Canis::TagComponent: Worker
+    Canis::Transform:
+      active: true
+      position: [5, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
+      castShadow: true
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [0, 0, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
+    Canis::ScriptComponent: NPC
