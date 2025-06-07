@@ -11,13 +11,18 @@
 
 #include <Canis/ECS/Components/Mesh.hpp>
 
+#include <Canis/GameHelper/AStar.hpp>
+
 class WavePointsManager : public Canis::ScriptableEntity
 {
 private:
     bool m_isVisable = true;
     int m_width = 20;
     int m_depth = 20;
+    int m_defaultHeight = 0.0f;
 public:
+    Canis::AStar aStar;
+
     void OnCreate();
 
     void OnReady() {}
