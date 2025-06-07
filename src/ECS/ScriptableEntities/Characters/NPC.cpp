@@ -34,9 +34,13 @@ void NPC::OnReady()
     wavePointsManager = &manager.GetScript<WavePointsManager>();
 }
     
-void NPC::OnDestroy()
+void NPC::OnUpdate(float _dt)
 {
-    //Unassign anything else
+    if(GetInputManager().JustPressedKey(SDLK_h))
+    {
+        Canis::Log("Chaboom");
+        GoToJob();
+    }
 }
 
 void NPC::ChangeCharacterClass(std::string _characterClass)
@@ -46,7 +50,23 @@ void NPC::ChangeCharacterClass(std::string _characterClass)
 
 void NPC::GoToJob()
 {
-    int idFrom = wavePointsManager->aStar.GetClosestPoint(glm::vec3(0.0f));
-    int idTo = wavePointsManager->aStar.GetClosestPoint(glm::vec3(10.0f,0.0f,10.0f));
-    wavePointsManager->aStar.GetPath(idFrom, idTo);
+    {
+        Canis::Log("Get To Work");
+        int idFrom = wavePointsManager->aStar.GetClosestPoint(glm::vec3(0.0f));
+        int idTo = wavePointsManager->aStar.GetClosestPoint(glm::vec3(10.0f,0.0f,10.0f));
+        auto path = wavePointsManager->aStar.GetPath(idFrom, idTo);
+        Canis::Log(std::to_string(path.size()));
+    }
+    {
+        Canis::Log("Get To Work");
+        int idFrom = wavePointsManager->aStar.GetClosestPoint(glm::vec3(10.f, 0.0f, 0.0f));
+        int idTo = wavePointsManager->aStar.GetClosestPoint(glm::vec3(10.0f,0.0f,10.0f));
+        Canis::Log(std::to_string(wavePointsManager->aStar.GetPath(idFrom, idTo).size()));
+    }
+}
+
+void NPC::MoveNPC(glm::vec3 _position)
+{
+    entity.GetComponent<Canis::Transform>().position = _position;
+
 }

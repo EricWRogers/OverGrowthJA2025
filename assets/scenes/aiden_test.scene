@@ -38,7 +38,7 @@ Entities:
     Name: Ground
     Canis::Transform:
       active: true
-      position: [0, -15, 0]
+      position: [10, -13, 10]
       rotation: [0, -0, 0]
       scale: [25, 25, 25]
     Canis::SphereCollider:
@@ -58,6 +58,7 @@ Entities:
       emissionUsingAlbedoIntesity: 0
   - Entity: 13816120350514588185
     Name: FlyCam
+    Canis::ScriptComponent: FlyCam
   - Entity: 17448164740515076868
     Name: Light
     Canis::TagComponent: ""
@@ -76,7 +77,7 @@ Entities:
     Canis::TagComponent: TownHall
     Canis::Transform:
       active: true
-      position: [-5, -2, 0]
+      position: [10, 0, 10]
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
     Canis::SphereCollider:
@@ -97,12 +98,13 @@ Entities:
     HealthComponent:
       currentHealth: 25
       maxHealth: 25
+    Canis::ScriptComponent: TownHall
   - Entity: 1731831886671147645
     Name: NPC
     Canis::TagComponent: Civilian
     Canis::Transform:
       active: true
-      position: [0, -2, 0]
+      position: [0, 0, 0]
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
     Canis::SphereCollider:
@@ -120,6 +122,10 @@ Entities:
       color: [0, 0, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
+    Canis::ScriptComponent: NPC
   - Entity: 552167187724598812
     Name: WavePointManager
     Canis::TagComponent: GRIDLAYOUT

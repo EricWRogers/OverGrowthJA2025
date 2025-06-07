@@ -22,19 +22,13 @@ void TownHall::OnReady()
     SpawnUnit();
 }
 
-void TownHall::OnDestroy()
-{
-    //Lose Game Screen
-    Canis::Log("No Dont destroy");
-    entity.GetSceneManager().Load("lose_menu");
-}
-
 void TownHall::OnUpdate(float _dt)
 {
     HealthComponent &health = entity.GetComponent<HealthComponent>();
     if(health.currentHealth == 0 && m_isAlive == true)
     {
         Canis::Log("You Lose");
+        entity.GetSceneManager().Load("lose_menu");
         entity.Destroy();
     }
 

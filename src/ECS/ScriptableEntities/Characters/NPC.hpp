@@ -16,9 +16,13 @@ public:
     
     void OnReady();
     
-    void OnDestroy();
+    void OnDestroy() {}
+
+    void OnUpdate(float _dt);
 
     void ChangeCharacterClass(std::string _characterClass);
 
     void GoToJob();
+
+    void MoveNPC(glm::vec3 _position);
 };
