@@ -25,4 +25,4 @@ scene assets/scenes/logan_test.scene
 scene assets/scenes/kaylie_test.scene
 scene assets/scenes/lose_menu.scene
 
-run_scene main_menu
+run_scene mesh
