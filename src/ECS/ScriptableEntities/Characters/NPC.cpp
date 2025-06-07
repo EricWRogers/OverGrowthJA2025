@@ -35,7 +35,7 @@ void NPC::OnReady()
 
 void NPC::OnUpdate(float _dt)
 {
-    GoToJob(_dt);
+    GoToArea(_dt);
 }
 
 void NPC::ChangeCharacterClass(std::string _characterClass)
@@ -43,7 +43,7 @@ void NPC::ChangeCharacterClass(std::string _characterClass)
     characterClass = _characterClass;
 }
 
-void NPC::GoToJob(float _time)
+void NPC::GoToArea(float _time)
 {
     if (m_isWaiting)
     {
@@ -84,30 +84,30 @@ void NPC::GoToJob(float _time)
         }
 
         m_path = wavePointsManager->aStar.GetPath(idFrom, idTo);
+
+        if (m_path.empty())
+        {
+            return;
+        }
+    }
+
+    if (m_index >= m_path.size())
+    {
+        m_path.clear();
+        m_isWaiting = true;
+        return;
     }
 
     entity.GetComponent<NPCBoid>().target = m_path[m_index];
 
     if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
     {
-        // may not work
-        if (characterClass == "Civilian")
-        {
-            ChangeCharacterClass("Worker");
-        }
-        else
-        {
-            ChangeCharacterClass("Civilian");
-        }
-
         m_index++;
     }
 
     if (m_path.size() <= m_index)
     {
         m_path.clear();
+        m_isWaiting = true;
     }
-
-    // If the entity has reached the farm or town stop
-    // for a bit with counter then start moving again
 }

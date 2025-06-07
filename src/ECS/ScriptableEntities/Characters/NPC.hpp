@@ -26,5 +26,5 @@ public:
 
     void ChangeCharacterClass(std::string _characterClass);
 
-    void GoToJob(float _time);
+    void GoToArea(float _time);
 };
