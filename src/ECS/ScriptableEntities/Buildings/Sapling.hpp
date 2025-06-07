@@ -6,7 +6,9 @@ class Sapling : public Canis::ScriptableEntity
 {
 public:
     float counter = 0.0f;
-    float startTime = 10.0f;
+    float startTime = 2.0f;
+    float maxSize = 2.0f;
+    bool stop = false;
 
     void OnCreate();
     void OnReady() {}
