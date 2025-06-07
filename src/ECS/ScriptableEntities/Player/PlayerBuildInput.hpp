@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 #include <Canis/Math.hpp>
 #include <Canis/ScriptableEntity.hpp>
@@ -10,11 +11,25 @@
 #include <Canis/ECS/Components/SphereCollider.hpp>
 
 #include <Canis/Camera.hpp>
+#include <Canis/DataStructure/List.hpp>
 
 using namespace Canis;
 
+class Coords {
+    public:
+        int x;
+        int y;
+
+        Coords(int _x, int _y) {
+            x = _x;
+            y = _y;
+        };
+};
+
 class PlayerBuildInput : public Canis::ScriptableEntity
 {
+    private:
+        std::vector<Coords> buildingsPlaced;
     public:
         void OnUpdate(float _dt)
         {
@@ -29,6 +44,12 @@ class PlayerBuildInput : public Canis::ScriptableEntity
             //Canis::Log(std::to_string(point.x)+","+std::to_string(point.y)+","+std::to_string(point.z));
             if (GetInputManager().JustLeftClicked()) {
                 Canis::Log("Trying to place building");
+                for (int i = 0; i < buildingsPlaced.size(); i++) {
+                    if (buildingsPlaced[i].x == (int)point.x && buildingsPlaced[i].y == (int)point.z) {
+                        Canis::Log("Building detected");
+                        return;
+                    }
+                }
                 Entity newBuild = CreateEntity();
                 newBuild.AddComponent<Transform>();
                 newBuild.SetPosition(point);
@@ -39,6 +60,7 @@ class PlayerBuildInput : public Canis::ScriptableEntity
                 mesh.modelHandle.id = AssetManager::LoadModel("assets/models/white_block.obj");
                 mesh.material = AssetManager::LoadMaterial("assets/materials/default.material");
                 Canis::Log(std::to_string(newBuild.GetGlobalPosition().x));
+                buildingsPlaced.push_back(Coords((int)point.x,(int)point.z));
             }
         };
 };
