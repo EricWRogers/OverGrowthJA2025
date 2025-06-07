@@ -35,52 +35,59 @@ void Ent::MoveToAttack()
 void Ent::Roam()
 {
     Canis::Log("Nothing going on here");
-    // if (m_path.empty())
-    // {
-    //     m_index = 0;
+    if (m_path.empty())
+    {
+        m_index = 0;
 
-    //     glm::vec3 currentPos = entity.GetGlobalPosition();
-    //     int idFrom = m_wavePointsManager->aStar.GetClosestPoint(currentPos);
+        glm::vec3 currentPos = entity.GetGlobalPosition();
+        int idFrom = m_wavePointsManager->aStar.GetClosestPoint(currentPos);
 
-        
-    //     std::vector<int> nearbyNodeIDs;
-    //     float roamRadius = 5.0f;
+        std::vector<int> nearbyNodeIDs;
+        float roamRadius = 5.0f;
 
-    //     for (int i = 0; i < m_wavePointsManager->aStar.points.size(); i++)
-    //     {
-    //         if (i == idFrom)
-    //             continue;
+        // Try random directions around the entity
+        for (int i = 0; i < 20; ++i) // 20 random samples
+        {
+            float angle = glm::radians((float)(rand() % 360));
+            glm::vec3 offset = glm::vec3(cos(angle), 0.0f, sin(angle)) * roamRadius * ((rand() % 100) / 100.0f);
+            glm::vec3 samplePos = currentPos + offset;
 
-    //         const glm::vec3& point = m_wavePointsManager->aStar.points[i];
-    //         if (glm::distance(currentPos, point) <= roamRadius)
-    //         {
-    //             nearbyNodeIDs.push_back(i);
-    //         }
-    //     }
+            if (!m_wavePointsManager->aStar.ValidPoint(samplePos))
+            {
+                continue;
+            }
 
-    //     if (nearbyNodeIDs.empty())
-    //     {
-    //         return;
-    //     }
+            int id = m_wavePointsManager->aStar.GetClosestPoint(samplePos);
 
-    //     int idTo = nearbyNodeIDs[rand() % nearbyNodeIDs.size()];
-    //     m_path = m_wavePointsManager->aStar.GetPath(idFrom, idTo);
+            if (id != idFrom)
+            {
+                nearbyNodeIDs.push_back(id);
+            }
+        }
 
-    //     if (m_path.empty())
-    //     {
-    //         return;
-    //     }
-    // }
+        if (nearbyNodeIDs.empty())
+        {
+            return;
+        }
 
-    // if (m_index >= m_path.size())
-    // {
-    //     return;
-    // }
+        int idTo = nearbyNodeIDs[rand() % nearbyNodeIDs.size()];
+        m_path = m_wavePointsManager->aStar.GetPath(idFrom, idTo);
 
-    // entity.GetComponent<NPCBoid>().target = m_path[m_index];
+        if (m_path.empty())
+        {
+            return;
+        }
+    }
 
-    // if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
-    // {
-    //     m_index++;
-    // }
+    if (m_index >= m_path.size())
+    {
+        return;
+    }
+
+    entity.GetComponent<NPCBoid>().target = m_path[m_index];
+
+    if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
+    {
+        m_index++;
+    }
 }

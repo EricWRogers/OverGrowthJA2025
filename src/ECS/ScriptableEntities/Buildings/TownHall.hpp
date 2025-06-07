@@ -14,7 +14,7 @@ public:
     
     void OnReady();
 
-    void OnDestroy() {}
+    void OnDestroy();
 
     void OnUpdate(float _dt);
 
