@@ -40,7 +40,7 @@ Entities:
       active: true
       position: [0, -1, 0]
       rotation: [0, -0, 0]
-      scale: [100, 1, 100]
+      scale: [20, 1, 20]
     Canis::SphereCollider:
       center: [0, 0, 0]
       radius: 1
