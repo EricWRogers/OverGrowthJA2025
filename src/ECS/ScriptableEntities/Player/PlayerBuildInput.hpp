@@ -60,7 +60,8 @@ class PlayerBuildInput : public Canis::ScriptableEntity
             } 
             float t = -(ray.origin.y/ray.direction.y); //supposed to be doing some dot products but they're all up (0,1,0) so just use y
             vec3 point = ray.origin + t * ray.direction;
-            point = vec3(point.x - fmod(point.x, 1), 0, point.z - fmod(point.z, 1));
+            point += vec3(std::signbit(point.x) ? -.5f : .5f, 0, std::signbit(point.z) ? -.5f : .5f); //offset point, needs to be reversed for negative points
+            point = vec3(point.x - fmod(point.x, 1), 0, point.z - fmod(point.z, 1)); //remove decimal
             visTransform.active = true;
             visEntity.SetPosition(point);
             //Canis::Log(std::to_string(point.x)+","+std::to_string(point.y)+","+std::to_string(point.z));
@@ -74,14 +75,14 @@ class PlayerBuildInput : public Canis::ScriptableEntity
                 }
                 Entity newBuild = CreateEntity();
                 newBuild.AddComponent<Transform>();
-                newBuild.SetPosition(point);
+                newBuild.SetPosition(point + vec3(0,.5f,0));
                 newBuild.SetScale(vec3(.9f, 1.0f, .9f));
                 newBuild.AddComponent<SphereCollider>();
                 newBuild.AddComponent<Color>();
                 Mesh& mesh = newBuild.AddComponent<Mesh>();
                 mesh.modelHandle.id = AssetManager::LoadModel("assets/models/white_block.obj");
                 mesh.material = AssetManager::LoadMaterial("assets/materials/default.material");
-                Canis::Log(std::to_string(newBuild.GetGlobalPosition().x));
+                Canis::Log(std::to_string(newBuild.GetGlobalPosition().x)+","+std::to_string(newBuild.GetGlobalPosition().z));
                 buildingsPlaced.push_back(Coords((int)point.x,(int)point.z));
             }
         };
