@@ -86,8 +86,8 @@ Entities:
       layer: 0
       mask: 0
     Canis::Mesh:
-      modelPath: assets\models\white_block.obj
-      materialPath: assets\materials\default.material
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
       castShadow: true
       useInstance: false
       castDepth: true
@@ -113,8 +113,8 @@ Entities:
       layer: 0
       mask: 0
     Canis::Mesh:
-      modelPath: assets\models\white_block.obj
-      materialPath: assets\materials\default.material
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
       castShadow: true
       useInstance: false
       castDepth: true
