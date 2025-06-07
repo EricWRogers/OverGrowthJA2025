@@ -13,7 +13,7 @@ void RegisterAiden(void* _app)
 
     //REGISTER_SCRIPTABLE_COMPONENT(app, Ball);
     REGISTER_SCRIPTABLE_COMPONENT(app, TownHall);
-    //REGISTER_SCRIPTABLE_COMPONENT(app, NPC);
+    REGISTER_SCRIPTABLE_COMPONENT(app, NPC);
     REGISTER_COMPONENT(app, HealthComponent);
     app.AddEncodeComponent(EncodeComponent<HealthComponent>);
     REGISTER_COMPONENT_EDITOR(HealthComponent);

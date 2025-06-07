@@ -58,7 +58,6 @@ Entities:
       emissionUsingAlbedoIntesity: 0
   - Entity: 13816120350514588185
     Name: FlyCam
-    Canis::ScriptComponent: FlyCam
   - Entity: 17448164740515076868
     Name: Light
     Canis::TagComponent: ""
@@ -95,7 +94,9 @@ Entities:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
-    Canis::ScriptComponent: TownHall
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
   - Entity: 1731831886671147645
     Name: NPC
     Canis::TagComponent: Civilian
@@ -119,3 +120,12 @@ Entities:
       color: [0, 0, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
+  - Entity: 552167187724598812
+    Name: WavePointManager
+    Canis::TagComponent: GRIDLAYOUT
+    Canis::Transform:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::ScriptComponent: WavePointsManager
