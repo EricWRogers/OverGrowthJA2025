@@ -14,8 +14,6 @@ void TownHall::OnCreate()
     Health::ResetHealth(entity);
 
     m_isAlive = true;
-
-    Canis::Log("The Current Health is " + std::to_string(health.currentHealth));
 }
 
 void TownHall::OnReady()
