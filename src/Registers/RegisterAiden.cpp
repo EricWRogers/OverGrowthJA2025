@@ -6,6 +6,8 @@
 #include "../ECS/Components/Health.hpp"
 #include "../ECS/ScriptableEntities/Buildings/TownHall.hpp"
 #include "../ECS/ScriptableEntities/Characters/NPC.hpp"
+#include "../ECS/ScriptableEntities/Characters/Ent.hpp"
+#include "../ECS/ScriptableEntities/Characters/Enemy.hpp"
 
 void RegisterAiden(void* _app)
 {
@@ -14,6 +16,8 @@ void RegisterAiden(void* _app)
     //REGISTER_SCRIPTABLE_COMPONENT(app, Ball);
     REGISTER_SCRIPTABLE_COMPONENT(app, TownHall);
     REGISTER_SCRIPTABLE_COMPONENT(app, NPC);
+    REGISTER_SCRIPTABLE_COMPONENT(app, Ent);
+    REGISTER_SCRIPTABLE_COMPONENT(app, Enemy);
     REGISTER_COMPONENT(app, HealthComponent);
     app.AddEncodeComponent(EncodeComponent<HealthComponent>);
     REGISTER_COMPONENT_EDITOR(HealthComponent);
