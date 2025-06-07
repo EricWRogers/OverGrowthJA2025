@@ -4,8 +4,6 @@ Systems:
   - Canis::ButtonSystem
 RenderSystems:
   - Canis::RenderMeshSystem
-  - Canis::SpriteRenderer2DSystem
-  - Canis::RenderTextSystem
   - Canis::RenderHUDSystem
 Entities:
   - Entity: 16516947501218716067
@@ -73,7 +71,6 @@ Entities:
       defaultSelected: false
   - Entity: 13816120350514588185
     Name: FlyCam
-    Canis::ScriptComponent: FlyCam
   - Entity: 17448164740515076868
     Name: Light
     Canis::TagComponent: ""
@@ -149,6 +146,7 @@ Entities:
       uv: [0, 0, 0, 0]
   - Entity: 12888454411201497566
     Name: Hut
+    Canis::ScriptComponent: BuildMenu
     Canis::RectTransform:
       active: true
       anchor: 4
@@ -181,20 +179,19 @@ Entities:
       left: 0
       right: 0
       defaultSelected: false
-    Canis::ScriptComponent: BuildMenu
   - Entity: 17844123306982186289
     Name: HutButtonBackground
     Canis::RectTransform:
       active: true
       anchor: 4
-      position: [-48, -56]
+      position: [-47, -56]
       size: [100, 100]
       inheritWidth: true
       inheritHeight: true
       originOffset: [0, 0]
       rotation: -0
       scale: 1
-      depth: 1
+      depth: -2
       scaleWithScreen: 0
       rotationOriginOffset: [0, 0]
       parent: 12888454411201497566
@@ -207,19 +204,20 @@ Entities:
       TextureAsset:
         path: assets\textures\container.png
       uv: [0, 0, 0, 1]
+    Canis::ScriptComponent: BuildMenu
   - Entity: 4293093139902813639
     Name: HuttIcon
     Canis::RectTransform:
       active: true
       anchor: 4
-      position: [-33, -18]
+      position: [-22.00003, -18]
       size: [50, 50]
       inheritWidth: false
       inheritHeight: false
       originOffset: [0, 0]
       rotation: -0
       scale: 1
-      depth: 0
+      depth: -2.5
       scaleWithScreen: 0
       rotationOriginOffset: [0, 0]
       parent: 12888454411201497566
@@ -228,10 +226,6 @@ Entities:
       color: [2, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
-    Canis::UIImageComponent:
-      TextureAsset:
-        path: assets\textures\container.png
-      uv: [0, 0, 0, 1]
   - Entity: 12553651681146004894
     Name: HutCost
     Canis::RectTransform:
@@ -244,7 +238,7 @@ Entities:
       originOffset: [-48.5, 0]
       rotation: -0
       scale: 1
-      depth: 1
+      depth: -2.6
       scaleWithScreen: 0
       rotationOriginOffset: [0, 0]
       parent: 12888454411201497566
