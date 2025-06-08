@@ -40,7 +40,7 @@ public:
             renderer->sortBy = Canis::RenderMeshSystem::SortBy::HEIGHT;
         }
 
-        std::vector<Canis::Entity> water = GetScene().Instantiate("assets/prefabs/water.prefab");
+        //std::vector<Canis::Entity> water = GetScene().Instantiate("assets/prefabs/water.prefab");
     }
 
     void OnReady()

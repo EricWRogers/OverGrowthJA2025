@@ -41,9 +41,3 @@ Animation:
     offset: [0, 0]
     index: [6, 0]
     size: [128, 128]
-  - 7:
-    timeOnFrame: 0.25
-    textureAssetId: "assets/textures/civilian/civilian_build.png"
-    offset: [0, 0]
-    index: [7, 0]
-    size: [128, 128]
