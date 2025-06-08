@@ -69,6 +69,7 @@ void Enemy::GoTo()
     if (m_path.size() == 0)
     {
         m_index = 0;
+        bool foundTarget = false;
 
         int idFrom = m_wavePointsManager->aStar.GetClosestPoint(entity.GetGlobalPosition());
         int idTo = 0;
@@ -95,6 +96,7 @@ void Enemy::GoTo()
                 {
                     closestDistance = dist;
                     idTo = m_wavePointsManager->aStar.GetClosestPoint(ent.GetGlobalPosition());
+                    foundTarget = true;
                 }
             }
         }
@@ -111,22 +113,20 @@ void Enemy::GoTo()
                 {
                     closestDistance = dist;
                     idTo = m_wavePointsManager->aStar.GetClosestPoint(town.GetGlobalPosition());
+                    foundTarget = true;
                 }
             }
         }
 
-        m_path = m_wavePointsManager->aStar.GetPath(idFrom, idTo);
-
+        if (foundTarget)
+        {
+            m_path = m_wavePointsManager->aStar.GetPath(idFrom, idTo);
+        }
+        
         if (m_path.empty())
         {
             return;
         }
-    }
-
-    if (m_index >= m_path.size())
-    {
-        m_path.clear();
-        return;
     }
 
     entity.GetComponent<NPCBoid>().target = m_path[m_index];
@@ -134,6 +134,12 @@ void Enemy::GoTo()
     if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
     {
         m_index++;
+    }
+
+    if (m_index >= m_path.size())
+    {
+        m_path.clear();
+        return;
     }
 }
 
