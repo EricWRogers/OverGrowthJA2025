@@ -9,7 +9,7 @@ void DummyNPC::OnReady()
     entity.AddComponent<NPCBoid>();
     entity.AddComponent<Billboard>();
     entity.AddComponent<Canis::Sprite2DComponent>();
-    entity.AddComponent<Canis::Sprite2DComponent>();
+    entity.AddComponent<Canis::SpriteAnimationComponent>();
 
     Canis::Entity manager = entity.GetEntityWithTag("GRIDLAYOUT");
     m_wavePointsManager = &manager.GetScript<WavePointsManager>();
