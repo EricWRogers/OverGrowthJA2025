@@ -24,7 +24,24 @@ class PlayerBuildInput : public Canis::ScriptableEntity
         Transform visTransform;
         Entity visEntity;
         WavePointsManager wpm;
+        std::string buildingPrefabs[6] = { 
+            "assets/prefabs/dummy_building.prefab",
+            "assets/prefabs/dummy_building.prefab",
+            "assets/prefabs/dummy_building.prefab",
+            "assets/prefabs/dummy_building.prefab",
+            "assets/prefabs/dummy_building.prefab",
+            "assets/prefabs/dummy_building.prefab"
+        };
     public:
+        enum BuildingType {
+            Barracks,
+            Farm,
+            Hut,
+            Sapling,
+            TownHall,
+            WoodHut
+        };
+        enum BuildingType currentType = WoodHut;
         void OnCreate(){
             wpm = entity.GetEntityWithTag("GRIDLAYOUT").GetScript<WavePointsManager>();
             Canis::Log("Create");
@@ -58,21 +75,14 @@ class PlayerBuildInput : public Canis::ScriptableEntity
             visTransform.active = true;
             visEntity.SetPosition(point);
             if (GetInputManager().JustLeftClicked()) {
-                Canis::Log("Trying to place building");    
+                Canis::Log("Trying to place building "+std::to_string(currentType));    
                 unsigned int wpmPoint = wpm.aStar.GetPointByPosition(point);
                 if (wpmPoint == 0) {
                     Canis::Log("Not able to place at "+std::to_string(point.x)+","+std::to_string(point.z));
                     return;
-                } 
-                Entity newBuild = CreateEntity();
-                newBuild.AddComponent<Transform>();
-                newBuild.SetPosition(point + vec3(0,.5f,0));
-                newBuild.SetScale(vec3(.9f, 1.0f, .9f));
-                newBuild.AddComponent<SphereCollider>();
-                newBuild.AddComponent<Color>();
-                Mesh& mesh = newBuild.AddComponent<Mesh>();
-                mesh.modelHandle.id = AssetManager::LoadModel("assets/models/white_block.obj");
-                mesh.material = AssetManager::LoadMaterial("assets/materials/default.material");
+                }
+                std::vector<Canis::Entity> prefabs = GetScene().Instantiate(buildingPrefabs[currentType]);
+                prefabs[0].SetPosition(point + vec3(0,.5f,0));
                 wpm.aStar.RemovePoint(wpm.aStar.GetClosestPoint(point));
             }
         };

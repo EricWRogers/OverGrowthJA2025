@@ -10,7 +10,7 @@ public:
 Farm() {
         max_health = 100;
         current_health = 0;
-        create_resource_interval = 60;
+        job_creation_interval = 60;
         
     }
 

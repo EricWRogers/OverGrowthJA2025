@@ -10,7 +10,7 @@ public:
 Barracks() {
         max_health = 80;
         current_health = 0;
-        create_resource_interval = 45;
+        job_creation_interval = 45;
         
     }
 void AllocateResource();
