@@ -301,6 +301,10 @@ Entities:
     Name: Player Build Input
     Canis::TagComponent: "PLAYERBUILDINPUT"
     Canis::ScriptComponent: PlayerBuildInput
+  - Entity: 1849080529224727761
+    Name: Resources
+    Canis::TagComponent: "RESOURCES"
+    Canis::ScriptComponent: Resources
   - Entity: 5177723143793427384
     Name: Wave Points Manager
     Canis::TagComponent: GRIDLAYOUT

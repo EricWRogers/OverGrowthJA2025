@@ -15,6 +15,7 @@
 #include <Canis/GameHelper/AStar.hpp>
 #include "../Characters/WavePointsManager.hpp"
 #include <Canis/Entity.hpp>
+#include "./Resources.hpp"
 
 using namespace Canis;
 
@@ -24,6 +25,7 @@ class PlayerBuildInput : public Canis::ScriptableEntity
         Transform visTransform;
         Entity visEntity;
         WavePointsManager wpm;
+        Resources resources;
         std::string buildingPrefabs[6] = { 
             "assets/prefabs/dummy_building.prefab",
             "assets/prefabs/dummy_building.prefab",
@@ -32,6 +34,8 @@ class PlayerBuildInput : public Canis::ScriptableEntity
             "assets/prefabs/dummy_building.prefab",
             "assets/prefabs/dummy_building.prefab"
         };
+        unsigned int foodCost[6] = {1,0,0,1,0,0};
+        unsigned int woodCost[6] = {1,1,1,0,0,1};
     public:
         enum BuildingType {
             Barracks,
@@ -44,6 +48,7 @@ class PlayerBuildInput : public Canis::ScriptableEntity
         enum BuildingType currentType = WoodHut;
         void OnCreate(){
             wpm = entity.GetEntityWithTag("GRIDLAYOUT").GetScript<WavePointsManager>();
+            resources = entity.GetEntityWithTag("RESOURCES").GetScript<Resources>();
             Canis::Log("Create");
             //create visual object
             visEntity = CreateEntity();
@@ -81,6 +86,11 @@ class PlayerBuildInput : public Canis::ScriptableEntity
                     Canis::Log("Not able to place at "+std::to_string(point.x)+","+std::to_string(point.z));
                     return;
                 }
+                if (!resources.CheckCost(foodCost[currentType], woodCost[currentType],0)) {
+                    Canis::Log("Cannot afford building");
+                    return;
+                }
+                resources.Spend(foodCost[currentType], woodCost[currentType],0);
                 std::vector<Canis::Entity> prefabs = GetScene().Instantiate(buildingPrefabs[currentType]);
                 prefabs[0].SetPosition(point + vec3(0,.5f,0));
                 wpm.aStar.RemovePoint(wpm.aStar.GetClosestPoint(point));
