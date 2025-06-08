@@ -43,7 +43,7 @@ Entities:
     Canis::Transform:
       active: true
       position: [100, -1, -100]
-      rotation: [-69.66876, -0, 0]
+      rotation: [-167.00775, -0, 0]
       scale: [320, 200, 0]
     Canis::SphereCollider:
       center: [0, 0, 0]
@@ -202,7 +202,7 @@ Entities:
     Canis::TagComponent: ENT
     Canis::Transform:
       active: true
-      position: [0, -1, 0]
+      position: [0, 0, 0]
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
     Canis::SphereCollider:
@@ -250,5 +250,182 @@ Entities:
     Canis::ScriptComponent: TownHall
   - Entity: 1849080529224727768
     Name: Player Build Input
-    Canis::TagComponent: "PLAYERBUILDINPUT"
+    Canis::TagComponent: PLAYERBUILDINPUT
     Canis::ScriptComponent: PlayerBuildInput
+  - Entity: 1849080529224727761
+    Name: Resources
+    Canis::TagComponent: RESOURCES
+    Canis::ScriptComponent: Resources
+  - Entity: 12862883774095951707
+    Name: BuildMenu
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [1080, 100]
+      inheritWidth: false
+      inheritHeight: false
+      originOffset: [-540, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 0
+      children: [7955483382949068951]
+    Canis::ScriptComponent: BuildMenu
+  - Entity: 7955483382949068951
+    Name: Canvas
+    Canis::TagComponent: ""
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [1080, 100]
+      inheritWidth: true
+      inheritHeight: true
+      originOffset: [-1080, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 12862883774095951707
+      children: [9464192654072085816, 12888454411201497566]
+  - Entity: 9464192654072085816
+    Name: Panel
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [1080, 100]
+      inheritWidth: true
+      inheritHeight: true
+      originOffset: [-1620, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 3
+      rotationOriginOffset: [0, 0]
+      parent: 7955483382949068951
+      children: ~
+    Canis::Color:
+      color: [0, 0, 0, 0.3]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::UIImageComponent:
+      TextureAsset:
+        path: assets/textures/container.png
+      uv: [0, 0, 0, 0]
+  - Entity: 12888454411201497566
+    Name: Hut
+    Canis::RectTransform:
+      active: true
+      anchor: 4
+      position: [-1426.9998, -29.999939]
+      size: [100, 100]
+      inheritWidth: false
+      inheritHeight: false
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 7955483382949068951
+      children: [17844123306982186289, 4293093139902813639, 12553651681146004894]
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::ButtonComponent:
+      eventName: BuildHut
+      baseColor: [0.9, 0.9, 0.9, 1]
+      hoverColor: [1, 1, 1, 1]
+      action: 0
+      mouseOver: false
+      scale: 1
+      hoverScale: 1
+      up: 0
+      down: 0
+      left: 0
+      right: 0
+      defaultSelected: false
+  - Entity: 17844123306982186289
+    Name: HutButtonBackground
+    Canis::RectTransform:
+      active: true
+      anchor: 4
+      position: [-48, -56]
+      size: [100, 100]
+      inheritWidth: true
+      inheritHeight: true
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 12888454411201497566
+      children: ~
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::UIImageComponent:
+      TextureAsset:
+        path: assets/textures/container.png
+      uv: [0, 0, 0, 1]
+  - Entity: 4293093139902813639
+    Name: HuttIcon
+    Canis::RectTransform:
+      active: true
+      anchor: 4
+      position: [-33, -18]
+      size: [50, 50]
+      inheritWidth: false
+      inheritHeight: false
+      originOffset: [0, 0]
+      rotation: -0
+      scale: 1
+      depth: 0
+      scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 12888454411201497566
+      children: ~
+    Canis::Color:
+      color: [2, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::UIImageComponent:
+      TextureAsset:
+        path: assets/textures/container.png
+      uv: [0, 0, 0, 1]
+  - Entity: 12553651681146004894
+    Name: HutCost
+    Canis::RectTransform:
+      active: true
+      anchor: 7
+      position: [0, 0]
+      size: [97, 13]
+      inheritWidth: false
+      inheritHeight: false
+      originOffset: [-48.5, 0]
+      rotation: -0
+      scale: 1
+      depth: 1
+      scaleWithScreen: 0
+      rotationOriginOffset: [0, 0]
+      parent: 12888454411201497566
+      children: ~
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::TextComponent:
+      text: "Cost: 1 Wood + 1 food"
+      alignment: 2
+      horizontalBoundary: 0
+      TextAsset:
+        path: assets/fonts/Antonio-Bold.ttf
+        size: 13

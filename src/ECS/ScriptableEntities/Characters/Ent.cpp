@@ -46,7 +46,7 @@ void Ent::OnReady()
     sc.textureHandle = Canis::AssetManager::GetTextureHandle("assets/textures/civilian/civilian_build.png");
     
     Canis::SpriteAnimationComponent& sac = entity.AddComponent<Canis::SpriteAnimationComponent>();
-    sac.Play("assets/animations/civilian_build.anim");
+    sac.Play("assets/animations/ent_walk_front.anim");
     sac.flipX = false; 
 
     /*HealthComponent &health = entity.GetComponent<HealthComponent>();
@@ -76,14 +76,14 @@ void Ent::OnReady()
 
 void Ent::OnUpdate(float _dt)
 {
-    Canis::Sprite2DComponent& sc = entity.GetComponent<Canis::Sprite2DComponent>();
+    /*Canis::Sprite2DComponent& sc = entity.GetComponent<Canis::Sprite2DComponent>();
     Canis::Mesh& mesh = entity.GetComponent<Canis::Mesh>();
     mesh.albedoIdOverride = sc.textureHandle.id;
     mesh.overrideMaterialField = true;
     mesh.overrideMaterialFields.SetFloat("uvx", sc.uv.x);
     mesh.overrideMaterialFields.SetFloat("uvy", sc.uv.y);
     mesh.overrideMaterialFields.SetFloat("uvw", sc.uv.z);
-    mesh.overrideMaterialFields.SetFloat("uvh", sc.uv.w);
+    mesh.overrideMaterialFields.SetFloat("uvh", sc.uv.w);*/
 }
 
 void Ent::Attack()
