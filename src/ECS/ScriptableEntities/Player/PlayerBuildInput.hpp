@@ -24,7 +24,24 @@ class PlayerBuildInput : public Canis::ScriptableEntity
         Transform visTransform;
         Entity visEntity;
         WavePointsManager wpm;
+        std::string buildingPrefabs[6] = { 
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        };
     public:
+        enum BuildingType {
+            Barracks,
+            Farm,
+            Hut,
+            Sapling,
+            TownHall,
+            WoodHut
+        };
+        enum BuildingType currentType = WoodHut;
         void OnCreate(){
             wpm = entity.GetEntityWithTag("GRIDLAYOUT").GetScript<WavePointsManager>();
             Canis::Log("Create");
@@ -58,7 +75,7 @@ class PlayerBuildInput : public Canis::ScriptableEntity
             visTransform.active = true;
             visEntity.SetPosition(point);
             if (GetInputManager().JustLeftClicked()) {
-                Canis::Log("Trying to place building");    
+                Canis::Log("Trying to place building "+std::to_string(currentType));    
                 unsigned int wpmPoint = wpm.aStar.GetPointByPosition(point);
                 if (wpmPoint == 0) {
                     Canis::Log("Not able to place at "+std::to_string(point.x)+","+std::to_string(point.z));
