@@ -43,7 +43,7 @@ Entities:
     Canis::Transform:
       active: true
       position: [100, -1, -100]
-      rotation: [-167.00775, -0, 0]
+      rotation: [25.862118, -0, 0]
       scale: [320, 200, 0]
     Canis::SphereCollider:
       center: [0, 0, 0]
@@ -94,7 +94,7 @@ Entities:
       useInstance: false
       castDepth: true
     Canis::Color:
-      color: [0, 1, 0, 1]
+      color: [0, 1, 0, 0]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 1
     Canis::ScriptComponent: PlayerMovement
