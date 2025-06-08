@@ -1,11 +1,15 @@
 #include "DummyNPC.hpp"
 #include "../../Components/NPCBoid.hpp"
 #include "../../Components/Billboard.hpp"
+#include <Canis/ECS/Components/Sprite2DComponent.hpp>
+#include <Canis/ECS/Components/SpriteAnimationComponent.hpp>
 
 void DummyNPC::OnReady()
 {
     entity.AddComponent<NPCBoid>();
     entity.AddComponent<Billboard>();
+    entity.AddComponent<Canis::Sprite2DComponent>();
+    entity.AddComponent<Canis::Sprite2DComponent>();
 
     Canis::Entity manager = entity.GetEntityWithTag("GRIDLAYOUT");
     m_wavePointsManager = &manager.GetScript<WavePointsManager>();
