@@ -10,6 +10,7 @@
 #include <Canis/AudioManager.hpp>
 
 #include <SDL_mixer.h>
+#include "..\Player\PlayerBuildInput.hpp"
 
 class BuildMenu : public Canis::ScriptableEntity
 {
@@ -18,6 +19,7 @@ class BuildMenu : public Canis::ScriptableEntity
     static void OnClickBuildHut(Canis::Entity _entity, void *_data)
     {
         Canis::Log("Clicked Build Hut");
+        _entity.GetEntityWithTag("PLAYERBUILDINPUT").GetScript<PlayerBuildInput>().currentType = PlayerBuildInput::Hut;
        
         
     }
@@ -25,6 +27,7 @@ class BuildMenu : public Canis::ScriptableEntity
     static void OnClickBuildBarracks(Canis::Entity _entity, void *_data)
     {
         Canis::Log("Clicked Build Barracks");
+        _entity.GetEntityWithTag("PLAYERBUILDINPUT").GetScript<PlayerBuildInput>().currentType = PlayerBuildInput::Barracks;
         
        
     }
@@ -32,6 +35,7 @@ class BuildMenu : public Canis::ScriptableEntity
     static void OnClickBuildFarm(Canis::Entity _entity, void *_data)
     {
         Canis::Log("Clicked Build Farm");
+        _entity.GetEntityWithTag("PLAYERBUILDINPUT").GetScript<PlayerBuildInput>().currentType = PlayerBuildInput::Farm;
         
       
     }
@@ -39,7 +43,7 @@ class BuildMenu : public Canis::ScriptableEntity
     static void OnClickBuildWoodHut(Canis::Entity _entity, void *_data)
     {
         Canis::Log("Clicked Build Wood Hut");
-       
+        _entity.GetEntityWithTag("PLAYERBUILDINPUT").GetScript<PlayerBuildInput>().currentType = PlayerBuildInput::WoodHut;
     }
 private:
     Canis::ButtonListener buildHutListener;

@@ -60,9 +60,47 @@ Entities:
       color: [0, 1, 0, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
-  - Entity: 13816120350514588185
-    Name: FlyCam
-    Canis::ScriptComponent: FlyCam
+  - Entity: 17546718401247596793
+    Name: Player
+    Canis::TagComponent: PLAYER
+    Canis::Transform:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
+      castShadow: true
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [0, 1, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 1
+    Canis::ScriptComponent: PlayerMovement
+  - Entity: 4421583731841397260
+    Name: Camera Pivot
+    Canis::TagComponent: CAMERAPIVOT
+    Canis::Transform:
+      active: true
+      position: [11.5, 0, 14]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+  - Entity: 9556025869991436986
+    Name: Camera
+    Canis::TagComponent: MAINCAMERA
+    Canis::Transform:
+      active: true
+      position: [-12, 15, 4]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::ScriptComponent: PlayerCamera
   - Entity: 17448164740515076868
     Name: Light
     Canis::TagComponent: ""

@@ -101,6 +101,7 @@ Entities:
       rotationOriginOffset: [0, 0]
       parent: 0
       children: [7955483382949068951]
+    Canis::ScriptComponent: BuildMenu
   - Entity: 7955483382949068951
     Name: Canvas
     Canis::TagComponent: ""
@@ -298,6 +299,7 @@ Entities:
     Canis::ScriptComponent: PlayerCamera
   - Entity: 1849080529224727768
     Name: Player Build Input
+    Canis::TagComponent: "PLAYERBUILDINPUT"
     Canis::ScriptComponent: PlayerBuildInput
   - Entity: 5177723143793427384
     Name: Wave Points Manager
