@@ -2,6 +2,19 @@
 #include "../AI/AiBrain.hpp" 
 void HutBase::OnCreate()
 {
+     glm::vec3 basePosition = entity.GetGlobalPosition();
+jobPositions.clear();
+
+
+    for (int i = 0; i < 3; i++) 
+{
+
+    float offsetX = Canis::RandomFloat(-4.0f, 4.0f);
+    float offsetZ = Canis::RandomFloat(-4.0f, 4.0f);
+    glm::vec3 pos = basePosition + glm::vec3(offsetX, 0.0f, offsetZ);
+    jobPositions.push_back(pos);
+}
+
     current_health = max_health;
     counter = job_creation_interval;
     if (!entity.HasComponent<HealthComponent>())
