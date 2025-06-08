@@ -53,3 +53,14 @@ Job AiBrain::RequestJob() {
     jobQueue.pop();
     return job;
 }
+
+bool AiBrain::RequestJob(NPC* npc, Job& outJob) {
+    if (jobQueue.empty()) return false;
+    outJob = jobQueue.front();
+    jobQueue.pop();
+    return true;
+}
+
+void AiBrain::CompleteJob(const Job& job) {
+    // optionally: log, recycle, or archive the job
+}
