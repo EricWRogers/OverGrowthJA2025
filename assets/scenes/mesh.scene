@@ -16,10 +16,10 @@ Entities:
       active: true
       anchor: 1
       position: [0, -66.99994]
-      size: [207, 66]
+      size: [0, 0]
       inheritWidth: false
       inheritHeight: false
-      originOffset: [-103.5, 0]
+      originOffset: [-0, 0]
       rotation: -0
       scale: 1
       depth: 0
@@ -43,7 +43,7 @@ Entities:
     Canis::Transform:
       active: true
       position: [100, -1, -100]
-      rotation: [90, -0, 0]
+      rotation: [-69.66876, -0, 0]
       scale: [320, 200, 0]
     Canis::SphereCollider:
       center: [0, 0, 0]
@@ -199,17 +199,27 @@ Entities:
     Canis::ScriptComponent: Enemy
   - Entity: 10380003923794989714
     Name: Ent
+    Canis::TagComponent: ENT
     Canis::Transform:
       active: true
-      position: [0, 0, 0]
+      position: [0, -1, 0]
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
     Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
       castShadow: true
       useInstance: false
       castDepth: true
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
     Canis::ScriptComponent: Ent
   - Entity: 10861719856543010780
     Name: TownHall
@@ -238,3 +248,7 @@ Entities:
       currentHealth: 25
       maxHealth: 25
     Canis::ScriptComponent: TownHall
+  - Entity: 1849080529224727768
+    Name: Player Build Input
+    Canis::TagComponent: "PLAYERBUILDINPUT"
+    Canis::ScriptComponent: PlayerBuildInput

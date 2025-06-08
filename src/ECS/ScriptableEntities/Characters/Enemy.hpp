@@ -18,6 +18,7 @@ private:
     Canis::CollisionSystem* m_collisionSystem;
 public:
     float damage = 5.0f;
+    std::string animationName = "";
 
     void OnCreate();
     
@@ -31,5 +32,5 @@ public:
 
     void GoTo();
 
-    Canis::Entity GetClosestEnt();
+    void SetAnimation(std::string _path, bool _flipX);
 };

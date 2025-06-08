@@ -4,10 +4,10 @@
 #include <queue>
 #include <memory>
 #include "Job.hpp"
-#include "../Characters/NPC.hpp"
+
 #include "../Buildings/HutBase.hpp"
 
-
+class NPC;
 
 class AiBrain : public Canis::ScriptableEntity
 {
@@ -33,6 +33,8 @@ public:
     void AddJob(const Job& job);
     bool HasJobs() const;
     Job RequestJob();
+    bool RequestJob(NPC* npc, Job& outJob);
+    void CompleteJob(const Job& job);
 
     //Good ol states.
     void OnCreate() override;

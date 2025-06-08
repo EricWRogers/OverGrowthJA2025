@@ -38,47 +38,18 @@ void Ent::OnCreate()
 
 void Ent::OnReady()
 {
-    if (!entity.HasComponent<HealthComponent>())
-    {
-        entity.AddComponent<HealthComponent>();
-    }
+    entity.AddComponent<HealthComponent>();
+    entity.AddComponent<Billboard>();
+    entity.AddComponent<NPCBoid>();
 
-    if (!entity.HasComponent<Canis::TagComponent>())
-    {
-        entity.AddComponent<Canis::TagComponent>();
-    }
+    Canis::Sprite2DComponent& sc = entity.AddComponent<Canis::Sprite2DComponent>();
+    sc.textureHandle = Canis::AssetManager::GetTextureHandle("assets/textures/civilian/civilian_build.png");
+    
+    Canis::SpriteAnimationComponent& sac = entity.AddComponent<Canis::SpriteAnimationComponent>();
+    sac.Play("assets/animations/civilian_build.anim");
+    sac.flipX = false; 
 
-    if (!entity.HasComponent<Canis::SphereCollider>())
-    {
-        entity.AddComponent<Canis::SphereCollider>();
-    }
-
-    if (!entity.HasComponent<Canis::Transform>())
-    {
-        entity.AddComponent<Canis::Transform>();
-    }
-
-    // if (!entity.HasComponent<Canis::Mesh>())
-    // {
-    //     entity.AddComponent<Canis::Mesh>();
-    // }
-
-    if (!entity.HasComponent<Canis::Color>())
-    {
-        entity.AddComponent<Canis::Color>();
-    }
-
-    if (!entity.HasComponent<Billboard>())
-    {
-        entity.AddComponent<Billboard>();
-    }
-
-    if(!entity.HasComponent<NPCBoid>())
-    {
-        entity.AddComponent<NPCBoid>();
-    }
-
-    HealthComponent &health = entity.GetComponent<HealthComponent>();
+    /*HealthComponent &health = entity.GetComponent<HealthComponent>();
 
     health.maxHealth = 25.0f;
 
@@ -88,8 +59,9 @@ void Ent::OnReady()
     entity.SetTag("ENT");
 
     Canis::Transform &transform = entity.GetComponent<Canis::Transform>();
-    transform.position = glm::vec3(0.0f);
-    transform.rotation = glm::vec3(0.0f);
+    entity.SetPosition(glm::vec3(0.0f));
+    entity.SetRotation(glm::vec3(0.0f));
+    Canis::UpdateModelMatrix(transform);
 
     Canis::SphereCollider &sphere = entity.GetComponent<Canis::SphereCollider>();
 
@@ -99,134 +71,140 @@ void Ent::OnReady()
     m_collisionSystem = GetScene().GetSystem<Canis::CollisionSystem>();
 
     Canis::Entity manager = entity.GetEntityWithTag("GRIDLAYOUT");
-    m_wavePointsManager = &manager.GetScript<WavePointsManager>();
+    m_wavePointsManager = &manager.GetScript<WavePointsManager>();*/
 }
 
 void Ent::OnUpdate(float _dt)
 {
-    
+    Canis::Sprite2DComponent& sc = entity.GetComponent<Canis::Sprite2DComponent>();
+    Canis::Mesh& mesh = entity.GetComponent<Canis::Mesh>();
+    mesh.albedoIdOverride = sc.textureHandle.id;
+    mesh.overrideMaterialField = true;
+    mesh.overrideMaterialFields.SetFloat("uvx", sc.uv.x);
+    mesh.overrideMaterialFields.SetFloat("uvy", sc.uv.y);
+    mesh.overrideMaterialFields.SetFloat("uvw", sc.uv.z);
+    mesh.overrideMaterialFields.SetFloat("uvh", sc.uv.w);
 }
 
 void Ent::Attack()
 {
-    // std::vector<entt::entity> targets = m_collisionSystem->GetHits(entity);
-    // for (entt::entity id : targets)
-    // {
-    //     Canis::Entity enemy(id, &GetScene());
-    //     HealthComponent &attackersHealth = enemy.GetComponent<HealthComponent>();
-    //     Health::Damage(enemy, damage);
-    //     Canis::Log("Current is " + std::to_string(attackersHealth.currentHealth));
-    // }
+    std::vector<entt::entity> targets = m_collisionSystem->GetHits(entity);
+    for (entt::entity id : targets)
+    {
+        Canis::Entity enemy(id, &GetScene());
+        HealthComponent &attackersHealth = enemy.GetComponent<HealthComponent>();
+        Health::Damage(enemy, damage);
+        Canis::Log("Current is " + std::to_string(attackersHealth.currentHealth));
+    }
 }
 
 void Ent::MoveToAttack()
 {
-    //Canis::Log("Enemies Have Been Spotted Defend");
-    // if (m_path.size() == 0)
-    // {
-    //     m_index = 0;
+    if (m_path.size() == 0)
+    {
+        m_index = 0;
 
-    //     int idFrom = m_wavePointsManager->aStar.GetClosestPoint(entity.GetGlobalPosition());
-    //     int idTo = 0;
+        int idFrom = m_wavePointsManager->aStar.GetClosestPoint(entity.GetGlobalPosition());
+        int idTo = 0;
 
-    //     std::vector<Canis::Entity> enemies = entity.GetEntitiesWithTag("ENEMY");
-    //     float closestDistance = std::numeric_limits<float>::max();
-    //     glm::vec3 npcPos = entity.GetGlobalPosition();
+        std::vector<Canis::Entity> enemies = entity.GetEntitiesWithTag("ENEMY");
+        float closestDistance = std::numeric_limits<float>::max();
+        glm::vec3 npcPos = entity.GetGlobalPosition();
 
-    //     for (Canis::Entity &enemy : enemies)
-    //     {
-    //         float dist = glm::distance(enemy.GetGlobalPosition(), npcPos);
-    //         if (dist < closestDistance)
-    //         {
-    //             closestDistance = dist;
-    //             idTo = m_wavePointsManager->aStar.GetClosestPoint(enemy.GetGlobalPosition());
-    //         }
-    //     }
+        for (Canis::Entity &enemy : enemies)
+        {
+            float dist = glm::distance(enemy.GetGlobalPosition(), npcPos);
+            if (dist < closestDistance)
+            {
+                closestDistance = dist;
+                idTo = m_wavePointsManager->aStar.GetClosestPoint(enemy.GetGlobalPosition());
+            }
+        }
 
-    //     m_path = m_wavePointsManager->aStar.GetPath(idFrom, idTo);
+        m_path = m_wavePointsManager->aStar.GetPath(idFrom, idTo);
 
-    //     if (m_path.empty())
-    //     {
-    //         return;
-    //     }
-    // }
+        if (m_path.empty())
+        {
+            return;
+        }
+    }
 
-    // if (m_index >= m_path.size())
-    // {
-    //     m_path.clear();
-    //     return;
-    // }
+    if (m_index >= m_path.size())
+    {
+        m_path.clear();
+        return;
+    }
 
-    // entity.GetComponent<NPCBoid>().target = m_path[m_index];
+    entity.GetComponent<NPCBoid>().target = m_path[m_index];
 
-    // if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
-    // {
-    //     m_index++;
-    // }
+    if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
+    {
+        m_index++;
+    }
 }
 
 void Ent::Roam()
 {
-    // Canis::Log("Nothing going on here");
-    // if (m_path.empty())
-    // {
-    //     m_index = 0;
+    Canis::Log("Nothing going on here");
+    if (m_path.empty())
+    {
+        m_index = 0;
 
-    //     glm::vec3 currentPos = entity.GetGlobalPosition();
-    //     int idFrom = m_wavePointsManager->aStar.GetClosestPoint(currentPos);
+        glm::vec3 currentPos = entity.GetGlobalPosition();
+        int idFrom = m_wavePointsManager->aStar.GetClosestPoint(currentPos);
 
-    //     if (idFrom == 0)
-    //     {
-    //         Canis::Log("Skipping Roam.");
-    //         return;
-    //     }
+        if (idFrom == 0)
+        {
+            Canis::Log("Skipping Roam.");
+            return;
+        }
 
-    //     std::vector<int> nearbyNodeIDs;
-    //     float roamRadius = 5.0f;
+        std::vector<int> nearbyNodeIDs;
+        float roamRadius = 5.0f;
 
-    //     // Try random directions around the entity
-    //     for (int i = 0; i < 20; ++i) // 20 random samples
-    //     {
-    //         float angle = glm::radians((float)(rand() % 360));
-    //         glm::vec3 offset = glm::vec3(cos(angle), 0.0f, sin(angle)) * roamRadius * ((rand() % 100) / 100.0f);
-    //         glm::vec3 samplePos = currentPos + offset;
+        // Try random directions around the entity
+        for (int i = 0; i < 20; ++i) // 20 random samples
+        {
+            float angle = glm::radians((float)(rand() % 360));
+            glm::vec3 offset = glm::vec3(cos(angle), 0.0f, sin(angle)) * roamRadius * ((rand() % 100) / 100.0f);
+            glm::vec3 samplePos = currentPos + offset;
 
-    //         if (!m_wavePointsManager->aStar.ValidPoint(samplePos))
-    //         {
-    //             continue;
-    //         }
+            if (!m_wavePointsManager->aStar.ValidPoint(samplePos))
+            {
+                continue;
+            }
 
-    //         int id = m_wavePointsManager->aStar.GetClosestPoint(samplePos);
+            int id = m_wavePointsManager->aStar.GetClosestPoint(samplePos);
 
-    //         if (id != idFrom)
-    //         {
-    //             nearbyNodeIDs.push_back(id);
-    //         }
-    //     }
+            if (id != idFrom)
+            {
+                nearbyNodeIDs.push_back(id);
+            }
+        }
 
-    //     if (nearbyNodeIDs.empty())
-    //     {
-    //         return;
-    //     }
+        if (nearbyNodeIDs.empty())
+        {
+            return;
+        }
 
-    //     int idTo = nearbyNodeIDs[rand() % nearbyNodeIDs.size()];
-    //     m_path = m_wavePointsManager->aStar.GetPath(idFrom, idTo);
+        int idTo = nearbyNodeIDs[rand() % nearbyNodeIDs.size()];
+        m_path = m_wavePointsManager->aStar.GetPath(idFrom, idTo);
 
-    //     if (m_path.empty())
-    //     {
-    //         return;
-    //     }
-    // }
+        if (m_path.empty())
+        {
+            return;
+        }
+    }
 
-    // if (m_index >= m_path.size())
-    // {
-    //     return;
-    // }
+    if (m_index >= m_path.size())
+    {
+        return;
+    }
 
-    // entity.GetComponent<NPCBoid>().target = m_path[m_index];
+    entity.GetComponent<NPCBoid>().target = m_path[m_index];
 
-    // if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
-    // {
-    //     m_index++;
-    // }
+    if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
+    {
+        m_index++;
+    }
 }
