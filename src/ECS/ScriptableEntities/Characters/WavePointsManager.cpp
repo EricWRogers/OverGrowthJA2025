@@ -67,7 +67,7 @@ void WavePointsManager::OnCreate() {
 }
 
 void WavePointsManager::OnReady() {
-    for (int i = 0; i < 50; i++)
+    for (int i = 0; i < 100; i++)
     {
         std::vector<Canis::Entity> prefabs = GetScene().Instantiate("assets/prefabs/dummy_npc.prefab");
         Transform& transform = prefabs[0].GetComponent<Transform>();
