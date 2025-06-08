@@ -19,6 +19,7 @@
 #include <Canis/ECS/Components/UISliderComponent.hpp>
 #include <Canis/ECS/Components/UISliderKnobComponent.hpp>
 
+#include <Canis/ECS/Systems/CollisionSystem.hpp>
 #include <Canis/ECS/Systems/UISliderSystem.hpp>
 #include <Canis/ECS/Systems/UISliderKnobSystem.hpp>
 #include <Canis/ECS/Systems/SpriteAnimationSystem.hpp>
@@ -28,11 +29,13 @@ void RegisterCanis(void* _app)
     Canis::App& app = *(Canis::App*)_app;
 
     // decode system
+    app.AddDecodeSystem(Canis::DecodeCollisionSystem);
     app.AddDecodeSystem(Canis::DecodeButtonSystem);
     app.AddDecodeSystem(Canis::DecodeUISliderSystem);
     app.AddDecodeSystem(Canis::DecodeUISliderKnobSystem);
     app.AddDecodeSystem(Canis::DecodeSpriteAnimationSystem);
 
+    REGISTER_UPDATE_SYSTEM(Canis::CollisionSystem);
     REGISTER_UPDATE_SYSTEM(Canis::ButtonSystem);
     REGISTER_UPDATE_SYSTEM(Canis::UISliderSystem);
     REGISTER_UPDATE_SYSTEM(Canis::UISliderKnobSystem);
