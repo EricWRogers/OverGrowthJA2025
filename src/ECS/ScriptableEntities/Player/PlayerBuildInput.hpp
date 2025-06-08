@@ -42,9 +42,9 @@ class PlayerBuildInput : public Canis::ScriptableEntity
             WoodHut
         };
         enum BuildingType currentType = WoodHut;
-        void OnCreate(){
+        void OnReady(){
             wpm = entity.GetEntityWithTag("GRIDLAYOUT").GetScript<WavePointsManager>();
-            Canis::Log("Create");
+            Canis::Log("Ready");
             //create visual object
             visEntity = CreateEntity();
             visTransform = visEntity.AddComponent<Transform>();
