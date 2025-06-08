@@ -32,10 +32,10 @@ void Enemy::OnReady()
     entity.AddComponent<NPCBoid>();
     entity.AddComponent<Billboard>();
     Canis::Sprite2DComponent &sc = entity.AddComponent<Canis::Sprite2DComponent>();
-    sc.textureHandle = Canis::AssetManager::GetTextureHandle("assets/textures/civilian/civilian_build.png");
+    sc.textureHandle = Canis::AssetManager::GetTextureHandle("assets/textures/knight/front/knight_idle1.png");
 
     Canis::SpriteAnimationComponent &sac = entity.AddComponent<Canis::SpriteAnimationComponent>();
-    sac.Play("assets/animations/civilian_build.anim");
+    sac.Play("assets/animations/knight_walk_front.anim");
     sac.flipX = false;
 
     Canis::Entity manager = entity.GetEntityWithTag("GRIDLAYOUT");
@@ -44,6 +44,15 @@ void Enemy::OnReady()
 
 void Enemy::OnUpdate(float _dt)
 {
+    Canis::Sprite2DComponent& sc = entity.GetComponent<Canis::Sprite2DComponent>();
+    Canis::Mesh& mesh = entity.GetComponent<Canis::Mesh>();
+    mesh.albedoIdOverride = sc.textureHandle.id;
+    mesh.overrideMaterialField = true;
+    mesh.overrideMaterialFields.SetFloat("uvx", sc.uv.x);
+    mesh.overrideMaterialFields.SetFloat("uvy", sc.uv.y);
+    mesh.overrideMaterialFields.SetFloat("uvw", sc.uv.z);
+    mesh.overrideMaterialFields.SetFloat("uvh", sc.uv.w);
+
     GoTo();
     Attack();
 }
@@ -63,11 +72,11 @@ void Enemy::Attack()
 
             if (dir.z > 0.0f)
             {
-                SetAnimation("assets/animations/knight_attack_front.anim");
+                SetAnimation("assets/animations/knight_attack_front.anim", false);
             }
             else
             {
-                SetAnimation("assets/animations/knight_attack_back.anim");
+                SetAnimation("assets/animations/knight_attack_back.anim", false);
             }
             Canis::Log("Current is " + std::to_string(attackersHealth.currentHealth));
         }
@@ -84,11 +93,11 @@ void Enemy::Attack()
 
             if (dir.z > 0.0f)
             {
-                SetAnimation("assets/animations/knight_attack_front.anim");
+                SetAnimation("assets/animations/knight_attack_front.anim", false);
             }
             else
             {
-                SetAnimation("assets/animations/knight_attack_back.anim");
+                SetAnimation("assets/animations/knight_attack_back.anim", false);
             }
             Canis::Log("Current is " + std::to_string(attackersHealth.currentHealth));
         }
@@ -169,11 +178,11 @@ void Enemy::GoTo()
     {
         if (moveDir.z > 0.0f)
         {
-            SetAnimation("assets/animations/knight_walk_back.anim");
+            SetAnimation("assets/animations/knight_walk_back.anim", false);
         }
         else
         {
-            SetAnimation("assets/animations/knight_walk_front.anim");
+            SetAnimation("assets/animations/knight_walk_front.anim", false);
         }
     }
 

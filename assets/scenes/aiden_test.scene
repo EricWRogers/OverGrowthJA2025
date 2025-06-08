@@ -291,30 +291,16 @@ Entities:
       layer: 2
       mask: 4
     Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
-      castShadow: true
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
+      castShadow: false
       useInstance: false
-      castDepth: true
+      castDepth: false
     Canis::Color:
-      color: [1, 0, 0, 1]
+      color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     HealthComponent:
       currentHealth: 25
       maxHealth: 25
     Canis::ScriptComponent: Enemy
-  - Entity: 10380003923794989714
-    Name: Ent
-    Canis::Transform:
-      active: true
-      position: [0, 0, 0]
-      rotation: [0, -0, 0]
-      scale: [1, 1, 1]
-    Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
-      castShadow: true
-      useInstance: false
-      castDepth: true
-    Canis::ScriptComponent: Ent
