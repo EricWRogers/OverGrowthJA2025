@@ -1,5 +1,8 @@
 #include "Enemy.hpp"
 #include "../../Components/NPCBoid.hpp"
+#include "../../Components/Billboard.hpp"
+#include <Canis/ECS/Components/Sprite2DComponent.hpp>
+#include <Canis/ECS/Components/SpriteAnimationComponent.hpp>
 
 void Enemy::OnCreate()
 {
@@ -27,6 +30,13 @@ void Enemy::OnCreate()
 void Enemy::OnReady()
 {
     entity.AddComponent<NPCBoid>();
+    entity.AddComponent<Billboard>();
+    Canis::Sprite2DComponent &sc = entity.AddComponent<Canis::Sprite2DComponent>();
+    sc.textureHandle = Canis::AssetManager::GetTextureHandle("assets/textures/civilian/civilian_build.png");
+
+    Canis::SpriteAnimationComponent &sac = entity.AddComponent<Canis::SpriteAnimationComponent>();
+    sac.Play("assets/animations/civilian_build.anim");
+    sac.flipX = false;
 
     Canis::Entity manager = entity.GetEntityWithTag("GRIDLAYOUT");
     m_wavePointsManager = &manager.GetScript<WavePointsManager>();
@@ -40,7 +50,7 @@ void Enemy::OnUpdate(float _dt)
 
 void Enemy::Attack()
 {
-    if(m_isEntsAlive)
+    if (m_isEntsAlive)
     {
         // entt::entity is the id of Canis::Entity
         std::vector<entt::entity> targets = m_collisionSystem->GetHits(entity);
@@ -49,9 +59,20 @@ void Enemy::Attack()
             Canis::Entity ent(id, &GetScene());
             HealthComponent &attackersHealth = ent.GetComponent<HealthComponent>();
             Health::Damage(ent, damage);
+            glm::vec3 dir = entity.GetGlobalPosition() - ent.GetGlobalPosition();
+
+            if (dir.z > 0.0f)
+            {
+                SetAnimation("assets/animations/knight_attack_front.anim");
+            }
+            else
+            {
+                SetAnimation("assets/animations/knight_attack_back.anim");
+            }
             Canis::Log("Current is " + std::to_string(attackersHealth.currentHealth));
         }
-    }else
+    }
+    else
     {
         std::vector<entt::entity> targets = m_collisionSystem->GetHits(entity);
         for (entt::entity id : targets)
@@ -59,6 +80,16 @@ void Enemy::Attack()
             Canis::Entity townHall(id, &GetScene());
             HealthComponent &attackersHealth = townHall.GetComponent<HealthComponent>();
             Health::Damage(townHall, damage);
+            glm::vec3 dir = entity.GetGlobalPosition() - townHall.GetGlobalPosition();
+
+            if (dir.z > 0.0f)
+            {
+                SetAnimation("assets/animations/knight_attack_front.anim");
+            }
+            else
+            {
+                SetAnimation("assets/animations/knight_attack_back.anim");
+            }
             Canis::Log("Current is " + std::to_string(attackersHealth.currentHealth));
         }
     }
@@ -76,10 +107,11 @@ void Enemy::GoTo()
 
         std::vector<Canis::Entity> ents = entity.GetEntitiesWithTag("ENT");
 
-        if(ents.size() == 0)
+        if (ents.size() == 0)
         {
             m_isEntsAlive = false;
-        }else
+        }
+        else
         {
             m_isEntsAlive = true;
         }
@@ -122,7 +154,7 @@ void Enemy::GoTo()
         {
             m_path = m_wavePointsManager->aStar.GetPath(idFrom, idTo);
         }
-        
+
         if (m_path.empty())
         {
             return;
@@ -130,6 +162,20 @@ void Enemy::GoTo()
     }
 
     entity.GetComponent<NPCBoid>().target = m_path[m_index];
+    glm::vec3 currentPos = entity.GetGlobalPosition();
+    glm::vec3 moveDir = m_path[m_index] - currentPos;
+
+    if (abs(moveDir.z) > 0.1f)
+    {
+        if (moveDir.z > 0.0f)
+        {
+            SetAnimation("assets/animations/knight_walk_back.anim");
+        }
+        else
+        {
+            SetAnimation("assets/animations/knight_walk_front.anim");
+        }
+    }
 
     if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
     {
@@ -143,23 +189,13 @@ void Enemy::GoTo()
     }
 }
 
-Canis::Entity Enemy::GetClosestEnt()
+void Enemy::SetAnimation(std::string _path, bool _flipX = false)
 {
-    std::vector<Canis::Entity> ents = entity.GetEntitiesWithTag("ENT");
-
-    Canis::Entity closestEnt;
-    float closestDistance = std::numeric_limits<float>::max();
-    glm::vec3 npcPos = entity.GetGlobalPosition();
-
-    for (Canis::Entity &ent : ents)
+    auto &anim = entity.GetComponent<Canis::SpriteAnimationComponent>();
+    if (animationName != _path)
     {
-        float dist = glm::distance(ent.GetGlobalPosition(), npcPos);
-        if (dist < closestDistance)
-        {
-            closestDistance = dist;
-            closestEnt = ent;
-        }
+        anim.Play(_path);
+        anim.flipX = _flipX;
+        animationName = _path;
     }
-
-    return closestEnt;
 }

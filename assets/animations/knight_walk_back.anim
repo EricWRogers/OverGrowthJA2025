@@ -9,17 +9,17 @@ Animation:
     timeOnFrame: 0.25
     textureAssetId: "assets/textures/knight/back/back_walk/knight_back_walk1.png"
     offset: [0, 0]
-    index: [1, 0]
+    index: [0, 0]
     size: [128, 128]
   - 2:
     timeOnFrame: 0.25
     textureAssetId: "assets/textures/knight/back/back_walk/knight_back_walk2.png"
     offset: [0, 0]
-    index: [2, 0]
+    index: [0, 0]
     size: [128, 128]
   - 3:
     timeOnFrame: 0.25
     textureAssetId: "assets/textures/knight/back/knight_back_idle1.png"
     offset: [0, 0]
-    index: [1, 0]
+    index: [0, 0]
     size: [128, 128]
