@@ -1,6 +1,6 @@
 #include "Job.hpp"
 #include "../Buildings/HutBase.hpp"
-#include <glm/glm.hpp>  // for glm::distance
+#include <glm/glm.hpp>  
 
 Job::Job() : ownerHut(nullptr), state(State::NotStarted), currentWaypoint(0), resourceReward(0) {}
 
@@ -20,7 +20,7 @@ void Job::Update(const glm::vec3& aiPosition) {
     if (glm::distance(aiPosition, waypoints[currentWaypoint]) < 0.5f) {
         currentWaypoint++;
         if (currentWaypoint >= waypoints.size()) {
-            // Add more conditions here if needed before completing the job
+           
             AllocateResources();
             state = State::Completed;
         }

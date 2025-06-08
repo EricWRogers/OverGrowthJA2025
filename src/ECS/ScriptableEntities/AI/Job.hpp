@@ -26,7 +26,7 @@ public:
     Job();
     Job(HutBase* owner, const std::vector<glm::vec3>& waypoints, int reward);
 
-    void AllocateResources();  // Only declaration here
+    void AllocateResources();  
 
     State GetState() const { return state; }
     void Start() { state = State::InProgress; }
