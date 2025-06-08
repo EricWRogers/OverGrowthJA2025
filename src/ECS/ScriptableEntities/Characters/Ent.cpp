@@ -76,14 +76,14 @@ void Ent::OnReady()
 
 void Ent::OnUpdate(float _dt)
 {
-    Canis::Sprite2DComponent& sc = entity.GetComponent<Canis::Sprite2DComponent>();
+    /*Canis::Sprite2DComponent& sc = entity.GetComponent<Canis::Sprite2DComponent>();
     Canis::Mesh& mesh = entity.GetComponent<Canis::Mesh>();
     mesh.albedoIdOverride = sc.textureHandle.id;
     mesh.overrideMaterialField = true;
     mesh.overrideMaterialFields.SetFloat("uvx", sc.uv.x);
     mesh.overrideMaterialFields.SetFloat("uvy", sc.uv.y);
     mesh.overrideMaterialFields.SetFloat("uvw", sc.uv.z);
-    mesh.overrideMaterialFields.SetFloat("uvh", sc.uv.w);
+    mesh.overrideMaterialFields.SetFloat("uvh", sc.uv.w);*/
 }
 
 void Ent::Attack()
