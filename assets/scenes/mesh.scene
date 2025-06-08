@@ -42,17 +42,17 @@ Entities:
     Name: Ground
     Canis::Transform:
       active: true
-      position: [0, -1, 0]
-      rotation: [0, -0, 0]
-      scale: [20, 1, 20]
+      position: [100, -1, -100]
+      rotation: [90, -0, 0]
+      scale: [320, 200, 0]
     Canis::SphereCollider:
       center: [0, 0, 0]
       radius: 1
       layer: 0
       mask: 0
     Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/grass_sprite.material
       castShadow: false
       useInstance: false
       castDepth: true
@@ -60,6 +60,7 @@ Entities:
       color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
+    Canis::ScriptComponent: Temp3DSprite
   - Entity: 17448164740515076868
     Name: Light
     Canis::TagComponent: ""
@@ -70,9 +71,9 @@ Entities:
       scale: [1, 1, 1]
     Canis::DirectionalLight:
       direction: [1, 1, 1]
-      ambient: [0.05, 0.05, 0.05]
-      diffuse: [0.8, 0.8, 0.8]
-      specular: [0.5, 0.5, 0.5]
+      ambient: [1, 1, 1]
+      diffuse: [0.1, 0.1, 1]
+      specular: [0, 0, 0]
   - Entity: 17546718401247596793
     Name: Player
     Canis::TagComponent: PLAYER

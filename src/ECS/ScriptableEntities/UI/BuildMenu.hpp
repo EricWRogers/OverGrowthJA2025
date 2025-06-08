@@ -10,7 +10,7 @@
 #include <Canis/AudioManager.hpp>
 
 #include <SDL_mixer.h>
-#include "..\Player\PlayerBuildInput.hpp"
+#include "../Player/PlayerBuildInput.hpp"
 
 class BuildMenu : public Canis::ScriptableEntity
 {

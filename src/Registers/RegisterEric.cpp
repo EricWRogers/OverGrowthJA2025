@@ -1,4 +1,4 @@
-#include "RegisterAiden.hpp"
+#include "RegisterEric.hpp"
 
 #include <Canis/App.hpp>
 
@@ -6,6 +6,7 @@
 #include "../ECS/Systems/NPCBoidSystem.hpp"
 #include "../ECS/ScriptableEntities/Characters/DummyNPC.hpp"
 #include "../ECS/ScriptableEntities/Characters/WavePointsManager.hpp"
+#include "../ECS/ScriptableEntities/Buildings/Temp3DSprite.hpp"
 
 
 #include <Canis/ECS/Systems/CollisionSystem.hpp>
@@ -25,4 +26,5 @@ void RegisterEric(void* _app)
 
     REGISTER_SCRIPTABLE_COMPONENT(app, DummyNPC);
     REGISTER_SCRIPTABLE_COMPONENT(app, WavePointsManager);
+    REGISTER_SCRIPTABLE_COMPONENT(app, Temp3DSprite);
 }

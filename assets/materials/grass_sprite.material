@@ -1,0 +1,5 @@
+shader: assets/shaders/3d_sprite
+albedo: assets/textures/environment/grass_tile.png
+specular: assets/textures/square.png
+emission: assets/textures/square.png
+backFaceCulling: true
