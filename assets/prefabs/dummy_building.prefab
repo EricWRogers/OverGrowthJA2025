@@ -1,5 +1,5 @@
 Entities:
-  - Entity: 17475919140973847144
+  - Entity: 1
     Name: DummyBuilding
     Canis::Transform:
       active: true
