@@ -1,5 +1,8 @@
 #include "NPC.hpp"
 #include "../../Components/NPCBoid.hpp"
+#include "../../Components/Billboard.hpp"
+#include <Canis/ECS/Components/Sprite2DComponent.hpp>
+#include <Canis/ECS/Components/SpriteAnimationComponent.hpp>
 
 void NPC::OnCreate()
 {
@@ -28,6 +31,13 @@ void NPC::OnCreate()
 void NPC::OnReady()
 {
     entity.AddComponent<NPCBoid>();
+    entity.AddComponent<Billboard>();
+    Canis::Sprite2DComponent& sc = entity.AddComponent<Canis::Sprite2DComponent>();
+    sc.textureHandle = Canis::AssetManager::GetTextureHandle("assets/textures/civilian/civilian_build.png");
+    
+    Canis::SpriteAnimationComponent& sac = entity.AddComponent<Canis::SpriteAnimationComponent>();
+    sac.Play("assets/animations/civilian_build.anim");
+    sac.flipX = false; 
 
     Canis::Entity manager = entity.GetEntityWithTag("GRIDLAYOUT");
     wavePointsManager = &manager.GetScript<WavePointsManager>();
@@ -48,22 +58,28 @@ void NPC::GoToArea(float _time)
 {
     if (m_isWaiting)
     {
+        SetAnimation("assets/animations/civilian_build.anim", false);
+
         m_counter += _time;
         if (m_counter >= m_waitTime)
         {
             m_counter = 0.0f;
             m_isWaiting = false;
 
-            // Switch class after waiting
             if (characterClass == "Civilian")
+            {
+                //Play animation
                 ChangeCharacterClass("Worker");
+            }
             else
-                ChangeCharacterClass("Civilian");
+            {
+                //Play animation
+                ChangeCharacterClass("Civilian"); 
+            }
 
-            // Clear path so we recalculate next trip
             m_path.clear();
         }
-        return; // stop doing path logic while waiting
+        return;
     }
 
     if (m_path.size() == 0)
@@ -106,6 +122,7 @@ void NPC::GoToArea(float _time)
             }
         }
 
+
         m_path = wavePointsManager->aStar.GetPath(idFrom, idTo);
 
         if (m_path.empty())
@@ -121,6 +138,14 @@ void NPC::GoToArea(float _time)
         return;
     }
 
+    glm::vec3 dir = m_path[m_index] - entity.GetGlobalPosition();
+    bool facingBack = dir.z > 0.0f;
+
+    if (facingBack)
+        SetAnimation("assets/animations/civilian_walk_back.anim", false);
+    else
+        SetAnimation("assets/animations/civilian_walk_back.anim", false);
+
     entity.GetComponent<NPCBoid>().target = m_path[m_index];
 
     if (glm::distance(m_path[m_index], entity.GetGlobalPosition()) < 0.8f)
@@ -133,4 +158,11 @@ void NPC::GoToArea(float _time)
         m_path.clear();
         m_isWaiting = true;
     }
+}
+
+void NPC::SetAnimation(std::string _path, bool _flipX = false)
+{
+    auto& anim = entity.GetComponent<Canis::SpriteAnimationComponent>();
+    anim.Play(_path);
+    anim.flipX = _flipX;
 }

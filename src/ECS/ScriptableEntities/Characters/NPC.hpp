@@ -27,4 +27,6 @@ public:
     void ChangeCharacterClass(std::string _characterClass);
 
     void GoToArea(float _time);
+
+    void SetAnimation(std::string _path, bool _flipX);
 };
