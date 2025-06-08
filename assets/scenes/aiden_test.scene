@@ -5,6 +5,7 @@ Systems:
   - NPCBoidSystem
   - BillboardSystem
   - Canis::CollisionSystem
+  - Canis::SpriteAnimationSystem
 RenderSystems:
   - Canis::RenderMeshSystem
   - Canis::RenderHUDSystem
@@ -116,13 +117,13 @@ Entities:
       layer: 0
       mask: 0
     Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
       castShadow: true
       useInstance: false
       castDepth: true
     Canis::Color:
-      color: [0, 0, 1, 1]
+      color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     HealthComponent:
@@ -175,13 +176,13 @@ Entities:
       layer: 0
       mask: 0
     Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
       castShadow: true
       useInstance: false
       castDepth: true
     Canis::Color:
-      color: [0, 0, 1, 1]
+      color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     HealthComponent:
@@ -202,13 +203,13 @@ Entities:
       layer: 0
       mask: 0
     Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
       castShadow: true
       useInstance: false
       castDepth: true
     Canis::Color:
-      color: [0, 0, 1, 1]
+      color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     HealthComponent:
@@ -238,30 +239,3 @@ Entities:
       color: [0.1, 0, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
-  - Entity: 17946361145829104035
-    Name: Enemy
-    Canis::TagComponent: ENEMY
-    Canis::Transform:
-      active: true
-      position: [10, 0, 5]
-      rotation: [0, -0, 0]
-      scale: [1, 1, 1]
-    Canis::SphereCollider:
-      center: [0, 0, 0]
-      radius: 1
-      layer: 2
-      mask: 4
-    Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
-      castShadow: true
-      useInstance: false
-      castDepth: true
-    Canis::Color:
-      color: [1, 0, 0, 1]
-      emission: [0, 0, 0]
-      emissionUsingAlbedoIntesity: 0
-    HealthComponent:
-      currentHealth: 25
-      maxHealth: 25
-    Canis::ScriptComponent: Enemy
