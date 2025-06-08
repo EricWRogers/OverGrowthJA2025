@@ -17,7 +17,7 @@ private:
     bool m_isEntsAlive = false;
     Canis::CollisionSystem* m_collisionSystem;
 public:
-    float damage = 2.0f;
+    float damage = 5.0f;
 
     void OnCreate();
     

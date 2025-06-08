@@ -14,6 +14,13 @@ void TownHall::OnCreate()
     Health::ResetHealth(entity);
 
     m_isAlive = true;
+
+    Canis::SphereCollider &sphere = entity.GetComponent<Canis::SphereCollider>();
+
+    sphere.layer = (unsigned int)Canis::BIT::THREE;
+    sphere.mask = (unsigned int)Canis::BIT::TWO;
+
+    m_collisionSystem = GetScene().GetSystem<Canis::CollisionSystem>();
 }
 
 void TownHall::OnReady()
