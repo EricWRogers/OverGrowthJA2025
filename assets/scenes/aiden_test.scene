@@ -304,3 +304,7 @@ Entities:
       currentHealth: 25
       maxHealth: 25
     Canis::ScriptComponent: Enemy
+  - Entity: 10838206668278674318
+    Name: AI-Brain
+    Canis::TagComponent: AI_BRAIN
+    Canis::ScriptComponent: AiBrain
