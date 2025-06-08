@@ -111,9 +111,9 @@ Entities:
       scale: [1, 1, 1]
     Canis::DirectionalLight:
       direction: [1, 1, 1]
-      ambient: [0.05, 0.05, 0.05]
-      diffuse: [0.8, 0.8, 0.8]
-      specular: [0.5, 0.5, 0.5]
+      ambient: [0.8, 0.8, 0.8]
+      diffuse: [0, 0, 0]
+      specular: [0, 0, 0]
   - Entity: 10861719856543010780
     Name: TownHall
     Canis::TagComponent: TOWN
@@ -277,3 +277,39 @@ Entities:
       color: [0.1, 0, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
+  - Entity: 1646429716600637255
+    Name: Enemy
+    Canis::TagComponent: ENEMY
+    Canis::Transform:
+      active: true
+      position: [5, 0, 5]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 2
+      mask: 4
+    Canis::Mesh:
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
+      castShadow: true
+      useInstance: false
+      castDepth: true
+    Canis::Color:
+      color: [1, 0, 0, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
+    Canis::ScriptComponent: Enemy
+  - Entity: 10380003923794989714
+    Name: Ent
+    Canis::Mesh:
+      modelPath: assets/models/white_block.obj
+      materialPath: assets/materials/default.material
+      castShadow: true
+      useInstance: false
+      castDepth: true
+    Canis::ScriptComponent: Ent

@@ -3,6 +3,10 @@
 #include <Canis/ScriptableEntity.hpp>
 #include <Canis/ECS/Systems/CollisionSystem.hpp>
 #include <Canis/ECS/Components/SphereCollider.hpp>
+#include <Canis/ECS/Components/Transform.hpp>
+#include <Canis/ECS/Components/TagComponent.hpp>
+#include <Canis/ECS/Components/Mesh.hpp>
+#include <Canis/ECS/Components/Color.hpp>
 #include "WavePointsManager.hpp"
 #include "../../Components/Health.hpp"
 

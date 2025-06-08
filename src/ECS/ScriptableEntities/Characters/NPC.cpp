@@ -45,6 +45,15 @@ void NPC::OnReady()
 
 void NPC::OnUpdate(float _dt)
 {
+    Canis::Sprite2DComponent& sc = entity.GetComponent<Canis::Sprite2DComponent>();
+    Canis::Mesh& mesh = entity.GetComponent<Canis::Mesh>();
+    mesh.albedoIdOverride = sc.textureHandle.id;
+    mesh.overrideMaterialField = true;
+    mesh.overrideMaterialFields.SetFloat("uvx", sc.uv.x);
+    mesh.overrideMaterialFields.SetFloat("uvy", sc.uv.y);
+    mesh.overrideMaterialFields.SetFloat("uvw", sc.uv.z);
+    mesh.overrideMaterialFields.SetFloat("uvh", sc.uv.w);
+    
     GoToArea(_dt);
 }
 
@@ -58,7 +67,7 @@ void NPC::GoToArea(float _time)
 {
     if (m_isWaiting)
     {
-        SetAnimation("assets/animations/civilian_build.anim", false);
+        //SetAnimation("assets/animations/civilian_build.anim", false);
 
         m_counter += _time;
         if (m_counter >= m_waitTime)
@@ -138,13 +147,13 @@ void NPC::GoToArea(float _time)
         return;
     }
 
-    glm::vec3 dir = m_path[m_index] - entity.GetGlobalPosition();
-    bool facingBack = dir.z > 0.0f;
+    // glm::vec3 dir = m_path[m_index] - entity.GetGlobalPosition();
+    // bool facingBack = dir.z > 0.0f;
 
-    if (facingBack)
-        SetAnimation("assets/animations/civilian_walk_back.anim", false);
-    else
-        SetAnimation("assets/animations/civilian_walk_back.anim", false);
+    // if (facingBack)
+    //     SetAnimation("assets/animations/civilian_walk_back.anim", false);
+    // else
+    //     SetAnimation("assets/animations/civilian_walk_back.anim", false);
 
     entity.GetComponent<NPCBoid>().target = m_path[m_index];
 

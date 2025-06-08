@@ -9,7 +9,7 @@ void TownHall::OnCreate()
 
     HealthComponent &health = entity.GetComponent<HealthComponent>();
 
-    health.maxHealth = 25.0f;
+    health.maxHealth = 100000.0f;
 
     Health::ResetHealth(entity);
 
