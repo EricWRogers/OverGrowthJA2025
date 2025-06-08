@@ -1,0 +1,31 @@
+Animation:
+  - 0:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/knight/back/knight_idle1.png"
+    offset: [0, 0]
+    index: [0, 0]
+    size: [128, 128]
+  - 1:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/knight/back/slash/knight_back_slash1.png"
+    offset: [0, 0]
+    index: [0, 0]
+    size: [128, 128]
+  - 2:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/knight/back/slash/knight_back_slash2.png"
+    offset: [0, 0]
+    index: [0, 0]
+    size: [128, 128]
+  - 3:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/knight/back/slash/knight_back_slash3.png"
+    offset: [0, 0]
+    index: [0, 0]
+    size: [128, 128]
+  - 4:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/knight/back/knight_back_idle1.png"
+    offset: [0, 0]
+    index: [0, 0]
+    size: [128, 128]
