@@ -1,0 +1,25 @@
+Animation:
+  - 0:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/knight/front/knight_idle1.png"
+    offset: [0, 0]
+    index: [0, 0]
+    size: [128, 128]
+  - 1:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/knight/front/walk/knight_walk1.png"
+    offset: [0, 0]
+    index: [1, 0]
+    size: [128, 128]
+  - 2:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/knight/front/walk/knight_walk2.png"
+    offset: [0, 0]
+    index: [2, 0]
+    size: [128, 128]
+  - 3:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/knight/front/knight_idle1.png"
+    offset: [0, 0]
+    index: [1, 0]
+    size: [128, 128]
