@@ -17,6 +17,7 @@ private:
     bool m_isEntsAlive = false;
     Canis::CollisionSystem* m_collisionSystem;
 public:
+    float damage = 2.0f;
 
     void OnCreate();
     
@@ -26,7 +27,7 @@ public:
 
     void OnUpdate(float _dt);
 
-    void Attack(Canis::Entity _target);
+    void Attack();
 
     void GoTo();
 

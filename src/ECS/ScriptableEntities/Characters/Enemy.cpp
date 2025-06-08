@@ -35,21 +35,31 @@ void Enemy::OnReady()
 void Enemy::OnUpdate(float _dt)
 {
     GoTo();
+    Attack();
 }
 
-void Enemy::Attack(Canis::Entity _target)
+void Enemy::Attack()
 {
     if(m_isEntsAlive)
     {
-        Canis::Entity closestEnt = GetClosestEnt();
-
         // entt::entity is the id of Canis::Entity
         std::vector<entt::entity> targets = m_collisionSystem->GetHits(entity);
         for (entt::entity id : targets)
         {
             Canis::Entity ent(id, &GetScene());
-            
-
+            HealthComponent &attackersHealth = ent.GetComponent<HealthComponent>();
+            Health::Damage(ent, damage);
+            Canis::Log("Current is " + std::to_string(attackersHealth.currentHealth));
+        }
+    }else
+    {
+        std::vector<entt::entity> targets = m_collisionSystem->GetHits(entity);
+        for (entt::entity id : targets)
+        {
+            Canis::Entity townHall(id, &GetScene());
+            HealthComponent &attackersHealth = townHall.GetComponent<HealthComponent>();
+            Health::Damage(townHall, damage);
+            Canis::Log("Current is " + std::to_string(attackersHealth.currentHealth));
         }
     }
 }
