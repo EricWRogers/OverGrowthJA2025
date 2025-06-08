@@ -46,7 +46,7 @@ void Ent::OnReady()
     sc.textureHandle = Canis::AssetManager::GetTextureHandle("assets/textures/civilian/civilian_build.png");
     
     Canis::SpriteAnimationComponent& sac = entity.AddComponent<Canis::SpriteAnimationComponent>();
-    sac.Play("assets/animations/civilian_build.anim");
+    sac.Play("assets/animations/ent_walk_front.anim");
     sac.flipX = false; 
 
     /*HealthComponent &health = entity.GetComponent<HealthComponent>();
