@@ -3,6 +3,7 @@
 #include <Canis/ScriptableEntity.hpp>
 #include "../../Components/Health.hpp"
 
+#include "../AI/job.hpp"
 
 class HutBase : public Canis::ScriptableEntity
 {
@@ -15,7 +16,9 @@ public:
     float current_health = 0;
     float create_resource_interval = 60; //Seconds
    
+    Job job;
 
+     HutBase() : job() {}
 
     void OnCreate();
     

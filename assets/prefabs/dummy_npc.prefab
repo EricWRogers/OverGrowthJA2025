@@ -1,0 +1,24 @@
+Entities:
+  - Entity: 17475919140973847144
+    Name: DummyNPC
+    Canis::Transform:
+      active: true
+      position: [10, 0, 10]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 0
+      mask: 0
+    Canis::Mesh:
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
+      castShadow: true
+      useInstance: false
+      castDepth: false
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    Canis::ScriptComponent: DummyNPC

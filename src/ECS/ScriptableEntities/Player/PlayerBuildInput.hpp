@@ -12,28 +12,21 @@
 
 #include <Canis/Camera.hpp>
 #include <Canis/DataStructure/List.hpp>
+#include <Canis/GameHelper/AStar.hpp>
+#include "../Characters/WavePointsManager.hpp"
+#include <Canis/Entity.hpp>
 
 using namespace Canis;
-
-class Coords {
-    public:
-        int x;
-        int y;
-
-        Coords(int _x, int _y) {
-            x = _x;
-            y = _y;
-        };
-};
 
 class PlayerBuildInput : public Canis::ScriptableEntity
 {
     private:
-        std::vector<Coords> buildingsPlaced;
         Transform visTransform;
         Entity visEntity;
+        WavePointsManager wpm;
     public:
         void OnCreate(){
+            wpm = entity.GetEntityWithTag("GRIDLAYOUT").GetScript<WavePointsManager>();
             Canis::Log("Create");
             //create visual object
             visEntity = CreateEntity();
@@ -64,15 +57,13 @@ class PlayerBuildInput : public Canis::ScriptableEntity
             point = vec3(point.x - fmod(point.x, 1), 0, point.z - fmod(point.z, 1)); //remove decimal
             visTransform.active = true;
             visEntity.SetPosition(point);
-            //Canis::Log(std::to_string(point.x)+","+std::to_string(point.y)+","+std::to_string(point.z));
             if (GetInputManager().JustLeftClicked()) {
-                Canis::Log("Trying to place building");
-                for (int i = 0; i < buildingsPlaced.size(); i++) {
-                    if (buildingsPlaced[i].x == (int)point.x && buildingsPlaced[i].y == (int)point.z) {
-                        Canis::Log("Building detected");
-                        return;
-                    }
-                }
+                Canis::Log("Trying to place building");    
+                unsigned int wpmPoint = wpm.aStar.GetPointByPosition(point);
+                if (wpmPoint == 0) {
+                    Canis::Log("Not able to place at "+std::to_string(point.x)+","+std::to_string(point.z));
+                    return;
+                } 
                 Entity newBuild = CreateEntity();
                 newBuild.AddComponent<Transform>();
                 newBuild.SetPosition(point + vec3(0,.5f,0));
@@ -82,8 +73,7 @@ class PlayerBuildInput : public Canis::ScriptableEntity
                 Mesh& mesh = newBuild.AddComponent<Mesh>();
                 mesh.modelHandle.id = AssetManager::LoadModel("assets/models/white_block.obj");
                 mesh.material = AssetManager::LoadMaterial("assets/materials/default.material");
-                Canis::Log(std::to_string(newBuild.GetGlobalPosition().x)+","+std::to_string(newBuild.GetGlobalPosition().z));
-                buildingsPlaced.push_back(Coords((int)point.x,(int)point.z));
+                wpm.aStar.RemovePoint(wpm.aStar.GetClosestPoint(point));
             }
         };
 };

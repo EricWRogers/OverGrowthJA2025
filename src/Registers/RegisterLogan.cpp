@@ -7,6 +7,8 @@
 #include "../ECS/ScriptableEntities/Buildings/Farm.hpp"
 #include "../ECS/ScriptableEntities/Buildings/WoodHut.hpp"
 #include "../ECS/ScriptableEntities/Buildings/Barracks.hpp"
+#include "../ECS/ScriptableEntities/AI/AiBrain.hpp"
+#include "../ECS/ScriptableEntities/AI/Job.hpp"
 
 void RegisterLogan(void* _app)
 {
@@ -16,6 +18,8 @@ void RegisterLogan(void* _app)
     REGISTER_SCRIPTABLE_COMPONENT(app, Farm);
     REGISTER_SCRIPTABLE_COMPONENT(app, WoodHut);
     REGISTER_SCRIPTABLE_COMPONENT(app, Barracks);
+    REGISTER_SCRIPTABLE_COMPONENT(app, AiBrain);
+    REGISTER_SCRIPTABLE_COMPONENT(app, Job);
 
     //REGISTER_COMPONENT(app, HealthComponent);
     //REGISTER_COMPONENT_EDITOR(HealthComponent);
