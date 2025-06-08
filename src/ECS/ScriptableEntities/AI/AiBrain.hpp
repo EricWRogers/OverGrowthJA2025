@@ -1,18 +1,13 @@
 #pragma once
-
 #include <Canis/ScriptableEntity.hpp>
-#include "../Buildings/HutBase.hpp"
-#include "../Characters/NPC.hpp"
-
 #include <vector>
 #include <queue>
 #include <memory>
+#include "Job.hpp"
+#include "../Characters/NPC.hpp"
+#include "../Buildings/HutBase.hpp"
 
 
-struct Job {
-    std::string jobType;
-    void* data; //IDK a vec 3?
-};
 
 class AiBrain : public Canis::ScriptableEntity
 {
@@ -23,6 +18,9 @@ public:
 
     //JOB QUEUEUEUEU
     std::queue<Job> jobQueue;
+
+    
+
 
     //AI can register themselves and unregister. Handy when they spawn and die.
     void RegisterAI(NPC* unit);
@@ -45,3 +43,5 @@ public:
 private:
     float counter = 0.0f;
 };
+
+
