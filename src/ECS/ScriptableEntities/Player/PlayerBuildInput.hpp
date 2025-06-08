@@ -25,12 +25,12 @@ class PlayerBuildInput : public Canis::ScriptableEntity
         Entity visEntity;
         WavePointsManager wpm;
         std::string buildingPrefabs[6] = { 
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "assets/prefabs/dummy_building.prefab",
+            "assets/prefabs/dummy_building.prefab",
+            "assets/prefabs/dummy_building.prefab",
+            "assets/prefabs/dummy_building.prefab",
+            "assets/prefabs/dummy_building.prefab",
+            "assets/prefabs/dummy_building.prefab"
         };
     public:
         enum BuildingType {
@@ -80,16 +80,9 @@ class PlayerBuildInput : public Canis::ScriptableEntity
                 if (wpmPoint == 0) {
                     Canis::Log("Not able to place at "+std::to_string(point.x)+","+std::to_string(point.z));
                     return;
-                } 
-                Entity newBuild = CreateEntity();
-                newBuild.AddComponent<Transform>();
-                newBuild.SetPosition(point + vec3(0,.5f,0));
-                newBuild.SetScale(vec3(.9f, 1.0f, .9f));
-                newBuild.AddComponent<SphereCollider>();
-                newBuild.AddComponent<Color>();
-                Mesh& mesh = newBuild.AddComponent<Mesh>();
-                mesh.modelHandle.id = AssetManager::LoadModel("assets/models/white_block.obj");
-                mesh.material = AssetManager::LoadMaterial("assets/materials/default.material");
+                }
+                std::vector<Canis::Entity> prefabs = GetScene().Instantiate(buildingPrefabs[currentType]);
+                prefabs[0].SetPosition(point + vec3(0,.5f,0));
                 wpm.aStar.RemovePoint(wpm.aStar.GetClosestPoint(point));
             }
         };
