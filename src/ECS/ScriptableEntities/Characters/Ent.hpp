@@ -18,6 +18,8 @@ private:
     int m_index = 0;
     bool m_enemyWaveStarted = false;
 public:
+    float damage = 2.0f;
+
     void OnCreate();
 
     void OnReady();
