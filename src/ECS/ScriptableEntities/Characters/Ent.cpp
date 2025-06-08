@@ -31,10 +31,22 @@ void Ent::OnCreate()
 
 void Ent::OnReady()
 {
+    entity.AddComponent<NPCBoid>();
+
+    Canis::Entity manager = entity.GetEntityWithTag("GRIDLAYOUT");
+    m_wavePointsManager = &manager.GetScript<WavePointsManager>();
 }
 
 void Ent::OnUpdate(float _dt)
 {
+    // std::vector<Canis::Entity> enemies = entity.GetEntitiesWithTag("ENEMY");
+    // if(enemies.size() == 0)
+    // {
+    //     m_enemyWaveStarted = true;
+    // }else
+    // {
+    //     m_enemyWaveStarted = true;
+    // }
 
     if (m_enemyWaveStarted)
     {
@@ -43,7 +55,8 @@ void Ent::OnUpdate(float _dt)
     }
     else
     {
-        Roam();
+        Canis::Log("Doing Nothing");
+        //Roam();
     }
 }
 
@@ -61,7 +74,7 @@ void Ent::Attack()
 
 void Ent::MoveToAttack()
 {
-    Canis::Log("Enemies Have Been Spotted Defend");
+    //Canis::Log("Enemies Have Been Spotted Defend");
     if (m_path.size() == 0)
     {
         m_index = 0;

@@ -50,4 +50,9 @@ namespace Health
 
         _target.Destroy();
     }
+
+    inline void DestoryObject(Canis::Entity _target)
+    {
+        _target.Destroy();
+    }
 };
