@@ -19,7 +19,7 @@ void RegisterLogan(void* _app)
     REGISTER_SCRIPTABLE_COMPONENT(app, WoodHut);
     REGISTER_SCRIPTABLE_COMPONENT(app, Barracks);
     REGISTER_SCRIPTABLE_COMPONENT(app, AiBrain);
-    REGISTER_SCRIPTABLE_COMPONENT(app, Job);
+    //REGISTER_SCRIPTABLE_COMPONENT(app, Job);
 
     //REGISTER_COMPONENT(app, HealthComponent);
     //REGISTER_COMPONENT_EDITOR(HealthComponent);

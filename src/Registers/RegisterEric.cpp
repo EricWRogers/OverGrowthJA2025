@@ -7,6 +7,9 @@
 #include "../ECS/ScriptableEntities/Characters/DummyNPC.hpp"
 #include "../ECS/ScriptableEntities/Characters/WavePointsManager.hpp"
 
+
+#include <Canis/ECS/Systems/CollisionSystem.hpp>
+
 void RegisterEric(void* _app)
 {
     Canis::App& app = *(Canis::App*)_app;
@@ -16,6 +19,9 @@ void RegisterEric(void* _app)
 
     app.AddDecodeSystem(DecodeBillboardSystem);
     REGISTER_UPDATE_SYSTEM(BillboardSystem);
+
+    app.AddDecodeSystem(Canis::DecodeCollisionSystem);
+    REGISTER_UPDATE_SYSTEM(Canis::CollisionSystem);
 
     REGISTER_SCRIPTABLE_COMPONENT(app, DummyNPC);
     REGISTER_SCRIPTABLE_COMPONENT(app, WavePointsManager);

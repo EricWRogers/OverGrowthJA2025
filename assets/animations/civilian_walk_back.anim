@@ -1,0 +1,19 @@
+Animation:
+  - 0:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/civilian/civilian_walk.png"
+    offset: [0, 0]
+    index: [3, 0]
+    size: [128, 128]
+  - 1:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/civilian/civilian_walk.png"
+    offset: [0, 0]
+    index: [4, 0]
+    size: [128, 128]
+  - 2:
+    timeOnFrame: 0.25
+    textureAssetId: "assets/textures/civilian/civilian_walk.png"
+    offset: [0, 0]
+    index: [5, 0]
+    size: [128, 128]

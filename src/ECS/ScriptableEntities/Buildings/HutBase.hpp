@@ -3,7 +3,7 @@
 #include <Canis/ScriptableEntity.hpp>
 #include "../../Components/Health.hpp"
 
-#include "../AI/job.hpp"
+#include "../AI/Job.hpp"
 
 class HutBase : public Canis::ScriptableEntity
 {

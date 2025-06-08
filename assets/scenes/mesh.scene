@@ -2,8 +2,10 @@ Scene: mesh
 ClearColor: [1, 1, 1, 1]
 Systems:
   - Canis::ButtonSystem
+  - Canis::CollisionSystem
   - NPCBoidSystem
   - BillboardSystem
+  - Canis::SpriteAnimationSystem
 RenderSystems:
   - Canis::RenderMeshSystem
   - Canis::RenderHUDSystem

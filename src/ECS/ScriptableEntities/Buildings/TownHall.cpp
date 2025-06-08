@@ -14,11 +14,18 @@ void TownHall::OnCreate()
     Health::ResetHealth(entity);
 
     m_isAlive = true;
+
+    Canis::SphereCollider &sphere = entity.GetComponent<Canis::SphereCollider>();
+
+    sphere.layer = (unsigned int)Canis::BIT::THREE;
+    sphere.mask = (unsigned int)Canis::BIT::TWO;
+
+    m_collisionSystem = GetScene().GetSystem<Canis::CollisionSystem>();
 }
 
 void TownHall::OnReady()
 {
-    //Call the Spawn Inital Units
+    // Call the Spawn Inital Units
     SpawnUnit();
 }
 
@@ -31,16 +38,18 @@ void TownHall::OnDestroy()
 void TownHall::OnUpdate(float _dt)
 {
     HealthComponent &health = entity.GetComponent<HealthComponent>();
-    if(health.currentHealth == 0 && m_isAlive == true)
+    if (health.currentHealth == 0 && m_isAlive)
     {
-        entity.Destroy();
+        m_isAlive == false;
+        Health::DestoryObject(entity);
     }
 
-    if(GetInputManager().JustPressedKey(SDLK_e))
+    // Can only have this uncommented if you plan to kill the Town Hall before it gets destroyed
+    /*if (GetInputManager().JustPressedKey(SDLK_e))
     {
         Canis::Log("Button Pressed");
         Health::Annihilation(entity);
-    }
+    }*/
 }
 
 void TownHall::SpawnUnit()
