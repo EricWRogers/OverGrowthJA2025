@@ -265,30 +265,3 @@ Entities:
       currentHealth: 25
       maxHealth: 25
     Canis::ScriptComponent: Enemy
-  - Entity: 7344625983723146380
-    Name: Ent
-    Canis::TagComponent: ENT
-    Canis::Transform:
-      active: true
-      position: [0, 0, 0]
-      rotation: [0, -0, 0]
-      scale: [1, 1, 1]
-    Canis::SphereCollider:
-      center: [0, 0, 0]
-      radius: 1
-      layer: 4
-      mask: 2
-    Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
-      castShadow: true
-      useInstance: false
-      castDepth: true
-    Canis::Color:
-      color: [0.1, 1, 0.1, 1]
-      emission: [0, 0, 0]
-      emissionUsingAlbedoIntesity: 0
-    HealthComponent:
-      currentHealth: 25
-      maxHealth: 25
-    Canis::ScriptComponent: Ent
