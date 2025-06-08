@@ -3,7 +3,25 @@
 
 void Ent::OnCreate()
 {
+    if (!entity.HasComponent<HealthComponent>())
+    {
+        entity.AddComponent<HealthComponent>();
+    }
 
+    HealthComponent &health = entity.GetComponent<HealthComponent>();
+
+    health.maxHealth = 25.0f;
+
+    Health::ResetHealth(entity);
+
+    Canis::Log("The Current Health is " + std::to_string(health.currentHealth));
+
+    Canis::SphereCollider &sphere = entity.GetComponent<Canis::SphereCollider>();
+
+    sphere.layer = (unsigned int)Canis::BIT::THREE;
+    sphere.mask = (unsigned int)Canis::BIT::TWO;
+
+    m_collisionSystem = GetScene().GetSystem<Canis::CollisionSystem>();
 }
 
 void Ent::OnReady()
