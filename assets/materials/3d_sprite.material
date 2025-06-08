@@ -1,0 +1,5 @@
+shader: assets/shaders/shadow_mapping
+albedo: assets/textures/ent/ent.png
+specular: assets/textures/square.png
+emission: assets/textures/square.png
+backFaceCulling: true

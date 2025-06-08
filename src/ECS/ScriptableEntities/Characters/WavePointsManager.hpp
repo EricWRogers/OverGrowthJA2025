@@ -25,7 +25,7 @@ public:
 
     void OnCreate();
 
-    void OnReady() {}
+    void OnReady();
 
     void OnUpdate(float _dt) {}
 
