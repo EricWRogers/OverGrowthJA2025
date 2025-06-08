@@ -18,7 +18,7 @@ public:
    
     Job job;
 
-     HutBase() : job() {}
+     HutBase() : job(this, {}, 0) {}
 
     void OnCreate();
     
