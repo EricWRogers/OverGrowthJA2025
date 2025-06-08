@@ -65,3 +65,12 @@ void WavePointsManager::OnCreate() {
         }
     }
 }
+
+void WavePointsManager::OnReady() {
+    for (int i = 0; i < 50; i++)
+    {
+        std::vector<Canis::Entity> prefabs = GetScene().Instantiate("assets/prefabs/dummy_npc.prefab");
+        Transform& transform = prefabs[0].GetComponent<Transform>();
+        prefabs[0].SetPosition(vec3(RandomFloat(-5.0f, 5.0f), transform.position.y, RandomFloat(-5.0f, 5.0f)));
+    }
+}

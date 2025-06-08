@@ -4,7 +4,7 @@ borderless false
 resizeable true
 width 1280
 heigth 800
-use_frame_limit true
+use_frame_limit false
 frame_limit 120
 override_seed false
 seed 0

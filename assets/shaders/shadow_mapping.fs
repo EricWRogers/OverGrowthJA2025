@@ -95,6 +95,9 @@ void main()
     // alpha
     float alpha = min(COLOR.a, texture(material.diffuse, fs_in.TexCoords).a);
 
+    if (alpha <= 0.0f)
+        discard;
+
     //vec3 result = pow(dirResult, vec3(1.0 / gamma));
 
     if (alpha >= 1.0)
