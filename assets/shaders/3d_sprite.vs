@@ -27,7 +27,6 @@ uniform float uvx;
 uniform float uvy;
 uniform float uvw;
 uniform float uvh;
-uniform float flipX;
 
 //float uvx = 0.0;
 //float uvy = 0.0;
@@ -48,9 +47,7 @@ void main()
     else if (aPos == vec3(0.5, 0.0, 0.0)) // bottom right
         vs_out.TexCoords = vec2(uvx+uvw,uvy);
     
-    if (flipX != 1.0)
-        vs_out.TexCoords.x = 1 - vs_out.TexCoords.x;
-    
+    vs_out.TexCoords.x = 1 - vs_out.TexCoords.x;
     vs_out.TexCoords.y = 1 - vs_out.TexCoords.y;
 
     vs_out.FragPosLightSpace = lightSpaceMatrix * vec4(vs_out.FragPos, 1.0);

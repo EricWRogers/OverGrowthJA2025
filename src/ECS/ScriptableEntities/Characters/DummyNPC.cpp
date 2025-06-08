@@ -10,10 +10,10 @@ void DummyNPC::OnReady()
     entity.AddComponent<Billboard>();
     Canis::Sprite2DComponent& sc = entity.AddComponent<Canis::Sprite2DComponent>();
     sc.textureHandle = Canis::AssetManager::GetTextureHandle("assets/textures/civilian/civilian_build.png");
-    //sc.uv
+    
     Canis::SpriteAnimationComponent& sac = entity.AddComponent<Canis::SpriteAnimationComponent>();
-    sac.animationId = Canis::AssetManager::LoadSpriteAnimation("assets/animations/civilian_build.anim");
-    sac.redraw = true;
+    sac.Play("assets/animations/civilian_build.anim");
+    sac.flipX = false; 
 
     Canis::Entity manager = entity.GetEntityWithTag("GRIDLAYOUT");
     m_wavePointsManager = &manager.GetScript<WavePointsManager>();
@@ -29,9 +29,6 @@ void DummyNPC::OnUpdate(float _dt)
     mesh.overrideMaterialFields.SetFloat("uvy", sc.uv.y);
     mesh.overrideMaterialFields.SetFloat("uvw", sc.uv.z);
     mesh.overrideMaterialFields.SetFloat("uvh", sc.uv.w);
-
-    mesh.overrideMaterialFields.SetFloat("flipX", 0.0f); // false
-    //mesh.overrideMaterialFields.SetFloat("flipX", 1.0f); // true
 
     //Canis::Log(glm::to_string(sc.uv));
 
