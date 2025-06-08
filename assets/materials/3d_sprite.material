@@ -1,4 +1,4 @@
-shader: assets/shaders/shadow_mapping
+shader: assets/shaders/3d_sprite
 albedo: assets/textures/ent/ent.png
 specular: assets/textures/square.png
 emission: assets/textures/square.png

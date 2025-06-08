@@ -4,6 +4,7 @@ Systems:
   - Canis::ButtonSystem
   - NPCBoidSystem
   - BillboardSystem
+  - Canis::SpriteAnimationSystem
 RenderSystems:
   - Canis::RenderMeshSystem
   - Canis::RenderHUDSystem
