@@ -306,6 +306,11 @@ Entities:
     Canis::ScriptComponent: Enemy
   - Entity: 10380003923794989714
     Name: Ent
+    Canis::Transform:
+      active: true
+      position: [0, 0, 0]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
     Canis::Mesh:
       modelPath: assets/models/white_block.obj
       materialPath: assets/materials/default.material
