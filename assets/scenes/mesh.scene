@@ -43,7 +43,7 @@ Entities:
     Canis::Transform:
       active: true
       position: [100, -1, -100]
-      rotation: [25.862118, -0, 0]
+      rotation: [-59.677647, -0, 0]
       scale: [320, 200, 0]
     Canis::SphereCollider:
       center: [0, 0, 0]
@@ -175,7 +175,7 @@ Entities:
     Canis::TagComponent: ENEMY
     Canis::Transform:
       active: true
-      position: [5, 0, 5]
+      position: [0, 0, 47]
       rotation: [0, -0, 0]
       scale: [1, 1, 1]
     Canis::SphereCollider:
@@ -184,13 +184,175 @@ Entities:
       layer: 2
       mask: 4
     Canis::Mesh:
-      modelPath: assets/models/white_block.obj
-      materialPath: assets/materials/default.material
-      castShadow: true
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
+      castShadow: false
       useInstance: false
-      castDepth: true
+      castDepth: false
     Canis::Color:
-      color: [1, 0, 0, 1]
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
+    Canis::ScriptComponent: Enemy
+  - Entity: 6291519934435318177
+    Name: Enemy copy
+    Canis::TagComponent: ENEMY
+    Canis::Transform:
+      active: true
+      position: [-1, 0, 50]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 2
+      mask: 4
+    Canis::Mesh:
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
+      castShadow: false
+      useInstance: false
+      castDepth: false
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
+    Canis::ScriptComponent: Enemy
+  - Entity: 4138293781088148605
+    Name: Enemy copy copy
+    Canis::TagComponent: ENEMY
+    Canis::Transform:
+      active: true
+      position: [0, 0, 50]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 2
+      mask: 4
+    Canis::Mesh:
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
+      castShadow: false
+      useInstance: false
+      castDepth: false
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
+    Canis::ScriptComponent: Enemy
+  - Entity: 8240807044899458807
+    Name: Enemy copy copy copy
+    Canis::TagComponent: ENEMY
+    Canis::Transform:
+      active: true
+      position: [1, 0, 50]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 2
+      mask: 4
+    Canis::Mesh:
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
+      castShadow: false
+      useInstance: false
+      castDepth: false
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
+    Canis::ScriptComponent: Enemy
+  - Entity: 4840746600114350775
+    Name: Enemy copy copy copy copy
+    Canis::TagComponent: ENEMY
+    Canis::Transform:
+      active: true
+      position: [-3, 0, 50]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 2
+      mask: 4
+    Canis::Mesh:
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
+      castShadow: false
+      useInstance: false
+      castDepth: false
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
+    Canis::ScriptComponent: Enemy
+  - Entity: 6819092259191011350
+    Name: Enemy copy copy copy copy copy
+    Canis::TagComponent: ENEMY
+    Canis::Transform:
+      active: true
+      position: [0, 0, 50]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 2
+      mask: 4
+    Canis::Mesh:
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
+      castShadow: false
+      useInstance: false
+      castDepth: false
+    Canis::Color:
+      color: [1, 1, 1, 1]
+      emission: [0, 0, 0]
+      emissionUsingAlbedoIntesity: 0
+    HealthComponent:
+      currentHealth: 25
+      maxHealth: 25
+    Canis::ScriptComponent: Enemy
+  - Entity: 7382976247461027034
+    Name: Enemy copy copy copy copy copy copy
+    Canis::TagComponent: ENEMY
+    Canis::Transform:
+      active: true
+      position: [0, 0, 45]
+      rotation: [0, -0, 0]
+      scale: [1, 1, 1]
+    Canis::SphereCollider:
+      center: [0, 0, 0]
+      radius: 1
+      layer: 2
+      mask: 4
+    Canis::Mesh:
+      modelPath: assets/models/3d_sprite.obj
+      materialPath: assets/materials/3d_sprite.material
+      castShadow: false
+      useInstance: false
+      castDepth: false
+    Canis::Color:
+      color: [1, 1, 1, 1]
       emission: [0, 0, 0]
       emissionUsingAlbedoIntesity: 0
     HealthComponent:
