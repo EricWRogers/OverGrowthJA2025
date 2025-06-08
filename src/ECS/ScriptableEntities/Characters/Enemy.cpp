@@ -42,7 +42,15 @@ void Enemy::Attack(Canis::Entity _target)
     if(m_isEntsAlive)
     {
         Canis::Entity closestEnt = GetClosestEnt();
-        //_target = m_collisionSystem->GetHits(entity);
+
+        // entt::entity is the id of Canis::Entity
+        std::vector<entt::entity> targets = m_collisionSystem->GetHits(entity);
+        for (entt::entity id : targets)
+        {
+            Canis::Entity ent(id, &GetScene());
+            
+
+        }
     }
 }
 
