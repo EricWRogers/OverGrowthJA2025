@@ -3,6 +3,7 @@
 #include "../../Components/Billboard.hpp"
 #include <Canis/ECS/Components/Sprite2DComponent.hpp>
 #include <Canis/ECS/Components/SpriteAnimationComponent.hpp>
+#include "../AI/AiBrain.hpp"
 
 void NPC::OnCreate()
 {
@@ -19,7 +20,6 @@ void NPC::OnCreate()
 
     Canis::Log("The Current Health is " + std::to_string(health.currentHealth));
 
-    // Check Job
     if (characterClass == "Civilian")
     {
         ChangeCharacterClass("Worker");
@@ -30,6 +30,9 @@ void NPC::OnCreate()
 
 void NPC::OnReady()
 {
+    Canis::Entity brainEntity = entity.GetEntityWithTag("AI_BRAIN");
+    aiBrain = &brainEntity.GetScript<AiBrain>();
+
     entity.AddComponent<NPCBoid>();
     entity.AddComponent<Billboard>();
     Canis::Sprite2DComponent& sc = entity.AddComponent<Canis::Sprite2DComponent>();
@@ -54,7 +57,34 @@ void NPC::OnUpdate(float _dt)
     mesh.overrideMaterialFields.SetFloat("uvw", sc.uv.z);
     mesh.overrideMaterialFields.SetFloat("uvh", sc.uv.w);
     
+    if (!hasJob && aiBrain != nullptr)
+{
+    hasJob = aiBrain->RequestJob(this, currentJob); 
+    if (hasJob)
+        m_index = 0;
+}
+
+if (hasJob)
+{
+    if (m_index >= currentJob.path.size())
+    {
+        aiBrain->CompleteJob(currentJob);
+        hasJob = false;
+        currentJob.path.clear();
+    }
+    else
+    {
+        entity.GetComponent<NPCBoid>().target = currentJob.path[m_index];
+
+        if (glm::distance(currentJob.path[m_index], entity.GetGlobalPosition()) < 0.8f)
+            m_index++;
+    }
+}
+else
+{
     GoToArea(_dt);
+}
+
 }
 
 void NPC::ChangeCharacterClass(std::string _characterClass)

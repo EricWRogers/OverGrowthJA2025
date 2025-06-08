@@ -3,6 +3,9 @@
 #include <Canis/ScriptableEntity.hpp>
 #include "WavePointsManager.hpp"
 #include "../../Components/Health.hpp"
+#include "../AI/Job.hpp"
+
+class AiBrain;
 
 class NPC : public Canis::ScriptableEntity
 {
@@ -12,21 +15,22 @@ private:
     float m_waitTime = 2.0f;
     int m_index = 0;
     bool m_isWaiting = false;
+
+    Job currentJob;
+    bool hasJob = false;
+
 public:
     std::string characterClass = "Civilian";
     WavePointsManager* wavePointsManager;
+    AiBrain* aiBrain = nullptr; 
 
     void OnCreate();
-    
     void OnReady();
-    
     void OnDestroy() {}
 
     void OnUpdate(float _dt);
 
     void ChangeCharacterClass(std::string _characterClass);
-
     void GoToArea(float _time);
-
     void SetAnimation(std::string _path, bool _flipX);
 };

@@ -23,6 +23,9 @@ private:
     int resourceReward = 0;
 
 public:
+
+    std::vector<glm::vec3> path;
+
     Job();
     Job(HutBase* owner, const std::vector<glm::vec3>& waypoints, int reward);
 
@@ -33,6 +36,8 @@ public:
 
     void Update(const glm::vec3& aiPosition);
 
-    bool IsCompleted() const { return state == State::Completed; }
+    bool IsCompleted() const { 
+        
+        return state == State::Completed; }
     const std::vector<glm::vec3>& GetWaypoints() const { return waypoints; }
 };
