@@ -33,7 +33,7 @@ Entities:
       alignment: 2
       horizontalBoundary: 0
       TextAsset:
-        path: assets\fonts\Antonio-Bold.ttf
+        path: assets/fonts/Antonio-Bold.ttf
         size: 134
   - Entity: 13878440446197466466
     Name: Play 2D Button
@@ -61,10 +61,10 @@ Entities:
       alignment: 0
       horizontalBoundary: 0
       TextAsset:
-        path: assets\fonts\Antonio-Bold.ttf
+        path: assets/fonts/Antonio-Bold.ttf
         size: 100
     Canis::ButtonComponent:
-      eventName: MainMenuPlay
+      eventName: MainMenuPlay3D
       baseColor: [0.1, 0.4, 0.3, 1]
       hoverColor: [0.1, 0.2, 0.3, 1]
       action: 0
@@ -161,7 +161,7 @@ Entities:
   - Entity: 586293319622200709
     Name: Play 3D Button
     Canis::RectTransform:
-      active: true
+      active: false
       anchor: 3
       position: [974.9999, -132]
       size: [129, 43]

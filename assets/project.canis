@@ -26,4 +26,4 @@ scene assets/scenes/kaylie_test.scene
 scene assets/scenes/lose_menu.scene
 scene assets/scenes/walyn_test.scene
 
-run_scene mesh
+run_scene engine_splash

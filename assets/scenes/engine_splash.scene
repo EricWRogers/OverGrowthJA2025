@@ -1,5 +1,5 @@
 Scene: engine_splash
-ClearColor: [1, 1, 1, 1]
+ClearColor: [0, 0, 0, 1]
 Systems:
 RenderSystems:
   - Canis::SpriteRenderer2DSystem

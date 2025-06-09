@@ -17,8 +17,8 @@ class WavePointsManager : public Canis::ScriptableEntity
 {
 private:
     bool m_isVisable = false;
-    int m_width = 100;
-    int m_depth = 100;
+    int m_width = 50;
+    int m_depth = 50;
     int m_defaultHeight = 0.0f;
 public:
     Canis::AStar aStar;
