@@ -102,6 +102,7 @@ void Ent::Attack()
 
 void Ent::MoveToAttack()
 {
+    Canis::Log("MoveToAttack");
     if (m_path.size() == 0)
     {
         m_index = 0;

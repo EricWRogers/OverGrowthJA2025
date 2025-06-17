@@ -12,7 +12,7 @@ volume-can-range-from-0.0-1.5
 volume 1.0
 log true
 logToFile false
-editor true
+editor false
 vsync false
 
 splash_scene assets/scenes/engine_splash.scene
@@ -26,4 +26,4 @@ scene assets/scenes/kaylie_test.scene
 scene assets/scenes/lose_menu.scene
 scene assets/scenes/walyn_test.scene
 
-run_scene engine_splash
+run_scene mesh
